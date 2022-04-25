@@ -1,1 +1,4 @@
-# SpCon --- Mining Smart Contract Role Structures for Permission Bug Detection.
+# SpCon
+
+An artifact evaluation package for the ISSTA'22 submission: "Finding
+Permission Bugs in Smart Contracts with Role Mining".
