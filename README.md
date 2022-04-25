@@ -1,1 +1,1 @@
-# AcCon --- Access Control Analysis Tool for Smart Contracts.
+# SpCon --- Mining Smart Contract Role Structures for Permission Bug Detection.
