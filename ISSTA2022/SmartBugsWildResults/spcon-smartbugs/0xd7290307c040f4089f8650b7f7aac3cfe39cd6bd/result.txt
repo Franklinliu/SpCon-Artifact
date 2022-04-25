@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0xd7290307c040f4089f8650b7f7aac3cfe39cd6bd,UEXCloudToken,v0.4.24+commit.e67f0147,,9196,smartbugsAccessControl/0xd7290307c040f4089f8650b7f7aac3cfe39cd6bd/all_txs.json,smartbugsAccessControl/0xd7290307c040f4089f8650b7f7aac3cfe39cd6bd/UEXCloudToken.sol,smartbugsAccessControl/0xd7290307c040f4089f8650b7f7aac3cfe39cd6bd/UEXCloudToken.abi,687 days 19 hrs ago,False

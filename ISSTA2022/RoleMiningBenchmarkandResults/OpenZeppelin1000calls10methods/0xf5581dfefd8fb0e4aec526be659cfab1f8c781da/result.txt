@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xf5581dfefd8fb0e4aec526be659cfab1f8c781da,HoprToken,v0.6.6+commit.6c089d02,,18634,./OpenZeppelin/0xf5581dfefd8fb0e4aec526be659cfab1f8c781da/HoprToken.sol,./OpenZeppelin/0xf5581dfefd8fb0e4aec526be659cfab1f8c781da/HoprToken.abi,14 hrs 11 mins ago,False

@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0x781fb4f25d07de3f3cfe2476645e52e0c661eefc,CryptoCurrencyNetwork,v0.4.22+commit.4cb486ee,,52566,smartbugsAccessControl/0x781fb4f25d07de3f3cfe2476645e52e0c661eefc/all_txs.json,smartbugsAccessControl/0x781fb4f25d07de3f3cfe2476645e52e0c661eefc/CryptoCurrencyNetwork.sol,smartbugsAccessControl/0x781fb4f25d07de3f3cfe2476645e52e0c661eefc/CryptoCurrencyNetwork.abi,412 days 24 mins ago,False

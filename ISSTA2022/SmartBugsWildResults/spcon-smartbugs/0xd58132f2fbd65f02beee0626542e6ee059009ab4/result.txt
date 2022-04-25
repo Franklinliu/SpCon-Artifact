@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0xd58132f2fbd65f02beee0626542e6ee059009ab4,XBORNID,v0.4.25+commit.59dbf8f1,,4084,smartbugsAccessControl/0xd58132f2fbd65f02beee0626542e6ee059009ab4/all_txs.json,smartbugsAccessControl/0xd58132f2fbd65f02beee0626542e6ee059009ab4/XBORNID.sol,smartbugsAccessControl/0xd58132f2fbd65f02beee0626542e6ee059009ab4/XBORNID.abi,702 days 2 hrs ago,False

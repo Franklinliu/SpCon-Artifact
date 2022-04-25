@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x37c430c2b5f9ff85e534873c715871818ab1623e,AXCToken,v0.7.0+commit.9e61f92b,,2333,./OpenZeppelin/0x37c430c2b5f9ff85e534873c715871818ab1623e/AXCToken.sol,./OpenZeppelin/0x37c430c2b5f9ff85e534873c715871818ab1623e/AXCToken.abi,41 mins ago,False

@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x1559fa1b8f28238fd5d76d9f434ad86fd20d1559,EdenToken,v0.8.6+commit.11564f7e,000000000000000000000000fdf8be775bb5e2ba1983dc7b26a655321502e104,29962,./OpenZeppelin/0x1559fa1b8f28238fd5d76d9f434ad86fd20d1559/EdenToken.sol,./OpenZeppelin/0x1559fa1b8f28238fd5d76d9f434ad86fd20d1559/EdenToken.abi,28 mins ago,False

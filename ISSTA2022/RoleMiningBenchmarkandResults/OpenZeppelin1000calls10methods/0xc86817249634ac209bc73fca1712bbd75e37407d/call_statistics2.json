@@ -1,0 +1,1 @@
+{"data": {"ethereum": {"smartContractCalls": [{"count": 1, "external": false, "success": false}, {"count": 14361, "external": false, "success": true}, {"count": 5, "external": true, "success": false}, {"count": 1625, "external": true, "success": true}]}}}

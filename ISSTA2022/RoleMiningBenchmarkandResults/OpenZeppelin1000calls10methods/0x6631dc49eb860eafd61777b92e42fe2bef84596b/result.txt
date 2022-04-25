@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x6631dc49eb860eafd61777b92e42fe2bef84596b,SummaPri,v0.6.12+commit.27d51765,000000000000000000000000043c308bb8a5ae96d0093444be7f56459f1340b1,1417,./OpenZeppelin/0x6631dc49eb860eafd61777b92e42fe2bef84596b/SummaPri.sol,./OpenZeppelin/0x6631dc49eb860eafd61777b92e42fe2bef84596b/SummaPri.abi,15 days 7 hrs ago,False

@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0x7de8ec9f41a7dc4047f3f94e7589847e6c3d508b,Dividends3d,v0.4.25+commit.59dbf8f1,,84,smartbugsAccessControl/0x7de8ec9f41a7dc4047f3f94e7589847e6c3d508b/all_txs.json,smartbugsAccessControl/0x7de8ec9f41a7dc4047f3f94e7589847e6c3d508b/Dividends3d.sol,smartbugsAccessControl/0x7de8ec9f41a7dc4047f3f94e7589847e6c3d508b/Dividends3d.abi,1047 days 14 hrs ago,False

@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0x43efc486d1c7c5cb0193e409a73aa33786f5197c,Tubigo,v0.4.24-nightly.2018.5.16+commit.7f965c86,,7561,smartbugsAccessControl/0x43efc486d1c7c5cb0193e409a73aa33786f5197c/all_txs.json,smartbugsAccessControl/0x43efc486d1c7c5cb0193e409a73aa33786f5197c/Tubigo.sol,smartbugsAccessControl/0x43efc486d1c7c5cb0193e409a73aa33786f5197c/Tubigo.abi,669 days 6 hrs ago,False

@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x5ABC07D28DCC3B60a164d57e4E3981a090c5d6De,BOMBBA,v0.4.24+commit.e67f0147,,3,./CVE/0x5ABC07D28DCC3B60a164d57e4E3981a090c5d6De/BOMBBA.sol,./CVE/0x5ABC07D28DCC3B60a164d57e4E3981a090c5d6De/BOMBBA.abi,1228 days 11 hrs ago,False

@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x3b62f3820e0b035cc4ad602dece6d796bc325325,DEUSToken,v0.6.12+commit.27d51765,,12879,./OpenZeppelin/0x3b62f3820e0b035cc4ad602dece6d796bc325325/DEUSToken.sol,./OpenZeppelin/0x3b62f3820e0b035cc4ad602dece6d796bc325325/DEUSToken.abi,3 days 21 hrs ago,False

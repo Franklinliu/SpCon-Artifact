@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xe532cb43c9fb379b19df00de4dfb1885580ff0c2,DelegationController,v0.6.10+commit.00c0fcaf,,1,./OpenZeppelin/0xe532cb43c9fb379b19df00de4dfb1885580ff0c2/DelegationController.sol,./OpenZeppelin/0xe532cb43c9fb379b19df00de4dfb1885580ff0c2/DelegationController.abi,405 days 23 hrs ago,False

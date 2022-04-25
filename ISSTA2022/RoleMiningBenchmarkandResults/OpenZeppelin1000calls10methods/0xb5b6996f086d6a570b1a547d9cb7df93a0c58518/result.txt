@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xb5b6996f086d6a570b1a547d9cb7df93a0c58518,CreditLine,v0.6.12+commit.27d51765,,1,./OpenZeppelin/0xb5b6996f086d6a570b1a547d9cb7df93a0c58518/CreditLine.sol,./OpenZeppelin/0xb5b6996f086d6a570b1a547d9cb7df93a0c58518/CreditLine.abi,105 days 2 hrs ago,False

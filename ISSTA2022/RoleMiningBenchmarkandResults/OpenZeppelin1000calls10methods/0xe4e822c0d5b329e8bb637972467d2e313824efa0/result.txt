@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xe4e822c0d5b329e8bb637972467d2e313824efa0,XFIToken,v0.6.11+commit.5ef660b1,000000000000000000000000000000000000000000000000000000005f563ce0,1174,./OpenZeppelin/0xe4e822c0d5b329e8bb637972467d2e313824efa0/XFIToken.sol,./OpenZeppelin/0xe4e822c0d5b329e8bb637972467d2e313824efa0/XFIToken.abi,3 hrs 24 mins ago,False

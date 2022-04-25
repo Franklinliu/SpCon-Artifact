@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0x13a517751318cce71a524006b16f7930b3515ccf,Sota,v0.4.25+commit.59dbf8f1,,3821,smartbugsAccessControl/0x13a517751318cce71a524006b16f7930b3515ccf/all_txs.json,smartbugsAccessControl/0x13a517751318cce71a524006b16f7930b3515ccf/Sota.sol,smartbugsAccessControl/0x13a517751318cce71a524006b16f7930b3515ccf/Sota.abi,336 days 22 hrs ago,False

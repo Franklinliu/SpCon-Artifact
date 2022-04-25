@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xe81d72d14b1516e68ac3190a46c93302cc8ed60f,Coinlancer,v0.4.13+commit.fb4cb1a,,16473,./CVE/0xe81d72d14b1516e68ac3190a46c93302cc8ed60f/Coinlancer.sol,./CVE/0xe81d72d14b1516e68ac3190a46c93302cc8ed60f/Coinlancer.abi,15 days 17 hrs ago,False

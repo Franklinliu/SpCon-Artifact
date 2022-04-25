@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x38d94ed57bede53b6ba5d36a17c816f91aec9d67,TenKTF,v0.8.4+commit.c7e474f2,,1,./OpenZeppelin/0x38d94ed57bede53b6ba5d36a17c816f91aec9d67/TenKTF.sol,./OpenZeppelin/0x38d94ed57bede53b6ba5d36a17c816f91aec9d67/TenKTF.abi,81 days 17 hrs ago,False

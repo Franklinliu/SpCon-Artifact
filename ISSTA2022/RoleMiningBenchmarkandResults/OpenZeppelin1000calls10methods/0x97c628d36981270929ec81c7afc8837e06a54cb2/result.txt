@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x97c628d36981270929ec81c7afc8837e06a54cb2,RiverBoxImplV2,v0.8.2+commit.661d1103,,1,./OpenZeppelin/0x97c628d36981270929ec81c7afc8837e06a54cb2/RiverBoxImplV2.sol,./OpenZeppelin/0x97c628d36981270929ec81c7afc8837e06a54cb2/RiverBoxImplV2.abi,86 days 6 hrs ago,False

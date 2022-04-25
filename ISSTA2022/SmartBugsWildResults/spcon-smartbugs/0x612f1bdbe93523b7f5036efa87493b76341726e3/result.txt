@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0x612f1bdbe93523b7f5036efa87493b76341726e3,HOTTO,v0.4.24+commit.e67f0147,,133,smartbugsAccessControl/0x612f1bdbe93523b7f5036efa87493b76341726e3/all_txs.json,smartbugsAccessControl/0x612f1bdbe93523b7f5036efa87493b76341726e3/HOTTO.sol,smartbugsAccessControl/0x612f1bdbe93523b7f5036efa87493b76341726e3/HOTTO.abi,530 days 4 hrs ago,False

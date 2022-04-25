@@ -1,0 +1,1 @@
+{"data": {"ethereum": {"smartContractCalls": [{"count": 1, "smartContractMethod": {"name": "Contract Creation", "signature": null, "signatureHash": "60606040"}, "success": true}, {"count": 3, "smartContractMethod": {"name": "transfer", "signature": "transfer(address,uint256)", "signatureHash": "a9059cbb"}, "success": true}]}}}

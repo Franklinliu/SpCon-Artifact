@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0xe30a76ec9168639f09061e602924ae601d341066,NewIntelTechMedia,v0.4.24+commit.e67f0147,,67954,smartbugsAccessControl/0xe30a76ec9168639f09061e602924ae601d341066/all_txs.json,smartbugsAccessControl/0xe30a76ec9168639f09061e602924ae601d341066/NewIntelTechMedia.sol,smartbugsAccessControl/0xe30a76ec9168639f09061e602924ae601d341066/NewIntelTechMedia.abi,442 days 4 hrs ago,False

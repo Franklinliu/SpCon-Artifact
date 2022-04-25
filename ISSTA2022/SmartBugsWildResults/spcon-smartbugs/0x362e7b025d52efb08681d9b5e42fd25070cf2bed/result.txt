@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0x362e7b025d52efb08681d9b5e42fd25070cf2bed,Arbenis,v0.4.25+commit.59dbf8f1,,330,smartbugsAccessControl/0x362e7b025d52efb08681d9b5e42fd25070cf2bed/all_txs.json,smartbugsAccessControl/0x362e7b025d52efb08681d9b5e42fd25070cf2bed/Arbenis.sol,smartbugsAccessControl/0x362e7b025d52efb08681d9b5e42fd25070cf2bed/Arbenis.abi,1055 days 10 hrs ago,False

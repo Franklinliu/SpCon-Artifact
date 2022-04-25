@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x4eb844ff521b4a964011ac8ecd42d500725c95cc,GoldfinchConfig,v0.6.12+commit.27d51765,,18,./OpenZeppelin/0x4eb844ff521b4a964011ac8ecd42d500725c95cc/GoldfinchConfig.sol,./OpenZeppelin/0x4eb844ff521b4a964011ac8ecd42d500725c95cc/GoldfinchConfig.abi,104 days 18 hrs ago,False

@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xbaae36cef9ad432a40debafa26d7a479cbbd0642,EcoceliumInit,v0.6.12+commit.27d51765,,1,./OpenZeppelin/0xbaae36cef9ad432a40debafa26d7a479cbbd0642/EcoceliumInit.sol,./OpenZeppelin/0xbaae36cef9ad432a40debafa26d7a479cbbd0642/EcoceliumInit.abi,435 days 16 hrs ago,False

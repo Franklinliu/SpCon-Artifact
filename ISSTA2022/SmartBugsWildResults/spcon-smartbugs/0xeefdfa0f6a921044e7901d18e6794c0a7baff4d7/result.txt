@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0xeefdfa0f6a921044e7901d18e6794c0a7baff4d7,LUVI,v0.4.25+commit.59dbf8f1,,9868,smartbugsAccessControl/0xeefdfa0f6a921044e7901d18e6794c0a7baff4d7/all_txs.json,smartbugsAccessControl/0xeefdfa0f6a921044e7901d18e6794c0a7baff4d7/LUVI.sol,smartbugsAccessControl/0xeefdfa0f6a921044e7901d18e6794c0a7baff4d7/LUVI.abi,589 days 8 hrs ago,False

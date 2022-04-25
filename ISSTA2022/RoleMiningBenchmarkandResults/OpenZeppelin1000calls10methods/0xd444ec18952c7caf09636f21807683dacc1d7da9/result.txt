@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xd444ec18952c7caf09636f21807683dacc1d7da9,LiquidityProtectionSettings,v0.6.12+commit.27d51765,0000000000000000000000001f573d6fb3f13d689ff844b4ce37794d79a7ff1c00000000000000000000000052ae12abe5d8bd778bd5397f99ca900624cfadd4,165,./OpenZeppelin/0xd444ec18952c7caf09636f21807683dacc1d7da9/LiquidityProtectionSettings.sol,./OpenZeppelin/0xd444ec18952c7caf09636f21807683dacc1d7da9/LiquidityProtectionSettings.abi,309 days 1 hr ago,False

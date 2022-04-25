@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0xfc79774fb9dedeea2325d0d5570554eddc4e6747,VotePumpCoin0x,v0.4.24+commit.e67f0147,,16101,smartbugsAccessControl/0xfc79774fb9dedeea2325d0d5570554eddc4e6747/all_txs.json,smartbugsAccessControl/0xfc79774fb9dedeea2325d0d5570554eddc4e6747/VotePumpCoin0x.sol,smartbugsAccessControl/0xfc79774fb9dedeea2325d0d5570554eddc4e6747/VotePumpCoin0x.abi,692 days 19 hrs ago,False

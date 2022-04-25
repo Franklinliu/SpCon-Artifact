@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0x9a78a1bcc4c254eba53b811bbb42dc0bf915e166,EthOwls,v0.4.24+commit.e67f0147,,180,smartbugsAccessControl/0x9a78a1bcc4c254eba53b811bbb42dc0bf915e166/all_txs.json,smartbugsAccessControl/0x9a78a1bcc4c254eba53b811bbb42dc0bf915e166/EthOwls.sol,smartbugsAccessControl/0x9a78a1bcc4c254eba53b811bbb42dc0bf915e166/EthOwls.abi,948 days 13 hrs ago,False

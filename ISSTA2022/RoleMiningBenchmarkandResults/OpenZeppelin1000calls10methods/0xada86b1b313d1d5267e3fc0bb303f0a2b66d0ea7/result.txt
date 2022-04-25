@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xada86b1b313d1d5267e3fc0bb303f0a2b66d0ea7,COVToken,v0.6.2+commit.bacdbe57,,8876,./OpenZeppelin/0xada86b1b313d1d5267e3fc0bb303f0a2b66d0ea7/COVToken.sol,./OpenZeppelin/0xada86b1b313d1d5267e3fc0bb303f0a2b66d0ea7/COVToken.abi,31 mins ago,False

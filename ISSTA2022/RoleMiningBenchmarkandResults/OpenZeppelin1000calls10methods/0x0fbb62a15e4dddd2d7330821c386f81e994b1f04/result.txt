@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x0fbb62a15e4dddd2d7330821c386f81e994b1f04,LnLinearStakingStorage,v0.6.12+commit.27d51765,00000000000000000000000074e5d6c26dfbeb647dfe36f44fee805bafefbfc00000000000000000000000007853a8f40ea2e8d471c25eee5d7d6cc35cc27280,5,./OpenZeppelin/0x0fbb62a15e4dddd2d7330821c386f81e994b1f04/LnLinearStakingStorage.sol,./OpenZeppelin/0x0fbb62a15e4dddd2d7330821c386f81e994b1f04/LnLinearStakingStorage.abi,383 days 14 hrs ago,False

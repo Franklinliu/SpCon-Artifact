@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x8feef860e9fa9326ff9d7e0058f637be8579cc29,IPMToken,v0.6.2+commit.bacdbe57,,2532,./OpenZeppelin/0x8feef860e9fa9326ff9d7e0058f637be8579cc29/IPMToken.sol,./OpenZeppelin/0x8feef860e9fa9326ff9d7e0058f637be8579cc29/IPMToken.abi,11 days 3 hrs ago,False

@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0xb5630e5dfd604b3b88965f2a5103bbf5e31a7340,GTIX,v0.4.24+commit.e67f0147,,247,smartbugsAccessControl/0xb5630e5dfd604b3b88965f2a5103bbf5e31a7340/all_txs.json,smartbugsAccessControl/0xb5630e5dfd604b3b88965f2a5103bbf5e31a7340/GTIX.sol,smartbugsAccessControl/0xb5630e5dfd604b3b88965f2a5103bbf5e31a7340/GTIX.abi,926 days 18 hrs ago,False

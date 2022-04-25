@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x470ebf5f030ed85fc1ed4c2d36b9dd02e77cf1b7,TempleERC20Token,v0.8.4+commit.c7e474f2,,10,./OpenZeppelin/0x470ebf5f030ed85fc1ed4c2d36b9dd02e77cf1b7/TempleERC20Token.sol,./OpenZeppelin/0x470ebf5f030ed85fc1ed4c2d36b9dd02e77cf1b7/TempleERC20Token.abi,17 days 8 hrs ago,False

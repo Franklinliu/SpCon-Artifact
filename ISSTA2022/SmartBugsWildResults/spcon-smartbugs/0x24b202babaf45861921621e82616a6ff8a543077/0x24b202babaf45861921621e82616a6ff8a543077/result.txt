@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0x24b202babaf45861921621e82616a6ff8a543077,BunnyGame,v0.4.24+commit.e67f0147,,296,smartbugsAccessControl/0x24b202babaf45861921621e82616a6ff8a543077/all_txs.json,smartbugsAccessControl/0x24b202babaf45861921621e82616a6ff8a543077/BunnyGame.sol,smartbugsAccessControl/0x24b202babaf45861921621e82616a6ff8a543077/BunnyGame.abi,1069 days 58 mins ago,False

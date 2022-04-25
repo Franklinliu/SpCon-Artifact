@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xd58132f2fbd65f02beee0626542e6ee059009ab4,XBORNID,v0.4.25+commit.59dbf8f1,,4084,./CVE/0xd58132f2fbd65f02beee0626542e6ee059009ab4/XBORNID.sol,./CVE/0xd58132f2fbd65f02beee0626542e6ee059009ab4/XBORNID.abi,682 days 23 hrs ago,False

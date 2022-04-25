@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x5088b94cf8a1143eb228b6d3f008350ca742ddc2,EtherCartel,v0.4.18+commit.9cf6e910,,532,./CVE/0x5088b94cf8a1143eb228b6d3f008350ca742ddc2/EtherCartel.sol,./CVE/0x5088b94cf8a1143eb228b6d3f008350ca742ddc2/EtherCartel.abi,1245 days 9 hrs ago,False

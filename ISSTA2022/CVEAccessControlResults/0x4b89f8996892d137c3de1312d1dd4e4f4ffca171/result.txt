@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x4b89f8996892d137c3de1312d1dd4e4f4ffca171,ProtocolFeeVault,v0.5.16+commit.9c3226ce,000000000000000000000000bbbbca6a901c926f240b89eacb641d8aec7aeafd,28,./CVE/0x4b89f8996892d137c3de1312d1dd4e4f4ffca171/ProtocolFeeVault.sol,./CVE/0x4b89f8996892d137c3de1312d1dd4e4f4ffca171/ProtocolFeeVault.abi,342 days 22 hrs ago,False

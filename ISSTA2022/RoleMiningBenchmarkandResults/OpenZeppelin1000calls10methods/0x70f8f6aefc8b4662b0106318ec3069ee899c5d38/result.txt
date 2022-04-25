@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x70f8f6aefc8b4662b0106318ec3069ee899c5d38,VOLTAGE,v0.8.6+commit.11564f7e,,1,./OpenZeppelin/0x70f8f6aefc8b4662b0106318ec3069ee899c5d38/VOLTAGE.sol,./OpenZeppelin/0x70f8f6aefc8b4662b0106318ec3069ee899c5d38/VOLTAGE.abi,90 days 13 hrs ago,False

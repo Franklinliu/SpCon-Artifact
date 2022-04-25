@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0xc8c6a31a4a806d3710a7b38b7b296d2fabccdba8,elixir,v0.4.15+commit.bbb8e64f,,25418,smartbugsAccessControl/0xc8c6a31a4a806d3710a7b38b7b296d2fabccdba8/all_txs.json,smartbugsAccessControl/0xc8c6a31a4a806d3710a7b38b7b296d2fabccdba8/elixir.sol,smartbugsAccessControl/0xc8c6a31a4a806d3710a7b38b7b296d2fabccdba8/elixir.abi,24 days 8 hrs ago,False

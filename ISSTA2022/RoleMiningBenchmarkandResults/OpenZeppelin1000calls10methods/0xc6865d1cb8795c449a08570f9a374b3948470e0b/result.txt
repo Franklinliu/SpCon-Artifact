@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xc6865d1cb8795c449a08570f9a374b3948470e0b,UniCandy,v0.8.4+commit.c7e474f2,,1,./OpenZeppelin/0xc6865d1cb8795c449a08570f9a374b3948470e0b/UniCandy.sol,./OpenZeppelin/0xc6865d1cb8795c449a08570f9a374b3948470e0b/UniCandy.abi,59 days 7 hrs ago,False

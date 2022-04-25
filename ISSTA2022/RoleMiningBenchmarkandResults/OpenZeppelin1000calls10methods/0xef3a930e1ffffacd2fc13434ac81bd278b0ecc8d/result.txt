@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xef3a930e1ffffacd2fc13434ac81bd278b0ecc8d,FISToken,v0.6.12+commit.27d51765,,16534,./OpenZeppelin/0xef3a930e1ffffacd2fc13434ac81bd278b0ecc8d/FISToken.sol,./OpenZeppelin/0xef3a930e1ffffacd2fc13434ac81bd278b0ecc8d/FISToken.abi,39 mins ago,False

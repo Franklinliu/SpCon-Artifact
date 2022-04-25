@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x0b695fc044f9d6f09065399d842be5983cec955a,Avalanche,v0.6.12+commit.27d51765,0000000000000000000000001ec4a8b60191230c4c6b4db79e321441b63bd143,232,./OpenZeppelin/0x0b695fc044f9d6f09065399d842be5983cec955a/Avalanche.sol,./OpenZeppelin/0x0b695fc044f9d6f09065399d842be5983cec955a/Avalanche.abi,186 days 20 hrs ago,False

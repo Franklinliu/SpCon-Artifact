@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x4da97a8b831c345dbe6d16ff7432df2b7b776d98,UbiquityAlgorithmicDollarManager,v0.8.3+commit.8d00100c,000000000000000000000000efc0e701a824943b469a694ac564aa1eff7ab7dd,65,./OpenZeppelin/0x4da97a8b831c345dbe6d16ff7432df2b7b776d98/UbiquityAlgorithmicDollarManager.sol,./OpenZeppelin/0x4da97a8b831c345dbe6d16ff7432df2b7b776d98/UbiquityAlgorithmicDollarManager.abi,47 days 13 hrs ago,False

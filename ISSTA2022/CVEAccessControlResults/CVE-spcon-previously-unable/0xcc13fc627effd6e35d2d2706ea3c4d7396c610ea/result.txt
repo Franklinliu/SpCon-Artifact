@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xcc13fc627effd6e35d2d2706ea3c4d7396c610ea,IDXM,v0.4.19+commit.c4cbbb05,,7025,./CVE/0xcc13fc627effd6e35d2d2706ea3c4d7396c610ea/IDXM.sol,./CVE/0xcc13fc627effd6e35d2d2706ea3c4d7396c610ea/IDXM.abi,39 days 16 hrs ago,False

@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x57f0b53926dd62f2e26bc40b30140abea474da94,VNFT,v0.6.6+commit.6c089d02,000000000000000000000000b6ca7399b4f9ca56fc27cbff44f4d2e4eef1fc81,61178,./OpenZeppelin/0x57f0b53926dd62f2e26bc40b30140abea474da94/VNFT.sol,./OpenZeppelin/0x57f0b53926dd62f2e26bc40b30140abea474da94/VNFT.abi,10 days 7 hrs ago,False

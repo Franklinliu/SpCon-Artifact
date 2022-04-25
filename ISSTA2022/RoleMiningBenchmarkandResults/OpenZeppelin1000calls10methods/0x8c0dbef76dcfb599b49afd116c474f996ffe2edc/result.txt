@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x8c0dbef76dcfb599b49afd116c474f996ffe2edc,EvoSnailsV2,v0.8.4+commit.c7e474f2,,1,./OpenZeppelin/0x8c0dbef76dcfb599b49afd116c474f996ffe2edc/EvoSnailsV2.sol,./OpenZeppelin/0x8c0dbef76dcfb599b49afd116c474f996ffe2edc/EvoSnailsV2.abi,5 days 9 hrs ago,False

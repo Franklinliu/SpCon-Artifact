@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xaa9d866666c2a3748d6b23ff69e63e52f08d9ab4,FMTAToken,v0.7.3+commit.9bfce1f6,,2747,./OpenZeppelin/0xaa9d866666c2a3748d6b23ff69e63e52f08d9ab4/FMTAToken.sol,./OpenZeppelin/0xaa9d866666c2a3748d6b23ff69e63e52f08d9ab4/FMTAToken.abi,4 days 19 hrs ago,False

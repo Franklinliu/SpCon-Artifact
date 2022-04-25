@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x1a94fdc2678955dc7035739b3c569f2c54b57cef,HodlDex,v0.6.6+commit.6c089d02,,1,./OpenZeppelin/0x1a94fdc2678955dc7035739b3c569f2c54b57cef/HodlDex.sol,./OpenZeppelin/0x1a94fdc2678955dc7035739b3c569f2c54b57cef/HodlDex.abi,408 days 13 hrs ago,False

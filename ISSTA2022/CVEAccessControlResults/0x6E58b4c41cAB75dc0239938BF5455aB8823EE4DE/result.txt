@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x6E58b4c41cAB75dc0239938BF5455aB8823EE4DE,B2X,v0.4.17+commit.bdeb9e52,,368,./CVE/0x6E58b4c41cAB75dc0239938BF5455aB8823EE4DE/B2X.sol,./CVE/0x6E58b4c41cAB75dc0239938BF5455aB8823EE4DE/B2X.abi,57 days 14 hrs ago,False

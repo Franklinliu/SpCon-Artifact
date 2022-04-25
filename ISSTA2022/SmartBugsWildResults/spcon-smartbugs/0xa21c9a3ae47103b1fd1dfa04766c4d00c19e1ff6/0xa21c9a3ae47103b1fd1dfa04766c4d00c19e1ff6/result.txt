@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0xa21c9a3ae47103b1fd1dfa04766c4d00c19e1ff6,CryptoOscarsToken,v0.4.20+commit.3155dd80,,202,smartbugsAccessControl/0xa21c9a3ae47103b1fd1dfa04766c4d00c19e1ff6/all_txs.json,smartbugsAccessControl/0xa21c9a3ae47103b1fd1dfa04766c4d00c19e1ff6/CryptoOscarsToken.sol,smartbugsAccessControl/0xa21c9a3ae47103b1fd1dfa04766c4d00c19e1ff6/CryptoOscarsToken.abi,1418 days 9 hrs ago,False

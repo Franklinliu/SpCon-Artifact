@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0x17e5f19d430788323863c6798ecd762a40de29f5,VIT,v0.4.24+commit.e67f0147,,6470,smartbugsAccessControl/0x17e5f19d430788323863c6798ecd762a40de29f5/all_txs.json,smartbugsAccessControl/0x17e5f19d430788323863c6798ecd762a40de29f5/VIT.sol,smartbugsAccessControl/0x17e5f19d430788323863c6798ecd762a40de29f5/VIT.abi,630 days 19 hrs ago,False

@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x80f834e8bc4f7df94bfb73762b65889dc27140d5,Registry,v0.7.6+commit.7338295f,,1,./OpenZeppelin/0x80f834e8bc4f7df94bfb73762b65889dc27140d5/Registry.sol,./OpenZeppelin/0x80f834e8bc4f7df94bfb73762b65889dc27140d5/Registry.abi,305 days 17 hrs ago,False

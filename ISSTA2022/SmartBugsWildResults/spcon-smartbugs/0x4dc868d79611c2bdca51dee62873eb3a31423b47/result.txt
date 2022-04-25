@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0x4dc868d79611c2bdca51dee62873eb3a31423b47,DecentralandBuyer,v0.4.15+commit.bbb8e64f,,875,smartbugsAccessControl/0x4dc868d79611c2bdca51dee62873eb3a31423b47/all_txs.json,smartbugsAccessControl/0x4dc868d79611c2bdca51dee62873eb3a31423b47/DecentralandBuyer.sol,smartbugsAccessControl/0x4dc868d79611c2bdca51dee62873eb3a31423b47/DecentralandBuyer.abi,1589 days 9 hrs ago,False

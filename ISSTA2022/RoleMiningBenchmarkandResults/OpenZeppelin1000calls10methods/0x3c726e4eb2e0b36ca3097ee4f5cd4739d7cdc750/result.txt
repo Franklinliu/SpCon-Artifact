@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x3c726e4eb2e0b36ca3097ee4f5cd4739d7cdc750,SynapseERC20,v0.6.12+commit.27d51765,,1,./OpenZeppelin/0x3c726e4eb2e0b36ca3097ee4f5cd4739d7cdc750/SynapseERC20.sol,./OpenZeppelin/0x3c726e4eb2e0b36ca3097ee4f5cd4739d7cdc750/SynapseERC20.abi,134 days 12 hrs ago,False

@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x9234566e32e505cdb3cc631111d6032bc13f1c8a,Logic,v0.7.3+commit.9bfce1f6,,1,./OpenZeppelin/0x9234566e32e505cdb3cc631111d6032bc13f1c8a/Logic.sol,./OpenZeppelin/0x9234566e32e505cdb3cc631111d6032bc13f1c8a/Logic.abi,175 days 23 hrs ago,False

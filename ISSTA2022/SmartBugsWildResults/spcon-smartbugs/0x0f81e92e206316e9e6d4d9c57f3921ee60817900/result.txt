@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0x0f81e92e206316e9e6d4d9c57f3921ee60817900,WalletController,v0.4.25+commit.59dbf8f1,,92,smartbugsAccessControl/0x0f81e92e206316e9e6d4d9c57f3921ee60817900/all_txs.json,smartbugsAccessControl/0x0f81e92e206316e9e6d4d9c57f3921ee60817900/WalletController.sol,smartbugsAccessControl/0x0f81e92e206316e9e6d4d9c57f3921ee60817900/WalletController.abi,1053 days 2 hrs ago,False

@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xE30a76ec9168639F09061e602924ae601D341066,NewIntelTechMedia,v0.4.24+commit.e67f0147,,67954,./CVE/0xE30a76ec9168639F09061e602924ae601D341066/NewIntelTechMedia.sol,./CVE/0xE30a76ec9168639F09061e602924ae601D341066/NewIntelTechMedia.abi,423 days 57 mins ago,False

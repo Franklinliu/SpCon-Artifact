@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x0b509f4b044f713a91bb50535914f7ad160532fe,DigitalaxGarmentNFT,v0.6.12+commit.27d51765,000000000000000000000000165eec91620b7bb96d02890d8a3f8cb79a29195c000000000000000000000000e6822e8b4d91b85f9ca00cca79bf92bab14bc221,369,./OpenZeppelin/0x0b509f4b044f713a91bb50535914f7ad160532fe/DigitalaxGarmentNFT.sol,./OpenZeppelin/0x0b509f4b044f713a91bb50535914f7ad160532fe/DigitalaxGarmentNFT.abi,22 hrs 54 mins ago,False

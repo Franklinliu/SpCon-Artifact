@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xcb533c592c459c73d0e8ee0c726bb31747ba6195,KUN,v0.6.2+commit.bacdbe57,,1,./OpenZeppelin/0xcb533c592c459c73d0e8ee0c726bb31747ba6195/KUN.sol,./OpenZeppelin/0xcb533c592c459c73d0e8ee0c726bb31747ba6195/KUN.abi,405 days 13 hrs ago,False

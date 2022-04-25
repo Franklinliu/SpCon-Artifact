@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xf7ca0d26a8d8e2ae33fe2fc0e25e80961c1aaa2b,AddressRegistry,v0.6.12+commit.27d51765,,15,./OpenZeppelin/0xf7ca0d26a8d8e2ae33fe2fc0e25e80961c1aaa2b/AddressRegistry.sol,./OpenZeppelin/0xf7ca0d26a8d8e2ae33fe2fc0e25e80961c1aaa2b/AddressRegistry.abi,329 days 3 hrs ago,False

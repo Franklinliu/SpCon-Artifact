@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x9924A7E3A2756Ab8B9A828485f052b6693AaA33E,BAFCToken,v0.4.24+commit.e67f0147,,1,./CVE/0x9924A7E3A2756Ab8B9A828485f052b6693AaA33E/BAFCToken.sol,./CVE/0x9924A7E3A2756Ab8B9A828485f052b6693AaA33E/BAFCToken.abi,1240 days 13 hrs ago,False

@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0x6f28b146804dba2d6f944c03528a8fdbc673df2c,Oraclize,v0.4.11+commit.68ef5810,,74,smartbugsAccessControl/0x6f28b146804dba2d6f944c03528a8fdbc673df2c/all_txs.json,smartbugsAccessControl/0x6f28b146804dba2d6f944c03528a8fdbc673df2c/Oraclize.sol,smartbugsAccessControl/0x6f28b146804dba2d6f944c03528a8fdbc673df2c/Oraclize.abi,1562 days 10 hrs ago,False

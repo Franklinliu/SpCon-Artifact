@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x2Ef27BF41236bD859a95209e17a43Fbd26851f92,MorphToken,v0.4.18+commit.9cf6e910,,7749,./CVE/0x2Ef27BF41236bD859a95209e17a43Fbd26851f92/MorphToken.sol,./CVE/0x2Ef27BF41236bD859a95209e17a43Fbd26851f92/MorphToken.abi,1 day 13 hrs ago,False

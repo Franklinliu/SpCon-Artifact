@@ -1,0 +1,1 @@
+{"data": {"ethereum": {"smartContractCalls": [{"count": 1, "smartContractMethod": {"name": "Contract Creation", "signature": null, "signatureHash": "60606040"}, "success": true, "external": true, "caller": {"address": "0xe59ddbb7624784b831ed41fdc27ab07558bc3867"}}]}}}

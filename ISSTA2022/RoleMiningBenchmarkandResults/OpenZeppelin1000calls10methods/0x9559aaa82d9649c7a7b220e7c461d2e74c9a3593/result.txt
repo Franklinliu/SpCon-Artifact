@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x9559aaa82d9649c7a7b220e7c461d2e74c9a3593,RETHToken,v0.6.12+commit.27d51765,0000000000000000000000006c2f7b6110a37b3b0fbdd811876be368df02e8b0,701,./OpenZeppelin/0x9559aaa82d9649c7a7b220e7c461d2e74c9a3593/RETHToken.sol,./OpenZeppelin/0x9559aaa82d9649c7a7b220e7c461d2e74c9a3593/RETHToken.abi,11 hrs 10 mins ago,False

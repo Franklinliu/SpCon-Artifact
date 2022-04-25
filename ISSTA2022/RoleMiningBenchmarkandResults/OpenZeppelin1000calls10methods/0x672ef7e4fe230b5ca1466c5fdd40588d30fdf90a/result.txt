@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x672ef7e4fe230b5ca1466c5fdd40588d30fdf90a,WowsToken,v0.7.4+commit.3f05b770,000000000000000000000000945466656995c9309ff66e05b4c268558bec964e,2032,./OpenZeppelin/0x672ef7e4fe230b5ca1466c5fdd40588d30fdf90a/WowsToken.sol,./OpenZeppelin/0x672ef7e4fe230b5ca1466c5fdd40588d30fdf90a/WowsToken.abi,2 hrs 3 mins ago,False

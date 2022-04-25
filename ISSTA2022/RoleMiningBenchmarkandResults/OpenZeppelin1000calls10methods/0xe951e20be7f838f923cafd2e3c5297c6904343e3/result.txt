@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xe951e20be7f838f923cafd2e3c5297c6904343e3,SoneToken,v0.8.0+commit.c7dfd78e,,1,./OpenZeppelin/0xe951e20be7f838f923cafd2e3c5297c6904343e3/SoneToken.sol,./OpenZeppelin/0xe951e20be7f838f923cafd2e3c5297c6904343e3/SoneToken.abi,208 days 18 hrs ago,False

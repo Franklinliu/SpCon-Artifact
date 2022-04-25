@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0x39730ebfeb4e0c9c2e2645c528c00ee7b98ecfb2,BLACKCOIN,v0.4.24+commit.e67f0147,,5407,smartbugsAccessControl/0x39730ebfeb4e0c9c2e2645c528c00ee7b98ecfb2/all_txs.json,smartbugsAccessControl/0x39730ebfeb4e0c9c2e2645c528c00ee7b98ecfb2/BLACKCOIN.sol,smartbugsAccessControl/0x39730ebfeb4e0c9c2e2645c528c00ee7b98ecfb2/BLACKCOIN.abi,365 days 19 hrs ago,False

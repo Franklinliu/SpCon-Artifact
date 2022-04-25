@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x9ef0EB9D97E4E7c8612D4E5AAF9201e35bD3670b,EAI_TokenERC,v0.4.24+commit.e67f0147,,8969,./CVE/0x9ef0EB9D97E4E7c8612D4E5AAF9201e35bD3670b/EAI_TokenERC.sol,./CVE/0x9ef0EB9D97E4E7c8612D4E5AAF9201e35bD3670b/EAI_TokenERC.abi,39 days 4 hrs ago,False

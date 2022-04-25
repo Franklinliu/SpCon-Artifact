@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x9269c72d844af5b3946ce864b5d5266dbd2d62c7,FROST,v0.6.12+commit.27d51765,000000000000000000000000f7ca0d26a8d8e2ae33fe2fc0e25e80961c1aaa2b,99,./OpenZeppelin/0x9269c72d844af5b3946ce864b5d5266dbd2d62c7/FROST.sol,./OpenZeppelin/0x9269c72d844af5b3946ce864b5d5266dbd2d62c7/FROST.abi,46 days 11 hrs ago,False

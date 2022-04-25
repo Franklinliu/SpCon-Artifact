@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xb9f45edeffe5abd7a1a1dffc65068a065b98524d,SwapToken,v0.6.2+commit.bacdbe57,,1,./OpenZeppelin/0xb9f45edeffe5abd7a1a1dffc65068a065b98524d/SwapToken.sol,./OpenZeppelin/0xb9f45edeffe5abd7a1a1dffc65068a065b98524d/SwapToken.abi,452 days 12 hrs ago,False

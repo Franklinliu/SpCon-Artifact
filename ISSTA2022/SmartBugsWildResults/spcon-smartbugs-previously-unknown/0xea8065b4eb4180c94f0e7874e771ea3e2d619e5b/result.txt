@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0xea8065b4eb4180c94f0e7874e771ea3e2d619e5b,Kin,v0.4.16+commit.d7661dd9,,83,smartbugsAccessControl/0xea8065b4eb4180c94f0e7874e771ea3e2d619e5b/all_txs.json,smartbugsAccessControl/0xea8065b4eb4180c94f0e7874e771ea3e2d619e5b/Kin.sol,smartbugsAccessControl/0xea8065b4eb4180c94f0e7874e771ea3e2d619e5b/Kin.abi,1586 days 15 hrs ago,False

@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x122bf95a3f9b2e593a2ed8dcdc22f5aded3ab84a,SimpleToken,v0.6.12+commit.27d51765,,4,./OpenZeppelin/0x122bf95a3f9b2e593a2ed8dcdc22f5aded3ab84a/SimpleToken.sol,./OpenZeppelin/0x122bf95a3f9b2e593a2ed8dcdc22f5aded3ab84a/SimpleToken.abi,386 days 18 hrs ago,False

@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x16f0d1860538b15de8ccbf2a356067e4c1c35382,DutchAuction,v0.6.12+commit.27d51765,,1,./OpenZeppelin/0x16f0d1860538b15de8ccbf2a356067e4c1c35382/DutchAuction.sol,./OpenZeppelin/0x16f0d1860538b15de8ccbf2a356067e4c1c35382/DutchAuction.abi,205 days 3 hrs ago,False

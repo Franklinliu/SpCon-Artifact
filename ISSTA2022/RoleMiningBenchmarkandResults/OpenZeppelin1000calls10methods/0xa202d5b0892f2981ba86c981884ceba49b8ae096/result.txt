@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xa202d5b0892f2981ba86c981884ceba49b8ae096,DigitalaxGenesisStaking,v0.6.12+commit.27d51765,,4796,./OpenZeppelin/0xa202d5b0892f2981ba86c981884ceba49b8ae096/DigitalaxGenesisStaking.sol,./OpenZeppelin/0xa202d5b0892f2981ba86c981884ceba49b8ae096/DigitalaxGenesisStaking.abi,6 hrs 7 mins ago,False

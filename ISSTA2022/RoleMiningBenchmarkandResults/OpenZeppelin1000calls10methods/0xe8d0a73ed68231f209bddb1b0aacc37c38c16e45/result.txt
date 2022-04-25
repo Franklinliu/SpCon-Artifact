@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xe8d0a73ed68231f209bddb1b0aacc37c38c16e45,BadgerRewardsManager,v0.6.12+commit.27d51765,,1,./OpenZeppelin/0xe8d0a73ed68231f209bddb1b0aacc37c38c16e45/BadgerRewardsManager.sol,./OpenZeppelin/0xe8d0a73ed68231f209bddb1b0aacc37c38c16e45/BadgerRewardsManager.abi,312 days 6 mins ago,False

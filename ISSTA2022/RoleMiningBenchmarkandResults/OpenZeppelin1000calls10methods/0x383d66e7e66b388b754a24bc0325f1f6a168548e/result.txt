@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x383d66e7e66b388b754a24bc0325f1f6a168548e,BcaexOwnershipV2,v0.6.2+commit.bacdbe57,,1060,./OpenZeppelin/0x383d66e7e66b388b754a24bc0325f1f6a168548e/BcaexOwnershipV2.sol,./OpenZeppelin/0x383d66e7e66b388b754a24bc0325f1f6a168548e/BcaexOwnershipV2.abi,156 days 6 hrs ago,False

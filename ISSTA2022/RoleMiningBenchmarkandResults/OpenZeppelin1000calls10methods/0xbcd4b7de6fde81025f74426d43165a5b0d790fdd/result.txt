@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xbcd4b7de6fde81025f74426d43165a5b0d790fdd,SpiderToken,v0.6.2+commit.bacdbe57,,10632,./OpenZeppelin/0xbcd4b7de6fde81025f74426d43165a5b0d790fdd/SpiderToken.sol,./OpenZeppelin/0xbcd4b7de6fde81025f74426d43165a5b0d790fdd/SpiderToken.abi,49 mins ago,False

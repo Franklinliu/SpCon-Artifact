@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xef5afc5fb5ea26ac16e00c616d49be1fed849ed0,PresaleTicket,v0.8.6+commit.11564f7e,,1968,./OpenZeppelin/0xef5afc5fb5ea26ac16e00c616d49be1fed849ed0/PresaleTicket.sol,./OpenZeppelin/0xef5afc5fb5ea26ac16e00c616d49be1fed849ed0/PresaleTicket.abi,33 days 5 hrs ago,False

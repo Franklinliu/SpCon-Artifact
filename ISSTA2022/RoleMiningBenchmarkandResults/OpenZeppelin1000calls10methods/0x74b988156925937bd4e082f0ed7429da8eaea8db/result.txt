@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x74b988156925937bd4e082f0ed7429da8eaea8db,MEME,v0.8.0+commit.c7dfd78e,000000000000000000000000d5525d397898e5502075ea5e830d8914f6f0affe0000000000000000000000007af3ba4a5854438a6bf27e4d005cd07d5497c33e,1554,./OpenZeppelin/0x74b988156925937bd4e082f0ed7429da8eaea8db/MEME.sol,./OpenZeppelin/0x74b988156925937bd4e082f0ed7429da8eaea8db/MEME.abi,1 hr 12 mins ago,False

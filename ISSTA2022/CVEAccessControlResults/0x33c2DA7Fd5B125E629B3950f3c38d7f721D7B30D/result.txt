@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0x33c2DA7Fd5B125E629B3950f3c38d7f721D7B30D,Seal,v0.5.17+commit.d19bba13,,2775,./CVE/0x33c2DA7Fd5B125E629B3950f3c38d7f721D7B30D/Seal.sol,./CVE/0x33c2DA7Fd5B125E629B3950f3c38d7f721D7B30D/Seal.abi,7 days 1 hr ago,False

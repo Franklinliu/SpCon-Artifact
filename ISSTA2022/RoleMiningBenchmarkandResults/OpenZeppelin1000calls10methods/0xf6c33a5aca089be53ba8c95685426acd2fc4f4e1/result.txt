@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xf6c33a5aca089be53ba8c95685426acd2fc4f4e1,EcoceliumDataManager,v0.6.12+commit.27d51765,,1,./OpenZeppelin/0xf6c33a5aca089be53ba8c95685426acd2fc4f4e1/EcoceliumDataManager.sol,./OpenZeppelin/0xf6c33a5aca089be53ba8c95685426acd2fc4f4e1/EcoceliumDataManager.abi,348 days 1 min ago,False

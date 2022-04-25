@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0x724e3a236d3e9c8ad2c3d1aff181118e6e9b3026,BITCOINMILLIONARE,v0.4.24+commit.e67f0147,,82,smartbugsAccessControl/0x724e3a236d3e9c8ad2c3d1aff181118e6e9b3026/all_txs.json,smartbugsAccessControl/0x724e3a236d3e9c8ad2c3d1aff181118e6e9b3026/BITCOINMILLIONARE.sol,smartbugsAccessControl/0x724e3a236d3e9c8ad2c3d1aff181118e6e9b3026/BITCOINMILLIONARE.abi,1113 days 12 hrs ago,False

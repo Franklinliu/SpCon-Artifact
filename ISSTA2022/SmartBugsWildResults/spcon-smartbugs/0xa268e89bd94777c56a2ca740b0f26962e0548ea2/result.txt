@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0xa268e89bd94777c56a2ca740b0f26962e0548ea2,SELFDROPICO,v0.4.24+commit.e67f0147,,707,smartbugsAccessControl/0xa268e89bd94777c56a2ca740b0f26962e0548ea2/all_txs.json,smartbugsAccessControl/0xa268e89bd94777c56a2ca740b0f26962e0548ea2/SELFDROPICO.sol,smartbugsAccessControl/0xa268e89bd94777c56a2ca740b0f26962e0548ea2/SELFDROPICO.abi,1012 days 7 hrs ago,False

@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xb487a91382cd66076fc4c1af4d7d8ce7f929a9ba,GiraffeTower,v0.8.3+commit.8d00100c,,428,./OpenZeppelin/0xb487a91382cd66076fc4c1af4d7d8ce7f929a9ba/GiraffeTower.sol,./OpenZeppelin/0xb487a91382cd66076fc4c1af4d7d8ce7f929a9ba/GiraffeTower.abi,2 hrs 31 mins ago,False

@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0x331769de477c2122638fe1116808d3a9159ab13a,EthexJackpot,v0.5.1+commit.c8a2cb62,,243,smartbugsAccessControl/0x331769de477c2122638fe1116808d3a9159ab13a/all_txs.json,smartbugsAccessControl/0x331769de477c2122638fe1116808d3a9159ab13a/EthexJackpot.sol,smartbugsAccessControl/0x331769de477c2122638fe1116808d3a9159ab13a/EthexJackpot.abi,815 days 18 hrs ago,False

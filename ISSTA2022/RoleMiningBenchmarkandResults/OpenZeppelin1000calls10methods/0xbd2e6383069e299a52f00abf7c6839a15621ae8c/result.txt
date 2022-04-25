@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, sourcecode_file, abi_file, last txn date, is_killed
+0xbd2e6383069e299a52f00abf7c6839a15621ae8c,Staking,v0.6.8+commit.0bbfe453,,1,./OpenZeppelin/0xbd2e6383069e299a52f00abf7c6839a15621ae8c/Staking.sol,./OpenZeppelin/0xbd2e6383069e299a52f00abf7c6839a15621ae8c/Staking.abi,302 days 7 hrs ago,False
