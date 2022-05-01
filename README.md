@@ -1,4 +1,113 @@
-# SpCon
+# SpCon: Finding smart contract permission bugs with role mining.
 
-An artifact evaluation package for the ISSTA'22 submission: "Finding
-Permission Bugs in Smart Contracts with Role Mining".
+This project is used for the artifact evaluation for the ISSTA'22 submission.
+We aim to apply for the availability, functionality and reusability badge.
+
+This readme first shows how to quickly use SpCon to detect smart contract permission bugs. 
+Secondly, we demostrate the technical detail namely SpCon API document for potential reusability or integration in the future.
+## 1. Quick Start
+[Recommened] Install && Run SpCon docker image.
+
+```bash 
+# install docker image 
+docker pull liuyedocker/spcon-artifact:latest 
+# run spcon to detect the permisson bug of MorphToken(0x2Ef27BF41236bD859a95209e17a43Fbd26851f92) which is a CVE smart contract. 
+docker run --rm liuyedocker/spcon-artifact:latest spcon --eth_contract 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
+``` 
+
+After up to two minutes (default mode), we will see the results
+```
+Installing '0.4.18'...
+Version '0.4.18' installed.
+2022-05-01
+{'limit': 10000, 'network': 'ethereum', 'address': '0x2Ef27BF41236bD859a95209e17a43Fbd26851f92', 'date': '2022-05-01'}
+0x2Ef27BF41236bD859a95209e17a43Fbd26851f92 MorphToken
+./0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
+loaded abi.
+https://www.4byte.directory/api/v1/signatures/?hex_signature=0x30783039
+14  functions ['decimals', 'name', 'balanceOf', 'totalSupply', 'mintTokens', 'transferFrom', 'owned', 'transfer', 'burn', 'symbol', 'blacklistAccount', 'allowance', 'approve', 'transferOwnership']
+2831  users
+Timecost for loading history: 0.9801702499389648
+No.user: 2831; No.func: 14
++-----------------------------------------------------+
+|  Basic roles statistics (id, len(users), functions) |
++-----------+---------+-------------------------------+
+|   RoleId  |  Users  |           Functions           |
++-----------+---------+-------------------------------+
+|     0     |    2    |          ['decimals']         |
+|     1     |    26   |         ['balanceOf']         |
+|     2     |    23   |        ['transferFrom']       |
+|     3     |    24   |           ['owned']           |
+|     4     |   1830  |          ['transfer']         |
+|     5     |    5    |         ['allowance']         |
+|     6     |   1258  |          ['approve']          |
+|     7     |    9    |         ['mintTokens']        |
+|     8     |    3    |      ['blacklistAccount']     |
+|     9     |    5    |     ['transferOwnership']     |
+|     10    |    1    |       ['name', 'symbol']      |
+|     11    |    1    |            ['burn']           |
+|     12    |    1    |        ['totalSupply']        |
++-----------+---------+-------------------------------+
+Gen. 0 (0.00%): Max/Min/Avg Fitness(Raw)             [1.94(2.05)/1.45(1.39)/1.62(1.62)]
+Gen. 100 (100.00%): INFO:spcon.symExec:Totally 0 integrity policies
+INFO:spcon.symExec:Totally 2 integrity policies
+Max/Min/Avg Fitness(Raw)             [2.04(2.18)/1.49(1.40)/1.70(1.70)]
+Total time elapsed: 19.663 seconds.
+best role number: 6
+Role#0:{'decimals', 'transferOwnership'}
+Role#1:{'name', 'balanceOf', 'symbol'}
+Role#2:{'transfer', 'transferFrom'}
+Role#3:{'burn', 'owned', 'totalSupply', 'blacklistAccount'}
+Role#4:{'allowance'}
+Role#5:{'approve', 'mintTokens'}
+Time cost: 21.463589668273926
+Security Policy:
+Policy#0: approve mintTokens -> allowed via functions approve
+Policy#1: burn owned totalSupply blacklistAccount -> owner isblacklistedAccount via functions owned blacklistAccount
+2022-05-01 16:59:50,416: [1] m.e.manticore:INFO: Found a concrete globalsha3 b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xce\xff\xeeu;B\xbd\xa1\xbc\xfah/)h^/\xd6r\x90\x16\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01' -> 31685667446001209947968549300437926627890736099156269050595801945717492225074
+2022-05-01 16:59:51,879: [1] m.e.manticore:INFO: Found a concrete globalsha3 b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04' -> 62514009886607029107290561805838585334079798074568712924583230797734656856475
+2022-05-01 16:59:54,797: [1] m.e.manticore:INFO: Found a concrete globalsha3 b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05' -> 1546678032441257452667456735582814959992782782816731922691272282333561699760
+INFO:spcon.symExec:Test Sequence: ['owned']
+INFO:spcon.symExec:SymExecEVM().symExec: owned()
+INFO:spcon.symExec:attacker: 0xc0ffee753b42bda1bcfa682f29685e2fd6729016
+INFO:spcon.symExec:transaction status: success
+CRITICAL:spcon.symExec:Permission Bug: find an attack sequence ['owned']
+https://api.etherscan.io/api?module=proxy&action=eth_getStorageAt&address=0x2Ef27BF41236bD859a95209e17a43Fbd26851f92&position=0x0&tag=latest&apikey=URF6R5PGNZ7CT6TTBU7M8NH5V8WRISHIZZ
+https://api.etherscan.io/api?module=proxy&action=eth_getStorageAt&address=0x2Ef27BF41236bD859a95209e17a43Fbd26851f92&position=0x0&tag=latest&apikey=URF6R5PGNZ7CT6TTBU7M8NH5V8WRISHIZZ
+2022-05-01 17:00:02,940: [1] m.e.manticore:INFO: Found a concrete globalsha3 b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xce\xff\xeeu;B\xbd\xa1\xbc\xfah/)h^/\xd6r\x90\x16\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01' -> 31685667446001209947968549300437926627890736099156269050595801945717492225074
+2022-05-01 17:00:04,392: [1] m.e.manticore:INFO: Found a concrete globalsha3 b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04' -> 62514009886607029107290561805838585334079798074568712924583230797734656856475
+2022-05-01 17:00:07,381: [1] m.e.manticore:INFO: Found a concrete globalsha3 b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05' -> 1546678032441257452667456735582814959992782782816731922691272282333561699760
+INFO:spcon.symExec:Test Sequence: ['blacklistAccount']
+INFO:spcon.symExec:SymExecEVM().symExec: blacklistAccount(address,bool)
+INFO:spcon.symExec:attacker: 0xc0ffee753b42bda1bcfa682f29685e2fd6729016
+INFO:spcon.symExec:transaction status: false
+INFO:spcon.symExec:test sequence is not feasible
+2022-05-01 17:00:16,755: [1] m.e.manticore:INFO: Found a concrete globalsha3 b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xce\xff\xeeu;B\xbd\xa1\xbc\xfah/)h^/\xd6r\x90\x16\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01' -> 31685667446001209947968549300437926627890736099156269050595801945717492225074
+2022-05-01 17:00:18,306: [1] m.e.manticore:INFO: Found a concrete globalsha3 b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04' -> 62514009886607029107290561805838585334079798074568712924583230797734656856475
+2022-05-01 17:00:21,647: [1] m.e.manticore:INFO: Found a concrete globalsha3 b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05' -> 1546678032441257452667456735582814959992782782816731922691272282333561699760
+INFO:spcon.symExec:Test Sequence: ['owned', 'blacklistAccount']
+INFO:spcon.symExec:SymExecEVM().symExec: owned()
+INFO:spcon.symExec:attacker: 0xc0ffee753b42bda1bcfa682f29685e2fd6729016
+INFO:spcon.symExec:transaction status: success
+INFO:spcon.symExec:SymExecEVM().symExec: blacklistAccount(address,bool)
+INFO:spcon.symExec:attacker: 0xc0ffee753b42bda1bcfa682f29685e2fd6729016
+INFO:spcon.symExec:transaction status: success
+CRITICAL:spcon.symExec:Permission Bug: find an attack sequence ['owned', 'blacklistAccount']
+INFO:spcon.symExec:Testing time: 43.04372596740723 seconds
+total timecost: 70.84923839569092 seconds
+```
+
+The result shows permission attack sequences ``[]``, ``[]``  that can exploit the permission bug of the smart contract.
+
+
+## 2. (partial) Experiement reproduction
+
+1. Role Mining
+
+2. Permission Bug Detection
+
+### 3. Advanced evaluation
+1. Repository Structure 
+2. Local Install
+3. Code API Document
+
