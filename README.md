@@ -12,7 +12,7 @@ Secondly, we demostrate the technical detail namely SpCon API document for poten
 # install docker image 
 docker pull liuyedocker/spcon-artifact:latest 
 # run spcon to detect the permisson bug of MorphToken(0x2Ef27BF41236bD859a95209e17a43Fbd26851f92) which is a CVE smart contract. 
-docker run --rm liuyedocker/spcon-artifact:latest spcon --eth_contract 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
+docker run --rm liuyedocker/spcon-artifact:latest spcon --eth_address 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
 ``` 
 
 After up to two minutes (default mode), we will see the results
