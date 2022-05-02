@@ -1,18 +1,19 @@
-# SpCon: Finding smart contract permission bugs with role mining.
+# SpCon: Finding Smart Contract Permission Bugs with Role Mining
 
-This project is used for the artifact evaluation for the ISSTA'22 submission.
-We aim to apply for the availability, functionality and reusability badge.
+This is the artifact associated with our ISSTA'22 paper.
+We aim to apply for the availability, functionality and reusability badges.
 
 This readme first shows how to quickly use SpCon to detect smart contract permission bugs. 
-Secondly, we demostrate the technical detail namely SpCon API document for potential reusability or integration in the future.
+Secondly, we demostrate the technical detail namely SpCon API documentation for potential reusability or integration in the future.
+
 ## 1. Quick Start
-[Recommened] Install && Run SpCon docker image.
+[Recommened] Install && Run the SpCon docker image.
 
 ```bash 
 # install docker image 
 docker pull liuyedocker/spcon-artifact:latest 
 # run spcon to detect the permisson bug of MorphToken(0x2Ef27BF41236bD859a95209e17a43Fbd26851f92) which is a CVE smart contract. 
-docker run --rm liuyedocker/spcon-artifact:latest spcon --eth_address 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
+docker run --rm liuyedocker/spcon-artifact:latest spcon --eth_contract 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
 ``` 
 
 After up to two minutes (default mode), we will see the results
