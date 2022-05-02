@@ -168,7 +168,7 @@ spcon-artifact
 SpCon detected the bugs of nine contracts out of 17 access control CVE smart contracts.
 For time saving, you can evaluate it using the following bash script.
 ```bash 
- while read -r line; do docker run --rm spcon-artifact spcon --eth_address $line; done < CVE.list
+ while read -r line; do docker run --rm liuyedocker/spcon-artifact spcon --eth_address $line; done < CVE.list
  # this would take half an hour to execute all cases. 
 ```
   
