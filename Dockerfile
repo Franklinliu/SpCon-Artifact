@@ -12,7 +12,7 @@ COPY Pyevolve Pyevolve
 RUN cd Pyevolve && python3 setup.py install && cd .. 
 
 RUN pip3 install numpy pandas scipy 
-COPY  spcon spcon 
+COPY spcon spcon 
 COPY README.md README.md 
 COPY setup.py setup.py 
 RUN python3 setup.py install 
