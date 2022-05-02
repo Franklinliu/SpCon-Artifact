@@ -131,14 +131,15 @@ spcon-artifact
 │   README.md
 │   localBuild.sh   
 │   Dockerfile
+|   CVE.list  this file contains the address of access control CVE smart contracts
 |
 └───ISSTA2022
 │   │   
-│   └─── CVEAccessControlResults  
+│   └─── CVEAccessControlResults  this folder contains the access control CVE smart contracts and the CVE smart contracts that only spcon can detect. 
 │   │
-│   └─── RoleMiningBenchmarkandResults
+│   └─── RoleMiningBenchmarkandResults   this folder contains benchmark and raw experiment result.
 |   │
-|   └─── SmartBugsWildResults
+|   └─── SmartBugsWildResults  this foler contains the detection result on benchmark SmartBugs and its comparison with existing state-of-the-arts.
 |
 |   setup.py
 └───spcon
@@ -160,10 +161,16 @@ spcon-artifact
   # Moreover, if we would like to export the output result to your local machine. Please using docker volumn mount instruction as the following.
   docker run --rm -v $HOME/localtmp:/dockertmp liuyedocker/spcon-artifact benchmarkminer --limit 2 --output /dockertmp/result.xlsx
   # Once done, you can check the exported result file at the path $HOME/localtmp/result.xlsx
-
 ```
 
 - Permission Bug Detection
+  
+SpCon detected the bugs of nine contracts out of 17 access control CVE smart contracts.
+For time saving, you can evaluate it using the following bash script.
+```bash 
+ while read -r line; do docker run --rm spcon-artifact spcon --eth_address $line; done < CVE.list
+ # this would take half an hour to execute all cases. 
+```
   
 ## 4. Code API Document
 
