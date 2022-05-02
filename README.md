@@ -4,7 +4,12 @@ This is the artifact associated with our ISSTA'22 paper.
 We aim to apply for the availability, functionality and reusability badges.
 
 This readme first shows how to quickly use SpCon to detect smart contract permission bugs. 
-Secondly, we demostrate the technical detail namely SpCon API documentation for potential reusability or integration in the future.
+Secondly, we demostrate the technical detail namely SpCon API document for potential reusability or integration in the future.
+
+## Requisite
+
+Install a proper Docker software suitable for your operation system. 
+Please refer to the official website https://docs.docker.com/get-docker/ how to install Docker.
 
 ## 1. Quick Start
 [Recommened] Install && Run the SpCon docker image.
@@ -98,8 +103,7 @@ INFO:spcon.symExec:Testing time: 43.04372596740723 seconds
 total timecost: 70.84923839569092 seconds
 ```
 
-The result shows permission attack sequences ``[]``, ``[]``  that can exploit the permission bug of the smart contract.
-
+The result shows permission attack sequences ``['owned']``, ``['owned', 'blacklistAccount']``  that can exploit the permission bug of the smart contract.
 
 ## 2. (partial) Experiement reproduction
 
@@ -109,6 +113,14 @@ The result shows permission attack sequences ``[]``, ``[]``  that can exploit th
 
 ### 3. Advanced evaluation
 1. Repository Structure 
-2. Local Install
+2. Build from scratch
+   1. Build docker images locall  
+   ```bash
+   # execute the below instructions and
+    docker build . -t spcon-artifact
+   #  the local spcon-artifact will be made (about 10minutes at the first making)
+   # please verify if the docker can work as well by running the docker image for permission bug detection.
+   docker run --rm spcon-artifact:latest spcon --eth_contract 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
+   ```
 3. Code API Document
 
