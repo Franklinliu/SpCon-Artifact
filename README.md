@@ -105,16 +105,9 @@ total timecost: 70.84923839569092 seconds
 
 The result shows permission attack sequences ``['owned']``, ``['owned', 'blacklistAccount']``  that can exploit the permission bug of the smart contract.
 
-## 2. (partial) Experiement reproduction
 
-1. Role Mining
-
-2. Permission Bug Detection
-
-### 3. Advanced evaluation
-1. Repository Structure 
-2. Build from scratch
-   1. Build docker images locall  
+## 2. Build from scratch
+1. Dockerization of this artifact  
    ```bash
    # execute the below instructions and
     docker build . -t spcon-artifact
@@ -122,5 +115,23 @@ The result shows permission attack sequences ``['owned']``, ``['owned', 'blackli
    # please verify if the docker can work as well by running the docker image for permission bug detection.
    docker run --rm spcon-artifact:latest spcon --eth_contract 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
    ```
-3. Code API Document
+2. Running this artifact on the local machine
+   ```bash 
+   # install all the dependencies of the artifact
+   bash ./localbuild.sh
+   # this would depend on your opertation environment and may not spent more than 10 minutes
+   # please verify if the following instruction can work as well for finding permissiong bugs of smart contract.
+   spcon --eth_contract 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
+   ```
+
+## 3. (partial) Experiement reproduction
+
+1. Role Mining
+
+2. Permission Bug Detection
+
+### 4. Advanced evaluation
+1. Repository Structure 
+
+2. Code API Document
 
