@@ -6,13 +6,13 @@ We aim to apply for the availability, functionality and reusability badges.
 This readme first shows how to quickly use SpCon to detect smart contract permission bugs. 
 Secondly, we demostrate the technical detail namely SpCon API document for potential reusability or integration in the future.
 
-## Requisite
-
+## Prerequisite
 Install a proper Docker software suitable for your operation system. 
 Please refer to the official website https://docs.docker.com/get-docker/ how to install Docker.
 
-## 1. Quick Start
-[Recommened] Install && Run the SpCon docker image.
+## Quick Start
+
+Install && Run the SpCon docker image.
 
 ```bash 
 # install docker image 
@@ -21,7 +21,7 @@ docker pull liuyedocker/spcon-artifact:latest
 docker run --rm liuyedocker/spcon-artifact:latest spcon --eth_contract 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
 ``` 
 
-After up to two minutes (default mode), we will see the results
+After up to two minutes (default mode), we will see the expected results
 ```
 Installing '0.4.18'...
 Version '0.4.18' installed.
@@ -106,16 +106,16 @@ total timecost: 70.84923839569092 seconds
 The result shows permission attack sequences ``['owned']``, ``['owned', 'blacklistAccount']``  that can exploit the permission bug of the smart contract.
 
 
-## 2. Build from scratch
-- Dockerization of this artifact  
+## Build from scratch
+Dockerization of this artifact  
    ```bash
    # execute the below instructions and
-    docker build . -t spcon-artifact
+   docker build . -t spcon-artifact
    #  the local spcon-artifact will be made (about 10minutes at the first making)
    # please verify if the docker can work as well by running the docker image for permission bug detection.
    docker run --rm spcon-artifact:latest spcon --eth_contract 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
    ```
-- Running this artifact on the local machine. (This way works well on Ubuntu 20.04 and Python 3.8.2.)
+Running this artifact on the local machine. (This way works well on Ubuntu 20.04 and Python 3.8.2.)
    ```bash 
    # install all the dependencies of the artifact
    bash ./localbuild.sh
@@ -124,35 +124,36 @@ The result shows permission attack sequences ``['owned']``, ``['owned', 'blackli
    spcon --eth_contract 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
    ```
 
-## 3. Experiement evaluation
-- Repository Structure 
+## Experiement evaluation
+Repository Structure 
 ```
 spcon-artifact
 │   README.md
 │   localBuild.sh   
 │   Dockerfile
+|   setup.py
 |   CVE.list  this file contains the address of access control CVE smart contracts
 |
 └───ISSTA2022
 │   │   
-│   └─── CVEAccessControlResults  this folder contains the access control CVE smart contracts and the CVE smart contracts that only spcon can detect. 
+│   └─── CVEAccessControlResults  this folder contains the access control CVE smart contracts and the detection result of SpCon. 
 │   │
 │   └─── RoleMiningBenchmarkandResults   this folder contains benchmark and raw experiment result.
 |   │
-|   └─── SmartBugsWildResults  this foler contains the detection result on benchmark SmartBugs and its comparison with existing state-of-the-arts.
+|   └─── SmartBugsWildResults  this foler contains the detection result on benchmark SmartBugs and the relevant comparison.
 |
-|   setup.py
+|   
 └───spcon
     │   __main__.py  the entry script for spcon
     │   query.py
     |   roleminger.py
     |   staticAnalyzer.py
     |   symExec.py
-    └───spconbenchmarkminer.py  used for role mining evaluation on the benchmarks
+    └── spconbenchmarkminer.py  used for role mining evaluation on the benchmarks
 ```
-- Role Mining Evaluation.
+Role Mining Evaluation.
   
-  The following instruction would help evaluate the result of role mining on the OpenZeppelin benchmark smart contracts. 
++ The following instruction would help evaluate the result of role mining on the OpenZeppelin benchmark smart contracts. 
   
 ```bash 
   # from pulled docker image
@@ -163,9 +164,9 @@ spcon-artifact
   # Once done, you can check the exported result file at the path $HOME/localtmp/result.xlsx
 ```
 
-- Permission Bug Detection
+Permission Bug Detection
   
-SpCon detected the bugs of nine contracts out of 17 access control CVE smart contracts.
++ SpCon detected the bugs of nine contracts out of 17 access control CVE smart contracts.
 For time saving, you can evaluate it using the following bash script.
 ```bash 
  while read -r line; do docker run --rm liuyedocker/spcon-artifact spcon --eth_address $line; done < CVE.list
