@@ -1,5 +1,20 @@
 
-from asyncio.log import logger
+import json
+import time
+import concepts
+from scipy.spatial import distance
+import numpy as np
+import pandas as pd
+import os 
+from prettytable import PrettyTable
+from openpyxl import Workbook
+import openpyxl
+from itertools import combinations
+import itertools 
+from functools import lru_cache
+import requests
+import traceback
+from web3 import Web3 
 from pyevolve import G1DList
 from pyevolve import GSimpleGA
 from pyevolve import Crossovers
@@ -9,35 +24,24 @@ from pyevolve import Initializators
 from pyevolve import G2DBinaryString
 from pyevolve import Consts
 from pyevolve import Scaling
-import json
-import time
-import concepts
-from scipy.spatial import distance
-import numpy as np
-import pandas as pd
-import os 
-from prettytable import PrettyTable
-import itertools 
-from functools import lru_cache
-import requests
-import traceback
-from web3 import Web3 
 import copy
-from .staticAnalyzer import getRWofContract
+
+import argparse 
 
 NORMAL_USER = ("NORMAL_USER")
 
 @lru_cache(maxsize=None)
 def getMethodName(hex_signature):
-    try:
-        headers = {'X-API-KEY': 'BQYEtWs7QzCdCwkJKVhmTDp3RFTWAUEP'}
-        url = f'https://www.4byte.directory/api/v1/signatures/?hex_signature={hex_signature}'
-        print(url)
-        response = requests.get(url, headers=headers)
-        body = response.content
-        methodName = json.loads(body.decode("utf8"))["results"][0]["text_signature"].split("(")[0]
-        return methodName
-    except:
+    # try:
+    #     headers = {'X-API-KEY': 'BQYEtWs7QzCdCwkJKVhmTDp3RFTWAUEP'}
+    #     url = f'https://www.4byte.directory/api/v1/signatures/?hex_signature={hex_signature}'
+    #     print(url)
+    #     response = requests.get(url, headers=headers)
+    #     body = response.content
+    #     methodName = json.loads(body.decode("utf8"))["results"][0]["text_signature"].split("(")[0]
+    #     return methodName
+    #     pass 
+    # except:
         return hex_signature
 def getABIfunctions(abi_file):
     ABIfunctions = list()
@@ -56,18 +60,17 @@ def getABI_file(directory):
             break 
     if abi_file:
         return abi_file
-    raise Exception("ABI file not found")     
+    raise Exception("ABI file not found")        
 
-func_mappings = dict()
-def getABIfunction_signature_mapping(abi):
-    global func_mappings
-    func_mappings = dict()
+def getABIfunction_signature_mapping(abi_file):
+    mappings = dict()
+    abi = json.load(open(abi_file))
     signatures = [ (func['name'], '{}({})'.format(func['name'],','.join([input['type'] for input in func['inputs']]))) for func in [obj for obj in abi if obj['type'] == 'function']]
     names = set()
     for sig in signatures:
         name, full_name = sig 
         bytes4_sig = Web3.sha3(text=full_name)[0:4].hex()
-        func_mappings[bytes4_sig] = sig
+        mappings[bytes4_sig] = sig
         names.add(name)
 
     def func(bytes4_sig):
@@ -75,15 +78,15 @@ def getABIfunction_signature_mapping(abi):
             return bytes4_sig
         if not bytes4_sig.startswith("0x"):
             bytes4_sig = "0x"+bytes4_sig
-        if bytes4_sig in func_mappings:
-            return func_mappings[bytes4_sig][0]
+        if bytes4_sig in mappings:
+            return mappings[bytes4_sig][0]
         else:
             return getMethodName(bytes4_sig)
     return func 
     
-    
 
-def lightweightrolemining(address, abi, gene_encoding, generation, simratio, workdir):
+def lightweightrolemining(address, gene_encoding, simratio, workdir):
+    print("workdir", workdir)
     starttime = time.time()
     smartcontractCalls = list()
     def getIdCounter():
@@ -100,13 +103,14 @@ def lightweightrolemining(address, abi, gene_encoding, generation, simratio, wor
             return userMap, _getId 
     try:
         print(os.path.join(workdir, address))
-        bytes4_mapping_func = getABIfunction_signature_mapping(abi)
+        print(getABI_file(os.path.join(workdir, address)))
+        bytes4_mapping_func = getABIfunction_signature_mapping(getABI_file(os.path.join(workdir, address)))
         print("loaded abi.")
     except:
         traceback.print_exc()
         bytes4_mapping_func = getMethodName
         pass     
-    with open(os.path.join(workdir, address, "all_txs.json"), "r") as f:
+    with open(os.path.join(workdir, address, "user_all2.json"), "r") as f:
         usercall_statistics = json.load(f)
     UF = list()
     functions = set()
@@ -133,7 +137,7 @@ def lightweightrolemining(address, abi, gene_encoding, generation, simratio, wor
     print(f"Timecost for loading history: {time.time()-starttime}")
 
     roleminer = GA_RM(permissionMatrix, freqMatrix, simratio, userLabels, \
-        userMap, generation = generation, gene_encoding=gene_encoding, address=address)      
+        userMap, gene_encoding=gene_encoding, address=address)      
     return functions, roleminer.verybasic_usergroups, roleminer.process()
 
 
@@ -222,13 +226,10 @@ def ReduceMain(roles):
     return constant_roles 
 
 class GA_RM:
-    def __init__(self, permissionMatrix, freqMatrix, simratio, \
-        userLabels, userMap, generation, gene_encoding, address):
+    def __init__(self, permissionMatrix, freqMatrix, simratio, userLabels, userMap, gene_encoding, address):
         self.userMap = userMap 
         self.userLabels = userLabels
         self.simratio = simratio
-        # shufle the users for later sampling
-        #jjjself.df = permissionMatrix.sample(n = permissionMatrix.shape[0])
         self.df = permissionMatrix.T 
         self.permissions = list(permissionMatrix.columns)
         self.users = list(permissionMatrix.index)
@@ -246,7 +247,6 @@ class GA_RM:
         self.gene_encoding = gene_encoding
         self.Debug = False
         self.address = address 
-        self.generation = generation
 
         self.verybasic_usergroups, self.UPA = self.createBasicLatticeRoles(self.users)
         self.basicRoles = ReduceMain(copy.copy(self.verybasic_usergroups))
@@ -279,8 +279,6 @@ class GA_RM:
     def getTestingBasicRoles(self):
         return self.basicRoles, self.UPA
     
-  
-    # @lru_cache(maxsize=None)
     def getUserFunctionCount(self, user, method):
         return self.freqMatrix.loc[int(user), method]
     
@@ -294,7 +292,6 @@ class GA_RM:
             AFV = np.zeros(n)
             for i in range(n):
                 function = union_functions[i]
-                # AFV[i] = np.sum([ self.getUserFunctionCount(user, function) for user in user_set])/len(user_set)
                 AFV[i] = np.sum(self.freqMatrix.loc[list(map(int, user_set)), function].to_numpy())/len(user_set)
             return AFV
     
@@ -302,7 +299,6 @@ class GA_RM:
     def calcsimilarity(self, roleA, roleB):
             AFV_a = self.getAFV(roleA)
             AFV_b = self.getAFV(roleB)
-                
             similarity = 1 - distance.cosine(AFV_a, AFV_b)
             if self.Debug:
                 print(f"AFV_a {AFV_a}")
@@ -359,7 +355,7 @@ class GA_RM:
                 sumSimError += simError
 
             return sumSimError/(len(crole1)+len(crole2))
-     
+    
         def calculateRoleSimilarityError(finalroles):
             simError = 0
             n = len(finalroles)
@@ -384,14 +380,6 @@ class GA_RM:
                         maxSimilarity  = similarity
                         closestRole = roleA
             return closestRole
-                
-        def translateRoles2UPA(roles):
-            matrix = np.zeros((len(self.permissions), len(self.users)))
-            df = pd.DataFrame(data=matrix, index=self.permissions, columns=self.users)
-            for role in roles:
-                users, funcs = role
-                df.loc[list(funcs), list(map(int, users))] = 1
-            return df
         
         @lru_cache(maxsize=None)
         def getTestRoleL1Norm(role):
@@ -468,11 +456,9 @@ class GA_RM:
                 users = set(itertools.chain.from_iterable([ childrole[0] for childrole in role]))
                 permissions = set(itertools.chain.from_iterable([ childrole[1] for childrole in role]))
                 returnroles.append((users, permissions))
-            # print(chromosome)
-            logger.info(f"score: {score}, genErr: {genErr},  simErr: {simErr}, badmergecount: {badmergecount}")
+            print(chromosome)
+            print(f"score: {score}, genErr: {genErr},  simErr: {simErr}, badmergecount: {badmergecount}")
             return score, genErr, simErr, returnroles, badmergecount 
-                
-                
 
         n = len(trainBasicRoles)
         assert n>1, "the number of basic roles must be greater than one"
@@ -499,22 +485,21 @@ class GA_RM:
         ga.setSortType(Consts.sortType["scaled"])
         ga.selector.set(Selectors.GTournamentSelector)
         ga.internalPop.scaleMethod.set(Scaling.LinearScaling, weight=0.5)
-        # ga.internalPop.scaleMethod.add(Scaling.BoltzmannScaling, weight=0.1)
-        # ga.internalPop.scaleMethod.add(Scaling.ExponentialScaling, weight=0.1)
-        # ga.internalPop.scaleMethod.add(Scaling.PowerLawScaling, weight=0.1)
-        # ga.internalPop.scaleMethod.add(Scaling.SaturatedScaling, weight=0.1)
-        # ga.internalPop.scaleMethod.add(Scaling.SigmaTruncScaling, weight=0.1)
+        ga.internalPop.scaleMethod.add(Scaling.BoltzmannScaling, weight=0.1)
+        ga.internalPop.scaleMethod.add(Scaling.ExponentialScaling, weight=0.1)
+        ga.internalPop.scaleMethod.add(Scaling.PowerLawScaling, weight=0.1)
+        ga.internalPop.scaleMethod.add(Scaling.SaturatedScaling, weight=0.1)
+        ga.internalPop.scaleMethod.add(Scaling.SigmaTruncScaling, weight=0.1)
 
         ga.setMutationRate(0.10)
         ga.setCrossoverRate(0.99)
         ga.setPopulationSize(100)
-        ga.setGenerations(self.generation)
+        ga.setGenerations(200)
         
         ga.setMultiProcessing(True, full_copy=False, max_processes = 10)
         
-        ga.evolve(freq_stats=100)
-        bestindividual = ga.bestIndividual()
-        #print(bestindividual)
+        ga.evolve(freq_stats=10)
+        bestindividual = ga.getPopulation().bestFitness()
         Debug = False
         score, genErr, simErr, bestRoles, badmergecount  = print_eval_func(bestindividual)
         Debug = False
@@ -532,97 +517,294 @@ class GA_RM:
         newroles = list()
         for role in roles:
             roleuser = set([ self.userMap[int(user)] for user in role[0]]) 
-            newroles.append((frozenset(roleuser), frozenset(role[1])))
+            newroles.append((roleuser, role[1]))
         return newroles
 
 
-def DeriveRolePermissionPolicy(reads, reads2, writes):
+def jaccard_func(set1, set2):
+    try:
+        return len(set(set1).intersection(set2))/len(set(set1).union(set2))
+    except:
+        return 0
+
+def roleset_roleset_jaccard_func_old_donot_purse_one2one(roleset1, roleset2, t=1):
+    def role_roleset_jaccard_func(role, roleset):
+        max_jaccard_sim = 0
+        matched_role = None
+        for _role in roleset:
+            jaccard_sim = jaccard_func(role, _role)
+            if jaccard_sim > max_jaccard_sim:
+                max_jaccard_sim = jaccard_sim
+                matched_role = _role
+        return  max_jaccard_sim, matched_role
     
-    def getWritefuncs(role, datas):
-        priviledge_funcs = set() 
-        for func in writes:
-            if 0 == len(set(datas).intersection(writes[func].difference(reads2[func]))):
-                continue
-            else:
-                priviledge_funcs.add(func)
-        return priviledge_funcs.intersection(set(role[1]))
+    roleset1 = copy.copy(roleset1)
+    roleset2 = copy.copy(roleset2)
+    n1 = len(roleset1)
+    n2 = len(roleset2)
+    if n1 == 0 or n2 == 0:
+        return 1
+    if n1>n2:
+        roleset_tmp = roleset1
+        roleset1 = roleset2
+        roleset2 = roleset_tmp
+    
+    sum_sim = 0
+    matched_roles = list()
+    counter = 0
+    for role in roleset1:
+        maxjaccardsim, matched_role = role_roleset_jaccard_func(role, roleset2)
+        if matched_role is not None:
+            matched_roles.append(matched_role)
+        sum_sim = sum_sim + maxjaccardsim
+        counter += 1
+ 
+    for matched_role in matched_roles:
+        if roleset2.count(matched_role)>0:
+            roleset2.remove(matched_role)
 
-    def createInformationSecurityPolicy(mined_roles):
-        try:
-            if reads is None or writes is None:
-                raise Exception("reads and writes is not set!")
-        except:
-            return set()
-        dataR = list()
-        dataW = list()
-        observed_functions = set(itertools.chain.from_iterable([mined_role[1] for mined_role in mined_roles]))
-        roles = list(mined_roles)
-        for i in range(len(roles)):
-            role_reads = set(itertools.chain.from_iterable([reads[func] for func in roles[i][1] if func in reads ]))
-            role_writes = set(itertools.chain.from_iterable([writes[func].difference(reads[func]) for func in roles[i][1] if func in writes]))
-            # role_writes  = role_writes.difference(role_reads)
-            role_writes  = role_writes
-            dataR.append(role_reads)
-            dataW.append(role_writes)
-        
-        n = len(roles)
-        newDataW = copy.deepcopy(dataW)
-        for i in range(len(roles)):
-            newDataW[i] = dataW[i] - (set(itertools.chain.from_iterable(dataW[:i])) - set(itertools.chain.from_iterable(dataW[i+1:])))
-        
-        dataW = newDataW
-
-        securityLattice = np.zeros((n, n))
-        for i in range(n):
-            for j in range(i+1, n):
-                if set(dataW[i]).issubset(set(dataW[j])) and len(set(dataW[i])) < len(set(dataW[j])):
-                    securityLattice[i][j] = -1 
-                    securityLattice[j][i] = 1
-                elif set(dataW[i]).issuperset(set(dataW[i])) and len(set(dataW[j])) < len(set(dataW[i])):
-                    securityLattice[i][j] = 1 
-                    securityLattice[j][i] = -1
-        
-        securityPolicies = set()
-        for i in range(n):
-            for j in range(i+1, n):
-                if securityLattice[i][j] == 1:
-                    high_security_role = roles[i] 
-                    # integrity 
-                    securityPolicies.add(tuple([high_security_role, frozenset(dataW[i].difference(dataW[j])), frozenset(getWritefuncs(high_security_role, dataW[i].difference(dataW[j])))]))
-                elif securityLattice[i][j] == -1:
-                    high_security_role = roles[j] 
-                    # integrity 
-                    securityPolicies.add(tuple([high_security_role, frozenset(dataW[j].difference(dataW[i])), frozenset(getWritefuncs(high_security_role, dataW[j].difference(dataW[i])))]))
-                elif securityLattice[i][j] == 0:
-                    # separation of duty 
-                    role1, role2 = roles[i], roles[j]
-                    if len(frozenset(dataW[i].difference(dataW[j])))>0:
-                        securityPolicies.add(tuple([role1, frozenset(dataW[i].difference(dataW[j])), frozenset(getWritefuncs(role1, dataW[i].difference(dataW[j])))]))
-                    if len( frozenset(dataW[j].difference(dataW[i])))>0:
-                        securityPolicies.add(tuple([role2, frozenset(dataW[j].difference(dataW[i])), frozenset(getWritefuncs(role2, dataW[j].difference(dataW[i])))]))
-        
-        return securityPolicies
-
-        
-    return createInformationSecurityPolicy
-
-def runRoleMiningForSingleContract(address, contractName, contractAbi, reads, reads2, writes, generation, simratio, workdir):
-        print(address, contractName)
-        start = time.time()
-        observed_methods, verybasic_userGroups, mined_roles = lightweightrolemining(address=address, abi = contractAbi, gene_encoding="real", generation = generation, simratio=simratio, workdir=workdir)
-        end = time.time()
-        print("Time cost:", end-start)
-
-        createInformationSecurityPolicy = \
-            DeriveRolePermissionPolicy(reads=reads, reads2=reads2, writes=writes)
-        security_policy = createInformationSecurityPolicy(mined_roles=mined_roles)
-
-        print("Security Policy:")
-        counter = 0
-        for policy in security_policy:
-            role, separation_data, separation_priviledged_functions = policy
-            role = role[1] if isinstance(role, tuple) else role
-            print(f"Policy#{counter}: {' '.join(role)} -> {' '.join(separation_data)} via functions {' '.join(separation_priviledged_functions)}")
+    for restrole in roleset2:
+        maxjaccardsim, _ = role_roleset_jaccard_func(restrole, roleset1)
+        if maxjaccardsim > t:
+            sum_sim = sum_sim + maxjaccardsim
             counter += 1
 
-        return observed_methods, func_mappings, security_policy, [] 
+    if counter == 0:
+        return -1
+    return sum_sim/counter
+
+def compareRoleSets(mined_roles, deployed_roles, t=1.0):
+    print("**********************")
+    print(mined_roles, deployed_roles)
+    permissionless_functions = set(itertools.chain.from_iterable(mined_roles)).difference(\
+        set(itertools.chain.from_iterable(deployed_roles)))
+    deployed_roles.append(permissionless_functions)
+    rolesroles_sim1 = roleset_roleset_jaccard_func_old_donot_purse_one2one(mined_roles, deployed_roles, t=t)
+    deployed_roles.remove(permissionless_functions)
+    mined_roles_remove_permissionless = [ role.difference(permissionless_functions) \
+        for role in mined_roles if len(role.difference(permissionless_functions))>0]
+
+    deployed_roles_remove_permissionless = [ role.difference(permissionless_functions) \
+        for role in deployed_roles if len(role.difference(permissionless_functions))>0]
+                 
+    rolesroles_sim2 = roleset_roleset_jaccard_func_old_donot_purse_one2one(mined_roles_remove_permissionless, \
+        deployed_roles_remove_permissionless, t=t)
+    print(rolesroles_sim1, rolesroles_sim2)
+   
+    return  rolesroles_sim1, rolesroles_sim2
+
+
+def label_func(role_permission_functions, other_permission_functions, ABIfunctions):
+    rp_funcs = role_permission_functions
+    op_funcs = other_permission_functions
+    abi_funcs = ABIfunctions
+    
+    def func(observed_methods, mined_roles):
+        # label mined roles with ground truth, namely rp_funcs+op_funcs
+        # using jaccard similarity
+        # get all relevant roles
+        deployed_role_permissionset = set()
+        deployed_role_labelset = set()
+
+        relevant_roles = set(map(lambda rp: rp[1], rp_funcs)).union(set(map(lambda op: op[1], op_funcs)))
+        relevant_role_permissions = dict()
+        permissioned_functions = set()
+        for role in relevant_roles:
+            relevant_role_permissions[role] = {}
+            relevant_role_permissions[role]["orig"] = set(filter(lambda rp: rp[1]==role, rp_funcs)).union(set(filter(lambda op: op[1]==role, op_funcs)))
+            relevant_role_permissions[role]["simple"] =set(map(lambda p: p[0], relevant_role_permissions[role]["orig"]))
+            permissioned_functions.update(relevant_role_permissions[role]["simple"])
+        
+        permissionless_functions = set(ABIfunctions).difference(permissioned_functions)
+            
+        results = list()
+        for role in mined_roles:
+            candidate_relevant_roles = list(filter(lambda candidate: \
+                len(relevant_role_permissions[candidate]["simple"].intersection(role))>0, \
+                relevant_roles))
+            if len(candidate_relevant_roles)==0:
+                # normal users which call only permissionless functions
+                results.append(((NORMAL_USER), role, jaccard_func(role, permissionless_functions)))
+                continue 
+            jaccard_max_sim = 0
+            label = None 
+            for i in range(1, len(candidate_relevant_roles)+1):
+                for role_label_pair in combinations(candidate_relevant_roles, i):
+                    # calculate the jaccard similarity
+                    role_label_pair_functions = set(itertools.chain.from_iterable(\
+                        [ relevant_role_permissions[r]["simple"] for r in role_label_pair]))
+                    # print(set(role).intersection(permissioned_functions), role_label_pair_functions)
+                    if set(role).intersection(permissioned_functions).issubset(role_label_pair_functions):
+                        jaccard_sim = jaccard_func(set(role).intersection(permissioned_functions), role_label_pair_functions)
+                    else:
+                        jaccard_sim = 0
+                    if jaccard_sim > jaccard_max_sim:
+                        jaccard_max_sim = jaccard_sim
+                        label = role_label_pair 
+                        deployed_role_labelset.update(role_label_pair)                       
+            results.append((label, role, jaccard_max_sim))
+      
+        deployed_role_permissionset =  [ ((role_label), relevant_role_permissions[role_label]["simple"].intersection(observed_methods)) for role_label in deployed_role_labelset]
+        all_role_permissionset = [ ((role_label), relevant_role_permissions[role_label]["simple"]) for role_label in relevant_roles]
+        return deployed_role_labelset, deployed_role_permissionset, all_role_permissionset, results 
+        
+    return func
+
+def getSetOfSimilarityMetrics(mined_roles, deployed_roles):
+    role_sim10_1, role_sim10_2 = compareRoleSets(mined_roles=mined_roles, deployed_roles=deployed_roles, t=1.0)
+
+    role_sim05_1, role_sim05_2 = compareRoleSets(mined_roles=mined_roles, deployed_roles=deployed_roles, t=0.5)
+            
+    role_sim025_1, role_sim025_2 = compareRoleSets(mined_roles=mined_roles, deployed_roles=deployed_roles, t=0.25)
+
+    role_sim00_1, role_sim00_2 = compareRoleSets(mined_roles=mined_roles, deployed_roles=deployed_roles, t=0)
+    
+    return role_sim10_1, role_sim10_2, role_sim05_1, role_sim05_2, role_sim025_1, role_sim025_2, role_sim00_1, role_sim00_2
+
+def initExcelHead(ws_result):
+    ws_result.title = "RoleMiningResult"
+    ws_result["A1"] = "(Alpha, Beta)"
+    ws_result["B1"] = "Address"
+    ws_result["C1"] = "Time"
+    ws_result["D1"] = "RoleNumber"
+    ws_result["E1"] = "Roles"  
+    ws_result["F1"] = "LabeledRoles"  
+    ws_result["G1"] = "DeployedRoles"  
+   
+    ws_result[f"H{1}"] = "Role Number Ratio"
+    ws_result[f"I{1}"] = "t=1"
+    ws_result[f"J{1}"] = "t=0.5"
+    ws_result[f"K{1}"] = "t=0.25"
+    ws_result[f"L{1}"] = "t=0"
+
+    ws_result[f"M{1}"] = "t=1"
+    ws_result[f"N{1}"] = "t=0.5"
+    ws_result[f"O{1}"] = "t=0.25"
+    ws_result[f"P{1}"] = "t=0"
+
+def appendExcelRow(ws, n, simratio, address, timecost,\
+     roleNumber, mined_roles, labledroles, groundtruth_roles, number_ratio, \
+         role_sim10_1, role_sim10_2, role_sim05_1, role_sim05_2, \
+             role_sim025_1, role_sim025_2, role_sim00_1, role_sim00_2):
+        ws[f"A{n}"] = f"({simratio}, {1 - simratio})"
+        ws[f"B{n}"] = address
+        ws[f"C{n}"] = timecost
+        ws[f"D{n}"] = roleNumber
+        ws[f"E{n}"] = str(mined_roles) 
+        ws[f"F{n}"] = str(labledroles)
+        ws[f"G{n}"] = str(groundtruth_roles)
+        ws[f"H{n}"] = str(number_ratio)
+        ws[f"I{n}"] = role_sim10_1 
+        ws[f"J{n}"] = role_sim05_1 
+        ws[f"K{n}"] = role_sim025_1 
+        ws[f"L{n}"] = role_sim00_1
+        ws[f"M{n}"] = role_sim10_2 
+        ws[f"N{n}"] = role_sim05_2 
+        ws[f"O{n}"] = role_sim025_2 
+        ws[f"P{n}"] = role_sim00_2
+
+def _main_(args):
+    global permissionless_functions
+    simratio = args.simratio
+    workdir = args.benchmark
+    xlsx = args.groundtruth
+    wb = openpyxl.load_workbook(xlsx, read_only=False)    
+    ws = wb.active 
+    contracts_limited_number = args.limit
+    rows = list(ws.rows)[1:]
+    counts = list()
+    wb_result = Workbook()
+    ws_result = wb_result.active
+    initExcelHead(ws_result=ws_result)
+    index = 2
+    for row in rows:
+        try:
+            if contracts_limited_number == 0:
+                break 
+            address = row[0].value
+            if address is None: 
+                break 
+            contractName = os.path.splitext(os.path.basename(row[0].hyperlink.target))[0]
+
+            print(f"{contractName}: ", address)
+            # abi_file = os.path.join(os.path.dirname(row[0].hyperlink.target),contractName+".abi")
+            abi_file = os.path.join(workdir, address, contractName+".abi")
+            ABIfunctions = getABIfunctions(abi_file)
+
+            with open(os.path.join(workdir, address, "user_all.json"), "r") as f:
+                    usercall_statistics = json.load(f)
+                    userCount = len(usercall_statistics["data"]["ethereum"]["smartContractCalls"])
+                    print("userCount:", userCount)     
+                    counts.append(userCount)
+                    if userCount > 100:
+                        if row[3].value!="" and row[3].value!="set()":
+                            role_permission_functions = eval(row[3].value)
+                        else:
+                            role_permission_functions = set()
+                        if row[4].value!="" and row[4].value!="set()":
+                            other_permission_functions = eval(row[4].value)
+                        else:
+                            other_permission_functions = set()
+
+                        print(role_permission_functions, other_permission_functions)
+                        eval_func = label_func(role_permission_functions, other_permission_functions, ABIfunctions)
+                        
+                        start = time.time()
+                        observed_methods, verybasic_userGroups, mined_roles = lightweightrolemining(address=address, gene_encoding="real", simratio=simratio, workdir=workdir)
+                        end = time.time()
+                        
+                        mined_roles = [role[1] for role in mined_roles ]
+                        
+                        _, _, _, labeled_mined_roles = eval_func(observed_methods, mined_roles)
+                        verybasic_roles = [ usergroup[1] for usergroup in verybasic_userGroups]
+                        deployed_role_labelset, deployed_role_permissionset, all_role_permissionset, _ = eval_func(observed_methods, verybasic_roles)
+
+                        deployed_roles = [role[1] for role in deployed_role_permissionset]
+                      
+                        number_ratio = len(mined_roles)/(len(deployed_roles)+1)
+                        # rolesroles_sim1, rolesroles_sim2 = compareRoleSets(mined_roles=mined_roles, deployed_roles=deployed_roles)
+                        role_sim10_1, role_sim10_2, role_sim05_1, role_sim05_2, \
+                            role_sim025_1, role_sim025_2, role_sim00_1, role_sim00_2 \
+                                = getSetOfSimilarityMetrics(mined_roles=mined_roles, deployed_roles=deployed_roles)
+                         
+                        appendExcelRow(ws_result, index, simratio, address, end-start, len(mined_roles), mined_roles, labeled_mined_roles, deployed_role_permissionset, 
+                        number_ratio, role_sim10_1, role_sim10_2, role_sim05_1, role_sim05_2, \
+                            role_sim025_1, role_sim025_2, role_sim00_1, role_sim00_2
+                        )
+                        contracts_limited_number -= 1
+            index += 1
+        except:
+            traceback.print_exc()
+            continue  
+    wb_result.save(args.output)
+
+def main():
+    start = time.time()
+    parser = argparse.ArgumentParser(description='SPCONMiner, Mining smart contract role structures')
+       
+    parser.add_argument('--benchmark', type=str, default = "./ISSTA2022/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods" , 
+                        help='benchmark directory (default ./ISSTA2022/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods)')
+
+    parser.add_argument('--groundtruth', type=str, default = "./ISSTA2022/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods-label.xlsx" , 
+                        help='the labelled role structure (ground truth) for the benchmark (default ./ISSTA2022/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods-label.xlsx)')
+    
+    parser.add_argument('--output', type=str, default="./result-OpenZeppelin_spconminer.xlsx",
+                        help= "the output file containing result of mined role structure and its comparison with the ground truth (./result-OpenZeppelin_spconminer.xlsx)")
+    
+    parser.add_argument('--simratio', type=float, default = 0.40, 
+                        help='ratio of simErr for GA. (default 0.40)')
+    
+    parser.add_argument('--limit', type=int, default = 50, 
+                        help='how many benchmark contracts are inspected for the role mining. (default 50)')
+    args = parser.parse_args()
+    assert args is not None 
+    try:
+        _main_(args)
+    except:
+        traceback.print_exc()
+        pass 
+    print(f"total timecost: {time.time() - start} seconds")
+
+if __name__ == "__main__":
+    main()
+

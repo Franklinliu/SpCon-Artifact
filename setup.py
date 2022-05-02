@@ -23,6 +23,7 @@ setup(
         "prettytable",
         "requests",
         "timeout_decorator",
+        "openpyxl",
     ],
     # dependency_links=["git+https://github.com/crytic/crytic-compile.git@master#egg=crytic-compile"],
     license="AGPL-3.0",
@@ -30,6 +31,7 @@ setup(
     entry_points={
         "console_scripts": [
             "spcon = spcon.__main__:main",
+            "benchmarkminer = spcon.spconbenchmarkminer:main",
         ]
     },
 )

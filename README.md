@@ -107,7 +107,7 @@ The result shows permission attack sequences ``['owned']``, ``['owned', 'blackli
 
 
 ## 2. Build from scratch
-1. Dockerization of this artifact  
+- Dockerization of this artifact  
    ```bash
    # execute the below instructions and
     docker build . -t spcon-artifact
@@ -115,7 +115,7 @@ The result shows permission attack sequences ``['owned']``, ``['owned', 'blackli
    # please verify if the docker can work as well by running the docker image for permission bug detection.
    docker run --rm spcon-artifact:latest spcon --eth_contract 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
    ```
-2. Running this artifact on the local machine
+- Running this artifact on the local machine. (This way works well on Ubuntu 20.04 and Python 3.8.2.)
    ```bash 
    # install all the dependencies of the artifact
    bash ./localbuild.sh
@@ -124,14 +124,46 @@ The result shows permission attack sequences ``['owned']``, ``['owned', 'blackli
    spcon --eth_contract 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
    ```
 
-## 3. (partial) Experiement reproduction
+## 3. Experiement evaluation
+- Repository Structure 
+```
+spcon-artifact
+│   README.md
+│   localBuild.sh   
+│   Dockerfile
+|
+└───ISSTA2022
+│   │   
+│   └─── CVEAccessControlResults  
+│   │
+│   └─── RoleMiningBenchmarkandResults
+|   │
+|   └─── SmartBugsWildResults
+|
+|   setup.py
+└───spcon
+    │   __main__.py  the entry script for spcon
+    │   query.py
+    |   roleminger.py
+    |   staticAnalyzer.py
+    |   symExec.py
+    └───spconbenchmarkminer.py  used for role mining evaluation on the benchmarks
+```
+- Role Mining Evaluation.
+  
+  The following instruction would help evaluate the result of role mining on the OpenZeppelin benchmark smart contracts. 
+  
+```bash 
+  # from pulled docker image
+  docker run --rm liuyedocker/spcon-artifact benchmarkminer --limit 2
+  # currently it will evaluate on 2 benchmark contracts. This would take about three minutes.
+  # Moreover, if we would like to export the output result to your local machine. Please using docker volumn mount instruction as the following.
+  docker run --rm -v $HOME/localtmp:/dockertmp liuyedocker/spcon-artifact benchmarkminer --limit 2 --output /dockertmp/result.xlsx
+  # Once done, you can check the exported result file at the path $HOME/localtmp/result.xlsx
 
-1. Role Mining
+```
 
-2. Permission Bug Detection
-
-### 4. Advanced evaluation
-1. Repository Structure 
-
-2. Code API Document
+- Permission Bug Detection
+  
+## 4. Code API Document
 
