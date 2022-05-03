@@ -236,7 +236,6 @@ docker run --rm -v $HOME/localtmp:/dockertmp liuyedocker/spcon-artifact benchmar
 docker run --rm -v $HOME/localtmp:/dockertmp liuyedocker/spcon-artifact benchmarkminer --limit 50 --simratio 0.6 --output /dockertmp/result-0.6.xlsx
 ```
 
-
 ### Permission Bug Detection
 SpCon detected permission bugs of smart contract from two benchmarks: [CVE smart contracts](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=smart+contract) and [SmartBugsWild](https://github.com/smartbugs/smartbugs-wild).
 SpCon detected the bugs of nine contracts out of 17 access control CVE smart contracts.
@@ -244,7 +243,14 @@ For time saving, the reader can evaluate it using the following bash script.
 ```bash 
 while read -r line; do docker run --rm liuyedocker/spcon-artifact spcon --eth_address $line >> execution.log 2>&1; done < CVE.list  
 # this would take half an hour to execute all cases. 
+grep "attack sequence" execution.log
+# this would filter the found permission attack sequences and then the vulnerable contracts can also be directly identified.
+"
+CRITICAL:spcon.symExec:Permission Bug: find an attack sequence ['owned']
+CRITICAL:spcon.symExec:Permission Bug: find an attack sequence ['owned', 'blacklistAccount']
+...
+"
 ```
-  
-## 4. Code API Document
+## Reusability
+
 
