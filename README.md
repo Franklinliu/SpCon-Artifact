@@ -183,11 +183,11 @@ SPCONMiner, Mining smart contract role structures
 optional arguments:
   -h, --help            show this help message and exit
   --benchmark BENCHMARK
-                        benchmark directory (default ./ISSTA2022/RoleMiningBen
+                        benchmark directory (default ./ISSTA2022Result/RoleMiningBen
                         chmarkandResults/OpenZeppelin1000calls10methods)
   --groundtruth GROUNDTRUTH
                         the labelled role structure (ground truth) for the
-                        benchmark (default ./ISSTA2022/RoleMiningBenchmarkandR
+                        benchmark (default ./ISSTA2022Result/RoleMiningBenchmarkandR
                         esults/OpenZeppelin1000calls10methods-label.xlsx)
   --output OUTPUT       the output file containing result of mined role
                         structure and its comparison with the ground truth
