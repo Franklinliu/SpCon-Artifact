@@ -782,11 +782,11 @@ def main():
     start = time.time()
     parser = argparse.ArgumentParser(description='SPCONMiner, Mining smart contract role structures')
        
-    parser.add_argument('--benchmark', type=str, default = "./ISSTA2022/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods" , 
-                        help='benchmark directory (default ./ISSTA2022/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods)')
+    parser.add_argument('--benchmark', type=str, default = "./ISSTA2022Result/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods" , 
+                        help='benchmark directory (default ./ISSTA2022Result/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods)')
 
-    parser.add_argument('--groundtruth', type=str, default = "./ISSTA2022/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods-label.xlsx" , 
-                        help='the labelled role structure (ground truth) for the benchmark (default ./ISSTA2022/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods-label.xlsx)')
+    parser.add_argument('--groundtruth', type=str, default = "./ISSTA2022Result/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods-label.xlsx" , 
+                        help='the labelled role structure (ground truth) for the benchmark (default ./ISSTA2022Result/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods-label.xlsx)')
     
     parser.add_argument('--output', type=str, default="./result-OpenZeppelin_spconminer.xlsx",
                         help= "the output file containing result of mined role structure and its comparison with the ground truth (./result-OpenZeppelin_spconminer.xlsx)")

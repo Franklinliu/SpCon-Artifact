@@ -15,7 +15,7 @@ spcon-artifact
 │   localBuild.sh   
 │   Dockerfile
 |   CVE.list  
-└───ISSTA2022
+└───ISSTA2022Result
 │   └─── CVEAccessControlResults  
 │   └─── RoleMiningBenchmarkandResults   
 |   └─── SmartBugsWildResults 
@@ -35,7 +35,7 @@ There are serveral folders and files inside the repository, for replicating the 
 | REAME.md                      | refers to this readme.                                                            |
 | localBuild.sh                 | used for local installation. See [here](#local-build)                      |
 | Dockerfile                    | docker image make file, used for dockerization. See [here](#dockerization)   |             
-| CVE.list                      | contains the address of access control CVE smart contracts. See [here](#experiement-evaluation)  |
+| CVE.list                      | contains the address of access control CVE smart contracts. See [here](#experiment-evaluation)  |
 | CVEAccessControlResults       | contains the 17 access control CVE smart contracts and the detection result       |
 | RoleMiningBenchmarkandResults | contains benchmark and raw experiment result.                                     |
 | SmartBugsWildResults          | contains the detection result on benchmark SmartBugs.                             |
@@ -43,23 +43,24 @@ There are serveral folders and files inside the repository, for replicating the 
 |                               |                                                                                   |
 
 
-## Quick Start
+# Get Started
 
-### Prerequisite
-+ We assume the users have installed Docker software suitable for their operation system. 
+## Prerequisite
+We assume the users have installed Docker software suitable for their operation system. 
 If not, please refer to the official website https://docs.docker.com/get-docker/ how to install Docker. The tested Docker version is 20.10.7. 
-+ SpCon needs to access internet to get source code and transaction history of smart contract from [Etherscan](https://etherscan.io/) and [BitQuery](https://bitquery.io/) website. We assume the reader has full access to this two website. 
-  
+
+SpCon needs to access internet to get source code and transaction history of smart contract from [Etherscan](https://etherscan.io/) and [BitQuery](https://bitquery.io/) website. We assume the reader has full access to this two website. 
+
+## Quick Start
 The quick start can use the public docker image prepared for this artifact evalution.
 The two basic operation is to pull the docker image (from dockerhub) and then run a docker container to execute a task.
-Below shows the proper instructions for this.  
+Below shows the proper instructions for this. The below task to execute will take no more than two minutes if everything is going well. 
 ```bash 
 # install docker image 
 docker pull liuyedocker/spcon-artifact:latest 
 # run spcon to detect the permisson bug of MorphToken(0x2Ef27BF41236bD859a95209e17a43Fbd26851f92) which is a CVE smart contract. 
 docker run --rm liuyedocker/spcon-artifact:latest spcon --eth_contract 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
 ``` 
-The above task to execute will take no more than two minutes if everything is going well. 
 We will get the expected results in the terminal.
 The terminal output will demostrate the information such as compiler versions, function name list, total users, uers-functions analysis and 
 The first part of output shows the statistics of past transactions in the history such as how many functions appeared, and what the basic roles (user groups) are.   
@@ -129,7 +130,12 @@ CRITICAL:spcon.symExec:Permission Bug: find an attack sequence ['owned', 'blackl
 INFO:spcon.symExec:Testing time: 43.04372596740723 seconds
 ```
 
-## Build from scratch
+
+# Detailed Description
+
+In this section, the technical details will be discussed on how to build *SpCon* from scratch and how to reproduce the experiment result described in the paper.
+
+## Build From Scratch
 We provide two ways to build spcon from scratch.
 
 ### Dockerization 
@@ -158,7 +164,7 @@ Please run the below instructions to install SpCon and then run SpCon for permis
    spcon --eth_contract 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
    ```
 
-## Experiement evaluation
+## Experiment Reproduction
 
 We present sufficient information to evaluate the role mining and the permission bug detection.
 
@@ -192,6 +198,13 @@ optional arguments:
 ```
 The following instruction would evaluate the result of role mining on two OpenZeppelin benchmark smart contracts. 
 This would take about three minutes.
+
+```bash 
+# from pulled docker image
+docker run --rm liuyedocker/spcon-artifact benchmarkminer --limit 2
+# either export result
+docker run --rm -v $HOME/localtmp:/dockertmp liuyedocker/spcon-artifact benchmarkminer --limit 2 --output /dockertmp/result.xlsx
+```
 Moreover, the reader can export result to the local machine using docker volumn mount instruction `-v $HOME/localtmp:/dockertmp` as the following.
 Once done, you can check the exported result file at the path `$HOME/localtmp/result.xlsx`.
 Note that Due to the randomness feature of GA, the result may vary a little at different time.
@@ -200,37 +213,39 @@ The first column (Alpha, Beta) represents `simratio, 1-simratio` respectively.
 The fourth to eight columns shows the number of mined roles, the structure of mined roles, and the label of the mined roles, the ground truth (deployed roles) as well as the ratio (`len(MinedRoles)/len(DeployedRoles)`).
 The rest columns show the result accuracy at different threshold that is dicussed in the paper.
 
-```bash 
-# from pulled docker image
-docker run --rm liuyedocker/spcon-artifact benchmarkminer --limit 2
-# either export result
-docker run --rm -v $HOME/localtmp:/dockertmp liuyedocker/spcon-artifact benchmarkminer --limit 2 --output /dockertmp/result.xlsx
-```
 
-For complete experiement reproduction, the reader can generate all raw results appearing in the papers using the following instructions.
-All results will be availabel at `$HOME/localtmp/result-0.4.xlsx`, `$HOME/localtmp/result-0.5.xlsx`,`$HOME/localtmp/result-0.6.xlsx`.
+For complete experiment reproduction, the reader can generate all raw results appearing in the papers using the following instructions.
+This will take one and half an hour.
 ```bash 
 # from pulled docker image
 docker run --rm -v $HOME/localtmp:/dockertmp liuyedocker/spcon-artifact benchmarkminer --limit 50 --simratio 0.4 --output /dockertmp/result-0.4.xlsx
 docker run --rm -v $HOME/localtmp:/dockertmp liuyedocker/spcon-artifact benchmarkminer --limit 50 --simratio 0.5 --output /dockertmp/result-0.5.xlsx
 docker run --rm -v $HOME/localtmp:/dockertmp liuyedocker/spcon-artifact benchmarkminer --limit 50 --simratio 0.6 --output /dockertmp/result-0.6.xlsx
 ```
+All results will be availabel at `$HOME/localtmp/result-0.4.xlsx`, `$HOME/localtmp/result-0.5.xlsx`,`$HOME/localtmp/result-0.6.xlsx`.
+The reader can verify these result with reference to the [Experiment Result](./ISSTA2022Result/RoleMiningBenchmarkandResults/result-OpenZeppelin-SPCON.threshold_1_0.5_0.25_0.1642577052.234292.xlsx).
+
 
 ### RQ2. Permission Bug Detection
 SpCon detected permission bugs of smart contract from two benchmarks: [CVE smart contracts](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=smart+contract) and [SmartBugsWild](https://github.com/smartbugs/smartbugs-wild).
+
 SpCon detected the bugs of nine contracts out of 17 access control CVE smart contracts.
 For time saving, the reader can evaluate it using the following bash script.
+This will take about one hour to perform this task.
 ```bash 
+# this would take about an hour to execute all cases. 
 while read -r line; do docker run --rm liuyedocker/spcon-artifact spcon --eth_address $line >> execution.log 2>&1; done < CVE.list  
-# this would take half an hour to execute all cases. 
-grep "attack sequence" execution.log
+```
+```bash
 # this would filter the found permission attack sequences and then the vulnerable contracts can also be directly identified.
+grep "attack sequence" execution.log
 "
 CRITICAL:spcon.symExec:Permission Bug: find an attack sequence ['owned']
 CRITICAL:spcon.symExec:Permission Bug: find an attack sequence ['owned', 'blacklistAccount']
 ...
 "
 ```
+
 ## Reusability
 
 Besides the replication of evaluation in the paper, 
@@ -258,44 +273,6 @@ docker run --rm liuyedocker/spcon-artifact spcon --eth_address 0xF5b0A3eFB8e8E4c
 ```
 Then you may get the expected output at terminal.
 ```
-2022-05-03
-{'limit': 20000, 'network': 'ethereum', 'address': '0xF5b0A3eFB8e8E4c201e2A935F110eAaF3FFEcb8d', 'date': '2022-05-03'}
-0xF5b0A3eFB8e8E4c201e2A935F110eAaF3FFEcb8d AxieCore
-./0xF5b0A3eFB8e8E4c201e2A935F110eAaF3FFEcb8d
-loaded abi.
-23  functions ['isApprovedForAll', 'spawnAxie', 'ownerOf', 'getAxie', 'setSpawner', 'unpause', 'transferFrom', 'setRetirementManager', 'setGeneManager', 'setTokenURIAffixes', 'safeTransferFrom', 'supportsInterface', 'paused', 'balanceOf', 'setMarketplaceManager', 'setSpawningManager', 'getApproved', 'evolveAxie', 'setGeneScientist', 'setMarketplace', 'pause', 'setApprovalForAll', 'approve']
-15785  users
-Timecost for loading history: 1.6567940711975098
-No.user: 15785; No.func: 23
-+--------------------------------------------------------------------------------------------+
-| Basic roles statistics (id, len(users functions)                                           |
-+--------+-------+---------------------------------------------------------------------------+
-| RoleId | Users |    Functions                                                              |
-+--------+-------+---------------------------------------------------------------------------|
-|   0    |   4   |    ['spawnAxie']                                                          |
-|   1    |   58  |    ['ownerOf']                                                            |
-|   2    |   7   |    ['getAxie']                                                            |
-|   3    |  3610 |    ['transferFrom']                                                       |
-|   4    |  9422 |    ['safeTransferFrom']                                                   | 
-|   5    |   10  |    ['supportsInterface']                                                  |  
-|   6    |   1   |    ['paused']                                                             |
-|   7    |   7   |    ['balanceOf']                                                          |
-|   8    |   2   |    ['getApproved']                                                        |
-|   9    |   4   |    ['evolveAxie']                                                         |
-|   10   |  4325 |    ['setApprovalForAll']                                                  | 
-|   11   |   86  |    ['approve']                                                            |
-|   12   |   4   |    ['isApprovedForAll']                                                   |
-|   13   |   1   |    ['setRetirementManager', 'setMarketplaceManager', 'setSpawningManager',|
-'setSpawner', 'setGeneManager', 'setTokenURIAffixes', 'setGeneScientist', 'setMarketplace',  |
-'pause', 'unpause']                                                                          |
-+--------------------------------------------------------------------------------------------+
-Gen. 0 (0.00%): Max/Min/Avg Fitness(Raw)             [1.78(1.91)/1.30(1.22)/1.49(1.49)]
-Gen. 100 (20.00%): Max/Min/Avg Fitness(Raw)             [1.87(2.06)/1.38(1.28)/1.56(1.56)]
-Gen. 200 (40.00%): Max/Min/Avg Fitness(Raw)             [1.91(2.16)/1.41(1.27)/1.59(1.59)]
-Gen. 300 (60.00%): Max/Min/Avg Fitness(Raw)             [1.87(2.35)/1.45(1.29)/1.56(1.56)]
-Gen. 400 (80.00%): Max/Min/Avg Fitness(Raw)             [1.90(2.35)/1.48(1.33)/1.58(1.58)]
-Gen. 500 (100.00%): Max/Min/Avg Fitness(Raw)             [1.89(2.35)/1.47(1.31)/1.58(1.58)]
-Total time elapsed: 181.232 seconds.
 best role number: 6
 Role#0:{'spawnAxie', 'getApproved'}
 Role#1:{'getAxie', 'evolveAxie', 'ownerOf'}
@@ -303,7 +280,6 @@ Role#2:{'transferFrom', 'balanceOf'}
 Role#3:{'isApprovedForAll', 'safeTransferFrom', 'setApprovalForAll', 'supportsInterface', 'approve'}
 Role#4:{'paused'}
 Role#5:{'setRetirementManager', 'setMarketplaceManager', 'setSpawningManager', 'setGeneManager', 'unpause', 'setTokenURIAffixes', 'setGeneScientist', 'setMarketplace', 'pause', 'setSpawner'}
-Time cost: 225.6432065963745
 ```
 
 Definitely, spcon can be used to detect permission bug of any real world smart contracts. 
