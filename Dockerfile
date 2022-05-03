@@ -13,7 +13,7 @@ RUN git clone https://github.com/BubaVV/Pyevolve
 RUN cd Pyevolve && python3 setup.py install && cd .. 
 
 RUN pip3 install web3 
-COPY ISSTA2022 ISSTA2022
+COPY ISSTA2022Result ISSTA2022Result
 COPY spcon spcon 
 COPY README.md README.md 
 COPY setup.py setup.py 
