@@ -29,15 +29,15 @@ NORMAL_USER = ("NORMAL_USER")
 
 @lru_cache(maxsize=None)
 def getMethodName(hex_signature):
-    try:
-        headers = {'X-API-KEY': 'BQYEtWs7QzCdCwkJKVhmTDp3RFTWAUEP'}
-        url = f'https://www.4byte.directory/api/v1/signatures/?hex_signature={hex_signature}'
-        print(url)
-        response = requests.get(url, headers=headers)
-        body = response.content
-        methodName = json.loads(body.decode("utf8"))["results"][0]["text_signature"].split("(")[0]
-        return methodName
-    except:
+    # try:
+    #     headers = {'X-API-KEY': 'BQYEtWs7QzCdCwkJKVhmTDp3RFTWAUEP'}
+    #     url = f'https://www.4byte.directory/api/v1/signatures/?hex_signature={hex_signature}'
+    #     print(url)
+    #     response = requests.get(url, headers=headers)
+    #     body = response.content
+    #     methodName = json.loads(body.decode("utf8"))["results"][0]["text_signature"].split("(")[0]
+    #     return methodName
+    # except:
         return hex_signature
 def getABIfunctions(abi_file):
     ABIfunctions = list()

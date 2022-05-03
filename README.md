@@ -4,8 +4,8 @@ This is the artifact associated with our ISSTA'22 paper.
 We aim to apply for the availability, functionality and reusability badges.
 
 This readme first shows how to quickly use SpCon to detect smart contract permission bugs. 
-Secondly, we demostrate the technical detail namely SpCon API document for potential reusability or integration in the future.
-
+Secondly, we demostrated the detail on the reproduction of experiment result in the paper.
+Finally, we provided an example to show how to reuse SpCon and the API document is available for potential reusability or integration in the future.
 
 ## Root Directory Structure 
 ```
@@ -253,4 +253,87 @@ CRITICAL:spcon.symExec:Permission Bug: find an attack sequence ['owned', 'blackl
 ```
 ## Reusability
 
+Besides the replication of evaluation in the paper, 
+SpCon can be used for the role mining or permission bugs of other realworld smart contracts.
+The below is the instruction of SpCon.
+```
+usage: spcon [-h] --eth_address ETH_ADDRESS [--simratio SIMRATIO] [--mode MODE] [--workspace WORKSPACE] [--date DATE]
+
+SPCON, Mine role structures of smart contracts for permission bug detection!
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --eth_address ETH_ADDRESS
+                        Ethereum address of contract
+  --simratio SIMRATIO   ratio of simErr for GA. (default 0.40)
+  --mode MODE           running mode either 1: Mode_RoleMining or 2: Mode_Testing (default Mode_Testing)
+  --workspace WORKSPACE
+                        workspace directory (default ./)
+  --date DATE           use transaction history up to which date YYYY-MM-DD (default latest)
+```
+Take the popular NFT application, namely Axie (`0xF5b0A3eFB8e8E4c201e2A935F110eAaF3FFEcb8d`) as an example,
+the readers can execute the following instruction to mine the likely contract roles.
+```bash
+docker run --rm liuyedocker/spcon-artifact spcon --eth_address 0xF5b0A3eFB8e8E4c201e2A935F110eAaF3FFEcb8d --generation 500 --mode 1
+```
+Then you may get the expected output at terminal.
+```
+2022-05-03
+{'limit': 20000, 'network': 'ethereum', 'address': '0xF5b0A3eFB8e8E4c201e2A935F110eAaF3FFEcb8d', 'date': '2022-05-03'}
+0xF5b0A3eFB8e8E4c201e2A935F110eAaF3FFEcb8d AxieCore
+./0xF5b0A3eFB8e8E4c201e2A935F110eAaF3FFEcb8d
+loaded abi.
+23  functions ['isApprovedForAll', 'spawnAxie', 'ownerOf', 'getAxie', 'setSpawner', 'unpause', 'transferFrom', 'setRetirementManager', 'setGeneManager', 'setTokenURIAffixes', 'safeTransferFrom', 'supportsInterface', 'paused', 'balanceOf', 'setMarketplaceManager', 'setSpawningManager', 'getApproved', 'evolveAxie', 'setGeneScientist', 'setMarketplace', 'pause', 'setApprovalForAll', 'approve']
+15785  users
+Timecost for loading history: 1.6567940711975098
+No.user: 15785; No.func: 23
++--------------------------------------------------------------------------------------------+
+| Basic roles statistics (id, len(users functions)                                           |
++--------+-------+---------------------------------------------------------------------------+
+| RoleId | Users |    Functions                                                              |
++--------+-------+---------------------------------------------------------------------------|
+|   0    |   4   |    ['spawnAxie']                                                          |
+|   1    |   58  |    ['ownerOf']                                                            |
+|   2    |   7   |    ['getAxie']                                                            |
+|   3    |  3610 |    ['transferFrom']                                                       |
+|   4    |  9422 |    ['safeTransferFrom']                                                   | 
+|   5    |   10  |    ['supportsInterface']                                                  |  
+|   6    |   1   |    ['paused']                                                             |
+|   7    |   7   |    ['balanceOf']                                                          |
+|   8    |   2   |    ['getApproved']                                                        |
+|   9    |   4   |    ['evolveAxie']                                                         |
+|   10   |  4325 |    ['setApprovalForAll']                                                  | 
+|   11   |   86  |    ['approve']                                                            |
+|   12   |   4   |    ['isApprovedForAll']                                                   |
+|   13   |   1   |    ['setRetirementManager', 'setMarketplaceManager', 'setSpawningManager',|
+'setSpawner', 'setGeneManager', 'setTokenURIAffixes', 'setGeneScientist', 'setMarketplace',  |
+'pause', 'unpause']                                                                          |
++--------------------------------------------------------------------------------------------+
+Gen. 0 (0.00%): Max/Min/Avg Fitness(Raw)             [1.78(1.91)/1.30(1.22)/1.49(1.49)]
+Gen. 100 (20.00%): Max/Min/Avg Fitness(Raw)             [1.87(2.06)/1.38(1.28)/1.56(1.56)]
+Gen. 200 (40.00%): Max/Min/Avg Fitness(Raw)             [1.91(2.16)/1.41(1.27)/1.59(1.59)]
+Gen. 300 (60.00%): Max/Min/Avg Fitness(Raw)             [1.87(2.35)/1.45(1.29)/1.56(1.56)]
+Gen. 400 (80.00%): Max/Min/Avg Fitness(Raw)             [1.90(2.35)/1.48(1.33)/1.58(1.58)]
+Gen. 500 (100.00%): Max/Min/Avg Fitness(Raw)             [1.89(2.35)/1.47(1.31)/1.58(1.58)]
+Total time elapsed: 181.232 seconds.
+best role number: 6
+Role#0:{'spawnAxie', 'getApproved'}
+Role#1:{'getAxie', 'evolveAxie', 'ownerOf'}
+Role#2:{'transferFrom', 'balanceOf'}
+Role#3:{'isApprovedForAll', 'safeTransferFrom', 'setApprovalForAll', 'supportsInterface', 'approve'}
+Role#4:{'paused'}
+Role#5:{'setRetirementManager', 'setMarketplaceManager', 'setSpawningManager', 'setGeneManager', 'unpause', 'setTokenURIAffixes', 'setGeneScientist', 'setMarketplace', 'pause', 'setSpawner'}
+Time cost: 225.6432065963745
+```
+
+Definitely, spcon can be used to detect permission bug of any real world smart contracts. 
+You can do it like this.
+```bash
+docker run --rm liuyedocker/spcon-artifact spcon --eth_address 0xF5b0A3eFB8e8E4c201e2A935F110eAaF3FFEcb8d --generation 500 --mode 2
+```
+Note that a smart contract may have strong connection with others deployed on Ethereum. For a complicated smart contract application, it is not easy to perform successful testing because the testing environment cannot fully simulate the atual blockchain environment.
+
+### Code API document
+We made a code API document using pDoc tool and it is available at [here]().
+The reader can feel free to reuse, modify, and redistribute the tool for your need. 
 

@@ -94,7 +94,7 @@ def main_collecttransaction_history(address, workdir="./", date="latest"):
         else:
             break 
     variablesObj["limit"]  =  result3["data"]["ethereum"]["smartContractCalls"][0]["count"]
-    variablesObj["limit"] =  variablesObj["limit"] if variablesObj["limit"]<10000 else 10000
+    variablesObj["limit"] =  variablesObj["limit"] if variablesObj["limit"]<20000 else 20000
     print(variablesObj)
     variables = json.dumps(variablesObj)
     query_user_all2 = """
@@ -143,4 +143,5 @@ def main_collecttransaction_history(address, workdir="./", date="latest"):
         return None 
     
 if __name__ == "__main__":
-    main_collecttransaction_history(address="0xcc13fc627effd6e35d2d2706ea3c4d7396c610ea", workdir="./")
+    CryptoKitties = "0xF5b0A3eFB8e8E4c201e2A935F110eAaF3FFEcb8d"
+    main_collecttransaction_history(address=CryptoKitties, workdir="./")

@@ -18,7 +18,7 @@ setup(
         "numpy",
         "pandas",
         "scipy",
-        "web3",
+        #"web3",
         "cloudscraper",
         "prettytable",
         "requests",
