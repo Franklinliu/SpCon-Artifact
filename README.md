@@ -46,9 +46,10 @@ There are serveral folders and files inside the repository, for replicating the 
 ## Quick Start
 
 ### Prerequisite
-We assume the users have installed Docker software suitable for their operation system. 
-If not, please refer to the official website https://docs.docker.com/get-docker/ how to install Docker.
-
++ We assume the users have installed Docker software suitable for their operation system. 
+If not, please refer to the official website https://docs.docker.com/get-docker/ how to install Docker. The tested Docker version is 20.10.7. 
++ SpCon needs to access internet to get source code and transaction history of smart contract from [Etherscan](https://etherscan.io/) and [BitQuery](https://bitquery.io/) website. We assume the reader has full access to this two website. 
+  
 The quick start can use the public docker image prepared for this artifact evalution.
 The two basic operation is to pull the docker image (from dockerhub) and then run a docker container to execute a task.
 Below shows the proper instructions for this.  
@@ -60,22 +61,10 @@ docker run --rm liuyedocker/spcon-artifact:latest spcon --eth_contract 0x2Ef27BF
 ``` 
 The above task to execute will take no more than two minutes if everything is going well. 
 We will get the expected results in the terminal.
-The terminal output will demostrate the information such as compiler versions, function name list, total users, uers-functions analysis and the mined best roles and its time cost by the GA role mining algorithm, 
-then followed by a set of security policies as well as the conclic test process to find a set of attack sequence to break the security policies.  
-The result shows permission attack sequences ``['owned']``, ``['owned', 'blacklistAccount']``  that can exploit the permission bug of the smart contract.
-
+The terminal output will demostrate the information such as compiler versions, function name list, total users, uers-functions analysis and 
+The first part of output shows the statistics of past transactions in the history such as how many functions appeared, and what the basic roles (user groups) are.   
 ```
-Installing '0.4.18'...
-Version '0.4.18' installed.
-2022-05-01
-{'limit': 10000, 'network': 'ethereum', 'address': '0x2Ef27BF41236bD859a95209e17a43Fbd26851f92', 'date': '2022-05-01'}
-0x2Ef27BF41236bD859a95209e17a43Fbd26851f92 MorphToken
-./0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
-loaded abi.
-https://www.4byte.directory/api/v1/signatures/?hex_signature=0x30783039
 14  functions ['decimals', 'name', 'balanceOf', 'totalSupply', 'mintTokens', 'transferFrom', 'owned', 'transfer', 'burn', 'symbol', 'blacklistAccount', 'allowance', 'approve', 'transferOwnership']
-2831  users
-Timecost for loading history: 0.9801702499389648
 No.user: 2831; No.func: 14
 +-----------------------------------------------------+
 |  Basic roles statistics (id, len(users), functions) |
@@ -96,6 +85,10 @@ No.user: 2831; No.func: 14
 |     11    |    1    |            ['burn']           |
 |     12    |    1    |        ['totalSupply']        |
 +-----------+---------+-------------------------------+
+```
+This part shows the role mining result by the GA role mining algorithm.
+For this case, there are six mined roles, which role can call a set of functions. 
+```
 Gen. 0 (0.00%): Max/Min/Avg Fitness(Raw)             [1.94(2.05)/1.45(1.39)/1.62(1.62)]
 Gen. 100 (100.00%): INFO:spcon.symExec:Totally 0 integrity policies
 INFO:spcon.symExec:Totally 2 integrity policies
@@ -108,31 +101,23 @@ Role#2:{'transfer', 'transferFrom'}
 Role#3:{'burn', 'owned', 'totalSupply', 'blacklistAccount'}
 Role#4:{'allowance'}
 Role#5:{'approve', 'mintTokens'}
-Time cost: 21.463589668273926
+```
+Finally with a set of likely security policies among the role structures, SpCon found a set of attack sequence to break the security policies. The result shows permission attack sequences ``['owned']``, ``['owned', 'blacklistAccount']``  that can exploit the permission bug of the smart contract.
+```
 Security Policy:
 Policy#0: approve mintTokens -> allowed via functions approve
 Policy#1: burn owned totalSupply blacklistAccount -> owner isblacklistedAccount via functions owned blacklistAccount
-2022-05-01 16:59:50,416: [1] m.e.manticore:INFO: Found a concrete globalsha3 b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xce\xff\xeeu;B\xbd\xa1\xbc\xfah/)h^/\xd6r\x90\x16\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01' -> 31685667446001209947968549300437926627890736099156269050595801945717492225074
-2022-05-01 16:59:51,879: [1] m.e.manticore:INFO: Found a concrete globalsha3 b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04' -> 62514009886607029107290561805838585334079798074568712924583230797734656856475
-2022-05-01 16:59:54,797: [1] m.e.manticore:INFO: Found a concrete globalsha3 b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05' -> 1546678032441257452667456735582814959992782782816731922691272282333561699760
 INFO:spcon.symExec:Test Sequence: ['owned']
 INFO:spcon.symExec:SymExecEVM().symExec: owned()
 INFO:spcon.symExec:attacker: 0xc0ffee753b42bda1bcfa682f29685e2fd6729016
 INFO:spcon.symExec:transaction status: success
 CRITICAL:spcon.symExec:Permission Bug: find an attack sequence ['owned']
-https://api.etherscan.io/api?module=proxy&action=eth_getStorageAt&address=0x2Ef27BF41236bD859a95209e17a43Fbd26851f92&position=0x0&tag=latest&apikey=URF6R5PGNZ7CT6TTBU7M8NH5V8WRISHIZZ
-https://api.etherscan.io/api?module=proxy&action=eth_getStorageAt&address=0x2Ef27BF41236bD859a95209e17a43Fbd26851f92&position=0x0&tag=latest&apikey=URF6R5PGNZ7CT6TTBU7M8NH5V8WRISHIZZ
-2022-05-01 17:00:02,940: [1] m.e.manticore:INFO: Found a concrete globalsha3 b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xce\xff\xeeu;B\xbd\xa1\xbc\xfah/)h^/\xd6r\x90\x16\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01' -> 31685667446001209947968549300437926627890736099156269050595801945717492225074
-2022-05-01 17:00:04,392: [1] m.e.manticore:INFO: Found a concrete globalsha3 b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04' -> 62514009886607029107290561805838585334079798074568712924583230797734656856475
-2022-05-01 17:00:07,381: [1] m.e.manticore:INFO: Found a concrete globalsha3 b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05' -> 1546678032441257452667456735582814959992782782816731922691272282333561699760
 INFO:spcon.symExec:Test Sequence: ['blacklistAccount']
 INFO:spcon.symExec:SymExecEVM().symExec: blacklistAccount(address,bool)
 INFO:spcon.symExec:attacker: 0xc0ffee753b42bda1bcfa682f29685e2fd6729016
 INFO:spcon.symExec:transaction status: false
 INFO:spcon.symExec:test sequence is not feasible
-2022-05-01 17:00:16,755: [1] m.e.manticore:INFO: Found a concrete globalsha3 b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xce\xff\xeeu;B\xbd\xa1\xbc\xfah/)h^/\xd6r\x90\x16\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01' -> 31685667446001209947968549300437926627890736099156269050595801945717492225074
-2022-05-01 17:00:18,306: [1] m.e.manticore:INFO: Found a concrete globalsha3 b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04' -> 62514009886607029107290561805838585334079798074568712924583230797734656856475
-2022-05-01 17:00:21,647: [1] m.e.manticore:INFO: Found a concrete globalsha3 b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05' -> 1546678032441257452667456735582814959992782782816731922691272282333561699760
+2022-05-01 17:00:16,755: [1] m.e.manticore:INFO: Found a concrete globalsha3 
 INFO:spcon.symExec:Test Sequence: ['owned', 'blacklistAccount']
 INFO:spcon.symExec:SymExecEVM().symExec: owned()
 INFO:spcon.symExec:attacker: 0xc0ffee753b42bda1bcfa682f29685e2fd6729016
@@ -142,7 +127,6 @@ INFO:spcon.symExec:attacker: 0xc0ffee753b42bda1bcfa682f29685e2fd6729016
 INFO:spcon.symExec:transaction status: success
 CRITICAL:spcon.symExec:Permission Bug: find an attack sequence ['owned', 'blacklistAccount']
 INFO:spcon.symExec:Testing time: 43.04372596740723 seconds
-total timecost: 70.84923839569092 seconds
 ```
 
 ## Build from scratch
@@ -178,7 +162,7 @@ Please run the below instructions to install SpCon and then run SpCon for permis
 
 We present sufficient information to evaluate the role mining and the permission bug detection.
 
-### Role Mining Evaluation.
+### RQ1. Role Mining Evaluation.
 
 We make a tool `benchmarkminer` to evaluate role mining on any benchmark smart contracts with groundtruth.
 By default, `benchmarkminer` will evaluate on the provided OpenZeppelin benchmark samrt contracts (`./ISSTA2022/RoleMiningBenchmarkandResults/OpenZeppelin1000
@@ -232,7 +216,7 @@ docker run --rm -v $HOME/localtmp:/dockertmp liuyedocker/spcon-artifact benchmar
 docker run --rm -v $HOME/localtmp:/dockertmp liuyedocker/spcon-artifact benchmarkminer --limit 50 --simratio 0.6 --output /dockertmp/result-0.6.xlsx
 ```
 
-### Permission Bug Detection
+### RQ2. Permission Bug Detection
 SpCon detected permission bugs of smart contract from two benchmarks: [CVE smart contracts](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=smart+contract) and [SmartBugsWild](https://github.com/smartbugs/smartbugs-wild).
 SpCon detected the bugs of nine contracts out of 17 access control CVE smart contracts.
 For time saving, the reader can evaluate it using the following bash script.
