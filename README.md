@@ -15,18 +15,13 @@ spcon-artifact
 │   localBuild.sh   
 │   Dockerfile
 |   CVE.list  
-|
 └───ISSTA2022
-│   │   
 │   └─── CVEAccessControlResults  
-│   │
 │   └─── RoleMiningBenchmarkandResults   
-|   │
 |   └─── SmartBugsWildResults 
-|
 |   setup.py
 └───spcon
-    │   __main__.py  
+    │   __main__.py
     │   query.py
     |   roleminger.py
     |   staticAnalyzer.py
@@ -40,7 +35,7 @@ There are serveral folders and files inside the repository, for replicating the 
 | REAME.md                      | refers to this readme.                                                            |
 | localBuild.sh                 | used for local installation. See [here](#local-build)                      |
 | Dockerfile                    | docker image make file, used for dockerization. See [here](#dockerization)   |             
-| CVE.list                      | contains the address of access control CVE smart contracts. See [here](#experiement-evaluation)                        |
+| CVE.list                      | contains the address of access control CVE smart contracts. See [here](#experiement-evaluation)  |
 | CVEAccessControlResults       | contains the 17 access control CVE smart contracts and the detection result       |
 | RoleMiningBenchmarkandResults | contains benchmark and raw experiment result.                                     |
 | SmartBugsWildResults          | contains the detection result on benchmark SmartBugs.                             |
