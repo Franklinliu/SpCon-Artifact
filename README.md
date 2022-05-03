@@ -1,6 +1,7 @@
 # SpCon: Finding Smart Contract Permission Bugs with Role Mining
 
 This is the artifact associated with our ISSTA'22 paper.
+This artifact has been achived at the  [DOI link]().
 We aim to apply for the availability, functionality and reusability badges.
 
 This readme first shows how to quickly use SpCon to detect smart contract permission bugs. 
@@ -333,7 +334,18 @@ docker run --rm liuyedocker/spcon-artifact spcon --eth_address 0xF5b0A3eFB8e8E4c
 ```
 Note that a smart contract may have strong connection with others deployed on Ethereum. For a complicated smart contract application, it is not easy to perform successful testing because the testing environment cannot fully simulate the atual blockchain environment.
 
-### Code API document
-We made a code API document using pDoc tool and it is available at [here]().
+### Code API Document
+We made a code API document of SpCon using pDoc tool and it is available at [API.md](./API.md).
 The reader can feel free to reuse, modify, and redistribute the tool for your need. 
 
+## More
+If you would like to use SpCon, please cite our ISSTA2022 paper.
+```
+@inproceedings{Liu2022FPB,
+  author = {Liu, Ye and Li, Yi and Lin, Shang-Wei and Artho, Cyrille},
+  booktitle = {Proceedings of the 31st ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA)},
+  month = jul,
+  title = {Finding Permission Bugs in Smart Contracts with Role Mining},
+  year = {2022}
+}
+```
