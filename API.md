@@ -1,23 +1,5 @@
----
-description: |
-    API documentation for modules: spcon, spcon.query, spcon.roleminer, spcon.spconbenchmarkminer, spcon.staticAnalyzer, spcon.symExec.
-
-lang: en
-
-classoption: oneside
-geometry: margin=1in
-papersize: a4
-
-linkcolor: blue
-links-as-notes: true
-...
-
-
-    
-# Module `spcon` {#id}
-
-
-
+   
+# Module `spcon` 
 
     
 ## Sub-modules
@@ -34,7 +16,7 @@ links-as-notes: true
 
 
     
-# Module `spcon.query` {#id}
+# Module `spcon.query` 
 
 
 
@@ -46,7 +28,7 @@ links-as-notes: true
 
 
     
-### Function `main_collecttransaction_history` {#id}
+### Function `main_collecttransaction_history` 
 
 
 
@@ -61,7 +43,7 @@ links-as-notes: true
 
 
     
-### Function `run_query` {#id}
+### Function `run_query` 
 
 
 
@@ -78,7 +60,7 @@ links-as-notes: true
 
 
     
-# Module `spcon.roleminer` {#id}
+# Module `spcon.roleminer` 
 
 
 
@@ -90,7 +72,7 @@ links-as-notes: true
 
 
     
-### Function `DeriveRolePermissionPolicy` {#id}
+### Function `DeriveRolePermissionPolicy` 
 
 
 
@@ -105,7 +87,7 @@ links-as-notes: true
 
 
     
-### Function `ReduceMain` {#id}
+### Function `ReduceMain` 
 
 
 
@@ -118,7 +100,7 @@ links-as-notes: true
 
 
     
-### Function `buildRoleHierarchy` {#id}
+### Function `buildRoleHierarchy` 
 
 
 
@@ -131,7 +113,7 @@ links-as-notes: true
 
 
     
-### Function `dfsReduceRecursive` {#id}
+### Function `dfsReduceRecursive` 
 
 
 
@@ -145,7 +127,7 @@ links-as-notes: true
 
 
     
-### Function `getABI_file` {#id}
+### Function `getABI_file` 
 
 
 
@@ -158,7 +140,7 @@ links-as-notes: true
 
 
     
-### Function `getABIfunction_signature_mapping` {#id}
+### Function `getABIfunction_signature_mapping` 
 
 
 
@@ -171,7 +153,7 @@ links-as-notes: true
 
 
     
-### Function `getABIfunctions` {#id}
+### Function `getABIfunctions` 
 
 
 
@@ -184,7 +166,7 @@ links-as-notes: true
 
 
     
-### Function `getMethodName` {#id}
+### Function `getMethodName` 
 
 
 
@@ -197,7 +179,7 @@ links-as-notes: true
 
 
     
-### Function `lightweightrolemining` {#id}
+### Function `lightweightrolemining` 
 
 
 
@@ -215,7 +197,7 @@ links-as-notes: true
 
 
     
-### Function `runRoleMiningForSingleContract` {#id}
+### Function `runRoleMiningForSingleContract` 
 
 
 
@@ -241,7 +223,7 @@ links-as-notes: true
 
 
     
-### Class `GA_RM` {#id}
+### Class `GA_RM` 
 
 
 
@@ -271,7 +253,7 @@ links-as-notes: true
 
 
     
-##### Method `calcsimilarity` {#id}
+##### Method `calcsimilarity` 
 
 
 
@@ -286,7 +268,7 @@ links-as-notes: true
 
 
     
-##### Method `createBasicLatticeRoles` {#id}
+##### Method `createBasicLatticeRoles` 
 
 
 
@@ -300,7 +282,7 @@ links-as-notes: true
 
 
     
-##### Method `getAFV` {#id}
+##### Method `getAFV` 
 
 
 
@@ -314,7 +296,7 @@ links-as-notes: true
 
 
     
-##### Method `getTestingBasicRoles` {#id}
+##### Method `getTestingBasicRoles` 
 
 
 
@@ -327,7 +309,7 @@ links-as-notes: true
 
 
     
-##### Method `getTrainingBasicRoles` {#id}
+##### Method `getTrainingBasicRoles` 
 
 
 
@@ -340,7 +322,7 @@ links-as-notes: true
 
 
     
-##### Method `getUserFunctionCount` {#id}
+##### Method `getUserFunctionCount` 
 
 
 
@@ -355,7 +337,7 @@ links-as-notes: true
 
 
     
-##### Method `miningWithGAWith1DRealChromosome` {#id}
+##### Method `miningWithGAWith1DRealChromosome` 
 
 
 
@@ -368,7 +350,7 @@ links-as-notes: true
 
 
     
-##### Method `process` {#id}
+##### Method `process` 
 
 
 
@@ -381,7 +363,7 @@ links-as-notes: true
 
 
     
-##### Method `translateLattice2Role` {#id}
+##### Method `translateLattice2Role` 
 
 
 
@@ -397,7 +379,7 @@ links-as-notes: true
 
 
     
-# Module `spcon.spconbenchmarkminer` {#id}
+# Module `spcon.spconbenchmarkminer` 
 
 
 
@@ -409,7 +391,7 @@ links-as-notes: true
 
 
     
-### Function `ReduceMain` {#id}
+### Function `ReduceMain` 
 
 
 
@@ -422,7 +404,7 @@ links-as-notes: true
 
 
     
-### Function `appendExcelRow` {#id}
+### Function `appendExcelRow` 
 
 
 
@@ -452,7 +434,7 @@ links-as-notes: true
 
 
     
-### Function `buildRoleHierarchy` {#id}
+### Function `buildRoleHierarchy` 
 
 
 
@@ -465,7 +447,7 @@ links-as-notes: true
 
 
     
-### Function `compareRoleSets` {#id}
+### Function `compareRoleSets` 
 
 
 
@@ -480,7 +462,7 @@ links-as-notes: true
 
 
     
-### Function `dfsReduceRecursive` {#id}
+### Function `dfsReduceRecursive` 
 
 
 
@@ -494,7 +476,7 @@ links-as-notes: true
 
 
     
-### Function `getABI_file` {#id}
+### Function `getABI_file` 
 
 
 
@@ -507,7 +489,7 @@ links-as-notes: true
 
 
     
-### Function `getABIfunction_signature_mapping` {#id}
+### Function `getABIfunction_signature_mapping` 
 
 
 
@@ -520,7 +502,7 @@ links-as-notes: true
 
 
     
-### Function `getABIfunctions` {#id}
+### Function `getABIfunctions` 
 
 
 
@@ -533,7 +515,7 @@ links-as-notes: true
 
 
     
-### Function `getMethodName` {#id}
+### Function `getMethodName` 
 
 
 
@@ -546,7 +528,7 @@ links-as-notes: true
 
 
     
-### Function `getSetOfSimilarityMetrics` {#id}
+### Function `getSetOfSimilarityMetrics` 
 
 
 
@@ -560,7 +542,7 @@ links-as-notes: true
 
 
     
-### Function `initExcelHead` {#id}
+### Function `initExcelHead` 
 
 
 
@@ -573,7 +555,7 @@ links-as-notes: true
 
 
     
-### Function `jaccard_func` {#id}
+### Function `jaccard_func` 
 
 
 
@@ -587,7 +569,7 @@ links-as-notes: true
 
 
     
-### Function `label_func` {#id}
+### Function `label_func` 
 
 
 
@@ -602,7 +584,7 @@ links-as-notes: true
 
 
     
-### Function `lightweightrolemining` {#id}
+### Function `lightweightrolemining` 
 
 
 
@@ -618,7 +600,7 @@ links-as-notes: true
 
 
     
-### Function `main` {#id}
+### Function `main` 
 
 
 
@@ -629,7 +611,7 @@ links-as-notes: true
 
 
     
-### Function `roleset_roleset_jaccard_func_old_donot_purse_one2one` {#id}
+### Function `roleset_roleset_jaccard_func_old_donot_purse_one2one` 
 
 
 
@@ -649,7 +631,7 @@ links-as-notes: true
 
 
     
-### Class `GA_RM` {#id}
+### Class `GA_RM` 
 
 
 
@@ -678,7 +660,7 @@ links-as-notes: true
 
 
     
-##### Method `calcsimilarity` {#id}
+##### Method `calcsimilarity` 
 
 
 
@@ -693,7 +675,7 @@ links-as-notes: true
 
 
     
-##### Method `createBasicLatticeRoles` {#id}
+##### Method `createBasicLatticeRoles` 
 
 
 
@@ -707,7 +689,7 @@ links-as-notes: true
 
 
     
-##### Method `getAFV` {#id}
+##### Method `getAFV` 
 
 
 
@@ -721,7 +703,7 @@ links-as-notes: true
 
 
     
-##### Method `getTestingBasicRoles` {#id}
+##### Method `getTestingBasicRoles` 
 
 
 
@@ -734,7 +716,7 @@ links-as-notes: true
 
 
     
-##### Method `getTrainingBasicRoles` {#id}
+##### Method `getTrainingBasicRoles` 
 
 
 
@@ -747,7 +729,7 @@ links-as-notes: true
 
 
     
-##### Method `getUserFunctionCount` {#id}
+##### Method `getUserFunctionCount` 
 
 
 
@@ -762,7 +744,7 @@ links-as-notes: true
 
 
     
-##### Method `miningWithGAWith1DRealChromosome` {#id}
+##### Method `miningWithGAWith1DRealChromosome` 
 
 
 
@@ -775,7 +757,7 @@ links-as-notes: true
 
 
     
-##### Method `process` {#id}
+##### Method `process` 
 
 
 
@@ -788,7 +770,7 @@ links-as-notes: true
 
 
     
-##### Method `translateLattice2Role` {#id}
+##### Method `translateLattice2Role` 
 
 
 
@@ -804,7 +786,7 @@ links-as-notes: true
 
 
     
-# Module `spcon.staticAnalyzer` {#id}
+# Module `spcon.staticAnalyzer` 
 
 
 
@@ -816,7 +798,7 @@ links-as-notes: true
 
 
     
-### Function `getRWofContract` {#id}
+### Function `getRWofContract` 
 
 
 
@@ -829,7 +811,7 @@ links-as-notes: true
 
 
     
-### Function `test` {#id}
+### Function `test` 
 
 
 
@@ -845,7 +827,7 @@ links-as-notes: true
 
 
     
-### Class `Analyzer` {#id}
+### Class `Analyzer` 
 
 
 
@@ -866,7 +848,7 @@ links-as-notes: true
 
 
     
-##### Method `analyze` {#id}
+##### Method `analyze` 
 
 
 
@@ -880,7 +862,7 @@ links-as-notes: true
 
 
     
-##### Method `controldependency` {#id}
+##### Method `controldependency` 
 
 
 
@@ -896,7 +878,7 @@ links-as-notes: true
 
 
     
-# Module `spcon.symExec` {#id}
+# Module `spcon.symExec` 
 
 
 
@@ -908,7 +890,7 @@ links-as-notes: true
 
 
     
-### Function `BlockchainInfo` {#id}
+### Function `BlockchainInfo` 
 
 
 
@@ -922,7 +904,7 @@ links-as-notes: true
 
 
     
-### Function `SymExecEVM` {#id}
+### Function `SymExecEVM` 
 
 
 
@@ -936,7 +918,7 @@ links-as-notes: true
 
 
     
-### Function `ethGetCode` {#id}
+### Function `ethGetCode` 
 
 
 
@@ -950,7 +932,7 @@ links-as-notes: true
 
 
     
-### Function `ethGetStorageAt` {#id}
+### Function `ethGetStorageAt` 
 
 
 
@@ -965,7 +947,7 @@ links-as-notes: true
 
 
     
-### Function `eth_GetBalanceOf` {#id}
+### Function `eth_GetBalanceOf` 
 
 
 
@@ -976,7 +958,7 @@ links-as-notes: true
 
 
     
-### Function `eth_GetCode` {#id}
+### Function `eth_GetCode` 
 
 
 
@@ -987,7 +969,7 @@ links-as-notes: true
 
 
     
-### Function `getAPIData` {#id}
+### Function `getAPIData` 
 
 
 
@@ -1000,7 +982,7 @@ links-as-notes: true
 
 
     
-### Function `getPage` {#id}
+### Function `getPage` 
 
 
 
@@ -1013,7 +995,7 @@ links-as-notes: true
 
 
     
-### Function `getPage0` {#id}
+### Function `getPage0` 
 
 
 
@@ -1026,7 +1008,7 @@ links-as-notes: true
 
 
     
-### Function `getPage1` {#id}
+### Function `getPage1` 
 
 
 
@@ -1039,7 +1021,7 @@ links-as-notes: true
 
 
     
-### Function `getPage2` {#id}
+### Function `getPage2` 
 
 
 
@@ -1052,7 +1034,7 @@ links-as-notes: true
 
 
     
-### Function `setContractAccount` {#id}
+### Function `setContractAccount` 
 
 
 
@@ -1066,7 +1048,7 @@ links-as-notes: true
 
 
     
-### Function `setDisable` {#id}
+### Function `setDisable` 
 
 
 
@@ -1077,7 +1059,7 @@ links-as-notes: true
 
 
     
-### Function `setEnable` {#id}
+### Function `setEnable` 
 
 
 
@@ -1088,7 +1070,7 @@ links-as-notes: true
 
 
     
-### Function `singleton` {#id}
+### Function `singleton` 
 
 
 
@@ -1101,7 +1083,7 @@ links-as-notes: true
 
 
     
-### Function `wraper` {#id}
+### Function `wraper` 
 
 
 
@@ -1121,7 +1103,7 @@ links-as-notes: true
 
 
     
-### Class `CodeMonitor` {#id}
+### Class `CodeMonitor` 
 
 
 
@@ -1147,7 +1129,7 @@ This just aborts explorations that are too deep
 
 
     
-##### Method `did_evm_read_code_callback` {#id}
+##### Method `did_evm_read_code_callback` 
 
 
 
@@ -1165,7 +1147,7 @@ This just aborts explorations that are too deep
 
 
     
-##### Method `will_evm_read_code_callback` {#id}
+##### Method `will_evm_read_code_callback` 
 
 
 
@@ -1181,7 +1163,7 @@ This just aborts explorations that are too deep
 
 
     
-### Class `ForkMonitor` {#id}
+### Class `ForkMonitor` 
 
 
 
@@ -1207,7 +1189,7 @@ This just aborts explorations that are too deep
 
 
     
-##### Method `did_fork_state_callback` {#id}
+##### Method `did_fork_state_callback` 
 
 
 
@@ -1225,7 +1207,7 @@ This just aborts explorations that are too deep
 
 
     
-### Class `StorageRWMonitor` {#id}
+### Class `StorageRWMonitor` 
 
 
 
@@ -1251,7 +1233,7 @@ This just aborts explorations that are too deep
 
 
     
-##### Method `did_evm_read_storage_callback` {#id}
+##### Method `did_evm_read_storage_callback` 
 
 
 
@@ -1268,7 +1250,7 @@ This just aborts explorations that are too deep
 
 
     
-##### Method `will_evm_read_storage_callback` {#id}
+##### Method `will_evm_read_storage_callback` 
 
 
 
@@ -1283,11 +1265,8 @@ This just aborts explorations that are too deep
 
 
 
-
     
-##### Method `will_evm_write_storage_callback` {#id}
-
-
+##### Method `will_evm_write_storage_callback` 
 
 
 >     def will_evm_write_storage_callback(
