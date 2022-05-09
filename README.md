@@ -32,13 +32,14 @@ There are serveral folders and files inside the repository, for replicating the 
 
 | File/Dir                      |  Description                                                                      |
 |-------------------------------|-----------------------------------------------------------------------------------|
+| [Spcon.pdf](./Spcon.pdf)                     | the paper draft "Finding Permission Bugs in Smart Contracts with Role Mining"
 | REAME.md                      | refers to this readme.                                                            |
-| localBuild.sh                 | used for local installation. See [here](#local-build)                      |
-| Dockerfile                    | docker image make file, used for dockerization. See [here](#dockerization)   |             
-| CVE.list                      | contains the address of access control CVE smart contracts. See [here](#experiment-evaluation)  |
-| CVEAccessControlResults       | contains the 17 access control CVE smart contracts and the detection result       |
-| RoleMiningBenchmarkandResults | contains benchmark and raw experiment result.                                     |
-| SmartBugsWildResults          | contains the detection result on benchmark SmartBugs.                             |
+| [localBuild.sh](./localBuild.sh)                 | used for local installation. See [here](#local-build)                      |
+| [Dockerfile](./Dockerfile)                    | docker image make file, used for dockerization. See [here](#dockerization)   |             
+| [CVE.list](./CVE.list)                      | contains the address of access control CVE smart contracts. See [here](#experiment-evaluation)  |
+| [CVEAccessControlResults](./ISSTA2022Result/CVEAccessControlResults/)       | contains the 17 access control CVE smart contracts and the detection result       |
+| [RoleMiningBenchmarkandResults](./ISSTA2022Result/RoleMiningBenchmarkandResults/) | contains benchmark and raw experiment result.                                     |
+| [SmartBugsWildResults](./ISSTA2022Result/SmartBugsWildResults/)          | contains the detection result on benchmark SmartBugs.                             |
 | spcon                         | the tool used for smart contract role mining and permission bug detection.        |
 |                               |                                                                                   |
 
