@@ -1,14 +1,31 @@
 # SpCon: Finding Smart Contract Permission Bugs with Role Mining
 
-This is the artifact associated with our ISSTA'22 paper.
-This artifact has been achived at the  [DOI link]().
-We aim to apply for the availability, functionality and reusability badges.
+* This readme page can also be viewed at: <https://github.com/Franklinliu/SpCon-Artifact/edit/master/README.md>.
+* This artifact has been achived at the following permanent location: [DOI link]().
+* We wish to apply for the availability, functionality and reusability badges.
 
-This readme first shows how to quickly use SpCon to detect smart contract permission bugs. 
-Secondly, we demostrated the detail on the reproduction of experiment result in the paper.
-Finally, we provided an example to show how to reuse SpCon and the API document is available for potential reusability or integration in the future.
+### Contents
 
-## Root Directory Structure 
+This readme first demonstrates how to quickly use SpCon to detect smart contract permission bugs with an example.
+Then, we provide details on the result reproduction procedures for the two experiments from the paper.
+Finally, we give an example to show how to reuse SpCon and its API documentation for potential reusability and integration in the future.
+
+* [Get Started](#get-started)
+    * [Prerequisites](#prerequisites) 
+    * [Quick Start](#quick-start)
+* [Technical Details](#technical-details)
+    * [Build From Scratch](#build-from-scratch)
+    * [Dockerization](#dockerization)
+    * [Local Build](#local-build)
+* [Reproduction of Experiment Results](#reproduction-of-experiment-results)
+    * [RQ1. Role Mining Evaluation](#rq1-role-mining-evaluation)
+    * [RQ2. Permission Bug Detection](#rq2-permission-bug-detection)
+* [Reusability](#reusability)
+    * [API Documentation](#api-documentation)
+    * [More](#more)
+
+
+### Directory Structures
 ```
 spcon-artifact
 │   README.md
@@ -30,7 +47,7 @@ spcon-artifact
 ```
 There are serveral folders and files inside the repository, for replicating the experiments listed in the paper and supporting the standalone resuable components.
 
-| File/Dir                      |  Description                                                                      |
+| Files/Dirs                      |  Descriptions                                                                      |
 |-------------------------------|-----------------------------------------------------------------------------------|
 | [Spcon.pdf](./Spcon.pdf)                     | the paper draft "Finding Permission Bugs in Smart Contracts with Role Mining"
 | REAME.md                      | refers to this readme.                                                            |
@@ -44,18 +61,24 @@ There are serveral folders and files inside the repository, for replicating the 
 |                               |                                                                                   |
 
 
-# Get Started
 
-## Prerequisite
-We assume the users have installed Docker software suitable for their operation system. 
-If not, please refer to the official website https://docs.docker.com/get-docker/ how to install Docker. The tested Docker version is 20.10.7. 
+## Get Started
 
-SpCon needs to access internet to get source code and transaction history of smart contract from [Etherscan](https://etherscan.io/) and [BitQuery](https://bitquery.io/) website. We assume the reader has full access to this two website. 
+### Prerequisites
 
-## Quick Start
-The quick start can use the public docker image prepared for this artifact evalution.
-The two basic operation is to pull the docker image (from dockerhub) and then run a docker container to execute a task.
-Below shows the proper instructions for this. The below task to execute will take no more than two minutes if everything is going well. 
+* We assume Docker is installed.
+If not, please refer to the official website https://docs.docker.com/get-docker/ on how to install Docker. 
+The artifact was tested on Docker version 20.10.7. 
+* SpCon needs to access the Internet to retrieve source code and transaction histories of smart contracts from the
+[Etherscan](https://etherscan.io/) and [BitQuery](https://bitquery.io/) website. 
+We assume full access to these two website.
+
+### Quick Start
+
+To get started quickly, one may use the public docker image prepared for this artifact evalution.
+The two basic operation is to pull the docker image (from dockerhub) and then run a docker container to execute an example task.
+Below shows the commands for this. 
+The below task will take less than two minutes if everything is going on well.
 ```bash 
 # install docker image 
 docker pull liuyedocker/spcon-artifact:latest 
@@ -132,14 +155,14 @@ INFO:spcon.symExec:Testing time: 43.04372596740723 seconds
 ```
 
 
-# Detailed Description
+## Technical Details
 
 In this section, the technical details will be discussed on how to build *SpCon* from scratch and how to reproduce the experiment result described in the paper.
 
-## Build From Scratch
+### Build From Scratch
 We provide two ways to build spcon from scratch.
 
-### Dockerization 
+#### 1. Dockerization 
 The first one is to compile local docker image of SpCon using the provided Dockerfile.
 The local spcon-artifact will be made about 10minutes at the first time.
 Due to the layer mechanism of Docker, it would spend about two minutes if you later recompile the docker image for any update to the spcon implementation.
@@ -149,10 +172,12 @@ docker build . -t spcon-artifact
 # please verify if the docker can work as well by running the docker image for permission bug detection.
 docker run --rm spcon-artifact:latest spcon --eth_address 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
 ```
-### Local Build
-Prerequisite
-+ Python3.8
-+ Ubuntu xxx (This works well on Ubuntu 20.04)
+
+#### 2. Local Build
+
+Prerequisites:
+* Python3.8
+* Ubuntu (tested on Ubuntu 20.04)
   
 Local build is supported for this artifact project.
 We provide a script `localBuild.sh` to help you install all the dependencies and install SpCon in your system `$PATH` directory.
@@ -165,11 +190,11 @@ Please run the below instructions to install SpCon and then run SpCon for permis
    spcon --eth_address 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
    ```
 
-## Experiment Reproduction
+## Reproduction of Experiment Results 
 
 We present sufficient information to evaluate the role mining and the permission bug detection.
 
-### RQ1. Role Mining Evaluation.
+### RQ1. Role Mining Evaluation
 
 We make a tool `benchmarkminer` to evaluate role mining on any external benchmark smart contracts with groundtruth.
 By default, `benchmarkminer` will evaluate on the [provided OpenZeppelin benchmark smart contracts](./ISSTA2022/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods) with the manually verified [ground truth](`./ISSTA2022/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods-label.xlsx`).
@@ -288,11 +313,11 @@ docker run --rm liuyedocker/spcon-artifact spcon --eth_address 0xF5b0A3eFB8e8E4c
 ```
 Note that a smart contract may have strong connection with others deployed on Ethereum. For a complicated smart contract application, it is not easy to perform successful testing because the testing environment cannot fully simulate the atual blockchain environment.
 
-### Code API Document
+### API Documentation
 We made a code API document of SpCon using pDoc tool and it is available at [API.md](./API.md).
 The reader can feel free to reuse, modify, and redistribute the tool for your need. 
 
-## More
+### More
 If you would like to use SpCon, please cite our ISSTA2022 paper.
 ```
 @inproceedings{Liu2022FPB,
