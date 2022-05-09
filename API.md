@@ -72,21 +72,7 @@
 
 
     
-### Function `DeriveRolePermissionPolicy` 
-
-
-
-
->     def DeriveRolePermissionPolicy(
->         reads,
->         reads2,
->         writes
->     )
-
-
-
-
-    
+   
 ### Function `ReduceMain` 
 
 
@@ -100,32 +86,7 @@
 
 
     
-### Function `buildRoleHierarchy` 
-
-
-
-
->     def buildRoleHierarchy(
->         roles
->     )
-
-
-
-
     
-### Function `dfsReduceRecursive` 
-
-
-
-
->     def dfsReduceRecursive(
->         roles,
->         i
->     )
-
-
-
-
     
 ### Function `getABI_file` 
 
@@ -197,28 +158,7 @@
 
 
     
-### Function `runRoleMiningForSingleContract` 
-
-
-
-
->     def runRoleMiningForSingleContract(
->         address,
->         contractName,
->         contractAbi,
->         reads,
->         reads2,
->         writes,
->         generation,
->         simratio,
->         workdir
->     )
-
-
-
-
-
-    
+   
 ## Classes
 
 
@@ -378,422 +318,9 @@
 
 
 
-    
-# Module `spcon.spconbenchmarkminer` 
-
-
-
-
-
-
-    
-## Functions
-
-
-    
-### Function `ReduceMain` 
-
-
-
-
->     def ReduceMain(
->         roles
->     )
-
-
-
-
-    
-### Function `appendExcelRow` 
-
-
-
-
->     def appendExcelRow(
->         ws,
->         n,
->         simratio,
->         address,
->         timecost,
->         roleNumber,
->         mined_roles,
->         labledroles,
->         groundtruth_roles,
->         number_ratio,
->         role_sim10_1,
->         role_sim10_2,
->         role_sim05_1,
->         role_sim05_2,
->         role_sim025_1,
->         role_sim025_2,
->         role_sim00_1,
->         role_sim00_2
->     )
-
-
-
-
-    
-### Function `buildRoleHierarchy` 
-
-
-
-
->     def buildRoleHierarchy(
->         roles
->     )
-
-
-
-
-    
-### Function `compareRoleSets` 
-
-
-
-
->     def compareRoleSets(
->         mined_roles,
->         deployed_roles,
->         t=1.0
->     )
-
-
-
-
-    
-### Function `dfsReduceRecursive` 
-
-
-
-
->     def dfsReduceRecursive(
->         roles,
->         i
->     )
-
-
-
-
-    
-### Function `getABI_file` 
-
-
-
-
->     def getABI_file(
->         directory
->     )
-
-
-
-
-    
-### Function `getABIfunction_signature_mapping` 
-
-
-
-
->     def getABIfunction_signature_mapping(
->         abi_file
->     )
-
-
-
-
-    
-### Function `getABIfunctions` 
-
-
-
-
->     def getABIfunctions(
->         abi_file
->     )
-
-
-
-
-    
-### Function `getMethodName` 
-
-
-
-
->     def getMethodName(
->         hex_signature
->     )
-
-
-
-
-    
-### Function `getSetOfSimilarityMetrics` 
-
-
-
-
->     def getSetOfSimilarityMetrics(
->         mined_roles,
->         deployed_roles
->     )
-
-
-
-
-    
-### Function `initExcelHead` 
-
-
-
-
->     def initExcelHead(
->         ws_result
->     )
-
-
-
-
-    
-### Function `jaccard_func` 
-
-
-
-
->     def jaccard_func(
->         set1,
->         set2
->     )
-
-
-
-
-    
-### Function `label_func` 
-
-
-
-
->     def label_func(
->         role_permission_functions,
->         other_permission_functions,
->         ABIfunctions
->     )
-
-
-
-
-    
-### Function `lightweightrolemining` 
-
-
-
-
->     def lightweightrolemining(
->         address,
->         gene_encoding,
->         simratio,
->         workdir
->     )
-
-
-
-
-    
-### Function `main` 
-
-
-
-
->     def main()
-
-
-
-
-    
-### Function `roleset_roleset_jaccard_func_old_donot_purse_one2one` 
-
-
-
-
->     def roleset_roleset_jaccard_func_old_donot_purse_one2one(
->         roleset1,
->         roleset2,
->         t=1
->     )
-
-
-
-
-
-    
-## Classes
-
-
-    
-### Class `GA_RM` 
-
-
-
-
->     class GA_RM(
->         permissionMatrix,
->         freqMatrix,
->         simratio,
->         userLabels,
->         userMap,
->         gene_encoding,
->         address
->     )
-
-
-
-
-
-
-
-
-
-
-    
-#### Methods
-
-
-    
-##### Method `calcsimilarity` 
-
-
-
-
->     def calcsimilarity(
->         self,
->         roleA,
->         roleB
->     )
-
-
-
-
-    
-##### Method `createBasicLatticeRoles` 
-
-
-
-
->     def createBasicLatticeRoles(
->         self,
->         users
->     )
-
-
-
-
-    
-##### Method `getAFV` 
-
-
-
-
->     def getAFV(
->         self,
->         role
->     )
-
-
-
-
-    
-##### Method `getTestingBasicRoles` 
-
-
-
-
->     def getTestingBasicRoles(
->         self
->     )
-
-
-
-
-    
-##### Method `getTrainingBasicRoles` 
-
-
-
-
->     def getTrainingBasicRoles(
->         self
->     )
-
-
-
-
-    
-##### Method `getUserFunctionCount` 
-
-
-
-
->     def getUserFunctionCount(
->         self,
->         user,
->         method
->     )
-
-
-
-
-    
-##### Method `miningWithGAWith1DRealChromosome` 
-
-
-
-
->     def miningWithGAWith1DRealChromosome(
->         self
->     )
-
-
-
-
-    
-##### Method `process` 
-
-
-
-
->     def process(
->         self
->     )
-
-
-
-
-    
-##### Method `translateLattice2Role` 
-
-
-
-
->     def translateLattice2Role(
->         self,
->         lattice
->     )
-
-
-
-
-
-
-    
+        
 # Module `spcon.staticAnalyzer` 
 
-
-
-
-
-
-    
 ## Functions
 
 
@@ -811,15 +338,6 @@
 
 
     
-### Function `test` 
-
-
-
-
->     def test()
-
-
-
 
 
     
@@ -968,71 +486,7 @@
 
 
 
-    
-### Function `getAPIData` 
-
-
-
-
->     def getAPIData(
->         url
->     )
-
-
-
-
-    
-### Function `getPage` 
-
-
-
-
->     def getPage(
->         url
->     )
-
-
-
-
-    
-### Function `getPage0` 
-
-
-
-
->     def getPage0(
->         url
->     )
-
-
-
-
-    
-### Function `getPage1` 
-
-
-
-
->     def getPage1(
->         url
->     )
-
-
-
-
-    
-### Function `getPage2` 
-
-
-
-
->     def getPage2(
->         url
->     )
-
-
-
-
+ 
     
 ### Function `setContractAccount` 
 
@@ -1068,37 +522,7 @@
 
 
 
-
-    
-### Function `singleton` 
-
-
-
-
->     def singleton(
->         class_
->     )
-
-
-
-
-    
-### Function `wraper` 
-
-
-
-
->     def wraper(
->         state,
->         storage_address,
->         offset
->     )
-
-
-
-
-
-    
+     
 ## Classes
 
 
@@ -1246,9 +670,6 @@ This just aborts explorations that are too deep
 >         *args
 >     )
 
-
-
-
     
 ##### Method `will_evm_read_storage_callback` 
 
@@ -1264,7 +685,6 @@ This just aborts explorations that are too deep
 >     )
 
 
-
     
 ##### Method `will_evm_write_storage_callback` 
 
@@ -1276,4 +696,42 @@ This just aborts explorations that are too deep
 >         offset,
 >         value,
 >         *args
+>     )
+
+
+    
+### Class `SymExecEVM` 
+
+#### Methods
+
+#### Method `symCreateContractAccount`
+
+
+>     def symCreateContractAccount(
+>         self,
+>         contract,
+>         EthereumAddress
+>     )
+
+#### Method `symExec`
+
+>     def symExec(
+>         self,
+>         unauthorizedusers,
+>         func,
+>         func_mappings
+>     )
+
+#### Method `fuzzing`
+>     @staticmethod
+>     def fuzzing(
+>         contract,
+>         EthereumAddress,
+>         separation_policies,
+>         integrity_policies,
+>         all_accessed_functions,
+>         typesListofFuncs,
+>         reads,
+>         reads2,
+>         writes
 >     )

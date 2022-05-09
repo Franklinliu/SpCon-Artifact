@@ -81,7 +81,6 @@ def getABIfunction_signature_mapping(abi):
             return getMethodName(bytes4_sig)
     return func 
     
-    
 
 def lightweightrolemining(address, abi, gene_encoding, generation, simratio, workdir):
     starttime = time.time()
@@ -499,11 +498,6 @@ class GA_RM:
         ga.setSortType(Consts.sortType["scaled"])
         ga.selector.set(Selectors.GTournamentSelector)
         ga.internalPop.scaleMethod.set(Scaling.LinearScaling, weight=0.5)
-        # ga.internalPop.scaleMethod.add(Scaling.BoltzmannScaling, weight=0.1)
-        # ga.internalPop.scaleMethod.add(Scaling.ExponentialScaling, weight=0.1)
-        # ga.internalPop.scaleMethod.add(Scaling.PowerLawScaling, weight=0.1)
-        # ga.internalPop.scaleMethod.add(Scaling.SaturatedScaling, weight=0.1)
-        # ga.internalPop.scaleMethod.add(Scaling.SigmaTruncScaling, weight=0.1)
 
         ga.setMutationRate(0.10)
         ga.setCrossoverRate(0.99)
