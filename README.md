@@ -1,6 +1,6 @@
 # SpCon: Finding Smart Contract Permission Bugs with Role Mining
 
-* This page can be viewed at: <https://github.com/Franklinliu/SpCon-Artifact>.
+* This page can be best viewed at: <https://github.com/Franklinliu/SpCon-Artifact>.
 * This artifact has been achived at the following permanent location: [DOI link]().
 * We wish to apply for the availability, functionality and reusability badges.
 
@@ -44,22 +44,21 @@ spcon-artifact
     |   symExec.py
     └── spconbenchmarkminer.py  
 ```
-There are serveral folders and files inside the repository, for replicating the experiments listed in the paper and supporting the standalone resuable components.
 
 | Files/Dirs                      |  Descriptions                                                                      |
 |-------------------------------|-----------------------------------------------------------------------------------|
-| [Spcon.pdf](./Spcon.pdf)                     | the paper draft "Finding Permission Bugs in Smart Contracts with Role Mining"
-| REAME.md                      | refers to this readme.                                                            |
-| [localBuild.sh](./localBuild.sh)                 | used for local installation. See [here](#local-build)                      |
-| [Dockerfile](./Dockerfile)                    | docker image make file, used for dockerization. See [here](#dockerization)   |             
-| [CVE.list](./CVE.list)                      | contains the address of access control CVE smart contracts. See [here](#experiment-evaluation)  |
-| [CVEAccessControlResults](./ISSTA2022Result/CVEAccessControlResults/)       | contains the 17 access control CVE smart contracts and the detection result       |
-| [RoleMiningBenchmarkandResults](./ISSTA2022Result/RoleMiningBenchmarkandResults/) | contains benchmark and raw experiment result.                                     |
-| [SmartBugsWildResults](./ISSTA2022Result/SmartBugsWildResults/)          | contains the detection result on benchmark SmartBugs.                             |
-| [spcon](./spcon/)                         | the tool used for smart contract role mining and permission bug detection.        |
+| [Spcon.pdf](./Spcon.pdf)                     | Paper PDF.
+| REAME.md                      | This readme file.                                                            |
+| [localBuild.sh](./localBuild.sh)                 | Script used for local installation. See [Local Build](#local-build).                     |
+| [Dockerfile](./Dockerfile)                    | Docker image make file, used for dockerization. See [Dockerization](#dockerization).   |             
+| [CVE.list](./CVE.list)                      | The address of access-control CVE smart contracts.  |
+| [CVEAccessControlResults](./ISSTA2022Result/CVEAccessControlResults/)       | 17 access-control CVE smart contracts and the detection result.      |
+| [RoleMiningBenchmarkandResults](./ISSTA2022Result/RoleMiningBenchmarkandResults/) | Benchmark and raw experiment results.                                     |
+| [SmartBugsWildResults](./ISSTA2022Result/SmartBugsWildResults/)          | Detection results on the SmartBugs benchmark.                             |
+| [spcon](./spcon/)                         | Tool used for smart contract role mining and permission bug detection.        |
 |                               |                                                                                   |
 
-
+---
 
 ## Get Started
 
@@ -153,11 +152,14 @@ CRITICAL:spcon.symExec:Permission Bug: find an attack sequence ['owned', 'blackl
 INFO:spcon.symExec:Testing time: 43.04372596740723 seconds
 ```
 
-### Build From Scratch
+
+---
+
+## Build From Scratch
 
 In this section, we discuss technical details on how to build *SpCon* from scratch. We provide two ways to build SpCon.
 
-#### Dockerization 
+### Dockerization 
 The first one is to compile local docker image of SpCon using the provided Dockerfile.
 The local spcon-artifact will be made about 10minutes at the first time.
 Due to the layer mechanism of Docker, it would spend about two minutes if you later recompile the docker image for any update to the spcon implementation.
@@ -168,7 +170,7 @@ docker build . -t spcon-artifact
 docker run --rm spcon-artifact:latest spcon --eth_address 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
 ```
 
-#### Local Build
+### Local Build
 
 Prerequisites:
 * Python3.8
@@ -184,6 +186,9 @@ Please run the below instructions to install SpCon and then run SpCon for permis
    # please verify if the following instruction can work as well for finding permissiong bugs of smart contract.
    spcon --eth_address 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
    ```
+
+---
+
 
 ## Reproduction of Experiment Results 
 
@@ -264,6 +269,9 @@ CRITICAL:spcon.symExec:Permission Bug: find an attack sequence ['owned', 'blackl
 ...
 "
 ```
+
+---
+
 
 ## Reusability
 
