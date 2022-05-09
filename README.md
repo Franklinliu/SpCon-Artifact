@@ -40,7 +40,7 @@ There are serveral folders and files inside the repository, for replicating the 
 | [CVEAccessControlResults](./ISSTA2022Result/CVEAccessControlResults/)       | contains the 17 access control CVE smart contracts and the detection result       |
 | [RoleMiningBenchmarkandResults](./ISSTA2022Result/RoleMiningBenchmarkandResults/) | contains benchmark and raw experiment result.                                     |
 | [SmartBugsWildResults](./ISSTA2022Result/SmartBugsWildResults/)          | contains the detection result on benchmark SmartBugs.                             |
-| spcon                         | the tool used for smart contract role mining and permission bug detection.        |
+| [spcon](./spcon/)                         | the tool used for smart contract role mining and permission bug detection.        |
 |                               |                                                                                   |
 
 
