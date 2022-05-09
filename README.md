@@ -60,7 +60,7 @@ Below shows the proper instructions for this. The below task to execute will tak
 # install docker image 
 docker pull liuyedocker/spcon-artifact:latest 
 # run spcon to detect the permisson bug of MorphToken(0x2Ef27BF41236bD859a95209e17a43Fbd26851f92) which is a CVE smart contract. 
-docker run --rm liuyedocker/spcon-artifact:latest spcon --eth_contract 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
+docker run --rm liuyedocker/spcon-artifact:latest spcon --eth_address 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
 ``` 
 We will get the expected results in the terminal.
 The terminal output will demostrate the information such as compiler versions, function name list, total users, uers-functions analysis and 
@@ -147,7 +147,7 @@ Due to the layer mechanism of Docker, it would spend about two minutes if you la
 # execute the below instructions and
 docker build . -t spcon-artifact
 # please verify if the docker can work as well by running the docker image for permission bug detection.
-docker run --rm spcon-artifact:latest spcon --eth_contract 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
+docker run --rm spcon-artifact:latest spcon --eth_address 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
 ```
 ### Local Build
 Prerequisite
@@ -162,7 +162,7 @@ Please run the below instructions to install SpCon and then run SpCon for permis
    bash ./localbuild.sh
    # this would depend on your opertation environment and may not spent more than 10 minutes
    # please verify if the following instruction can work as well for finding permissiong bugs of smart contract.
-   spcon --eth_contract 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
+   spcon --eth_address 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
    ```
 
 ## Experiment Reproduction

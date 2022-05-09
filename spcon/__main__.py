@@ -19,7 +19,7 @@ def recoverLikelyRoleSecurityPolicy( address, contractName, contractAbi, generat
       
         return True, observed_methods, func_mappings, separation_policies, integrity_policies
     except:
-        traceback.print_exc()
+        # traceback.print_exc()
         return False, None,  None,  None, None
        
 

@@ -2,6 +2,7 @@
 
 from pathlib import PosixPath
 import posixpath
+from urllib.error import URLError
 from slither.core.declarations.solidity_variables import SolidityFunction
 from slither.slither import Slither  
 from pprint import pprint
@@ -34,8 +35,17 @@ class Analyzer:
         funs_mutable_public = dict()
         reads, writes =  dict(), dict()
         reads2 = dict()
-        cc = CryticCompile(target=f"{network}:{address}", export_dir = export_dir, etherscan_export_dir = etherscan_export_dir, compile_remove_metadata=False, \
+        try:
+            cc = CryticCompile(target=f"{network}:{address}", export_dir = export_dir, etherscan_export_dir = etherscan_export_dir, compile_remove_metadata=False, \
                 etherscan_api_key = etherscan_api_key)
+        except ConnectionResetError as e:
+            print("Network Error: Cannot access to etherscan website. Please try to check if you can access https://etherscan.io/")
+            exit(0)
+        except URLError as e:
+            print("Network Error: Cannot access to etherscan website. Please try to check if you can access https://etherscan.io/")
+            exit(0)
+        except:
+            pass 
         slither = Slither(cc)
         working_dir: PosixPath = cc.working_dir 
         contract_dir = os.path.join(working_dir.absolute(),export_dir, etherscan_export_dir)
