@@ -1,6 +1,6 @@
 # SpCon: Finding Smart Contract Permission Bugs with Role Mining
 
-* This readme page can also be viewed at: <https://github.com/Franklinliu/SpCon-Artifact/edit/master/README.md>.
+* This page can be viewed at: <https://github.com/Franklinliu/SpCon-Artifact>.
 * This artifact has been achived at the following permanent location: [DOI link]().
 * We wish to apply for the availability, functionality and reusability badges.
 
