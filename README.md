@@ -277,6 +277,7 @@ CRITICAL:spcon.symExec:Permission Bug: find an attack sequence ['owned', 'blackl
 ...
 "
 ```
+The expected result of CVE permission bugs detection can be found at [CVE-Result](./ISSTA2022Result/CVEAccessControlResults/ISSTA2022-CVE-AccessControl-ExperiementResults.xlsx).
 
 ---
 
