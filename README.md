@@ -2,7 +2,7 @@
 
 * This page can be best viewed at: <https://github.com/Franklinliu/SpCon-Artifact>.
 * This artifact has been achived at the following permanent location: [DOI link]().
-* We wish to apply for the availability, functionality and reusability badges.
+* We wish to apply for the availability, functionality, and reusability badges.
 
 ### Contents
 
@@ -85,7 +85,7 @@ docker run --rm liuyedocker/spcon-artifact:latest spcon --eth_address 0x2Ef27BF4
 ``` 
 The expected results are as follows.
 The terminal outputs show information such as compiler versions, function name list, total users, and user-function analysis. 
-The first part of the output shows the statistics of past transactions in the history such as how many functions appeared, and what the basic roles (user groups) are.
+The first part of the output shows the statistics of past transactions in the history, such as how many functions appeared, and what the basic roles (user groups) are.
 ```
 14  functions ['decimals', 'name', 'balanceOf', 'totalSupply', 'mintTokens', 'transferFrom', 'owned', 'transfer', 'burn', 'symbol', 'blacklistAccount', 'allowance', 'approve', 'transferOwnership']
 No.user: 2831; No.func: 14
@@ -109,8 +109,10 @@ No.user: 2831; No.func: 14
 |     12    |    1    |        ['totalSupply']        |
 +-----------+---------+-------------------------------+
 ```
-This part shows the role mining result by the GA role mining algorithm.
-For this case, there are six mined roles, which role can call a set of functions. 
+
+This part shows the role mining results by the GA role mining algorithm.
+For this case, there are six mined roles: it shows which role may call which functions. 
+
 ```
 Gen. 0 (0.00%): Max/Min/Avg Fitness(Raw)             [1.94(2.05)/1.45(1.39)/1.62(1.62)]
 Gen. 100 (100.00%): INFO:spcon.symExec:Totally 0 integrity policies
@@ -125,7 +127,9 @@ Role#3:{'burn', 'owned', 'totalSupply', 'blacklistAccount'}
 Role#4:{'allowance'}
 Role#5:{'approve', 'mintTokens'}
 ```
-Finally with a set of likely security policies among the role structures, SpCon found a set of attack sequence to break the security policies. The result shows permission attack sequences ``['owned']``, ``['owned', 'blacklistAccount']``  that can exploit the permission bug of the smart contract.
+
+Finally, with a set of likely security policies among the role structures, SpCon found a set of attack sequences to break the security policies. The result shows permission attack sequences ``['owned']`` and ``['owned', 'blacklistAccount']``, which may be used to exploit the permission bug of the smart contract.
+
 ```
 Security Policy:
 Policy#0: approve mintTokens -> allowed via functions approve
@@ -157,7 +161,7 @@ INFO:spcon.symExec:Testing time: 43.04372596740723 seconds
 
 ## Build From Scratch
 
-In this section, we discuss technical details on how to build *SpCon* from scratch. We provide two ways to build SpCon.
+In this section, we discuss technical details on how to build *SpCon* from scratch. We provide two alternatives.
 
 ### Dockerization 
 The first one is to compile local docker image of SpCon using the provided Dockerfile.
@@ -313,7 +317,7 @@ Role#4:{'paused'}
 Role#5:{'setRetirementManager', 'setMarketplaceManager', 'setSpawningManager', 'setGeneManager', 'unpause', 'setTokenURIAffixes', 'setGeneScientist', 'setMarketplace', 'pause', 'setSpawner'}
 ```
 
-SpCon can be used to detect permission bug on any smart contract deployed on-chain. 
+SpCon can be used to detect permission bugs on any smart contract deployed on-chain. 
 The command to use is the following:
 
 ```bash
