@@ -197,7 +197,7 @@ Here are instructions on how to reproduce the results on the role mining and the
 ### RQ1. Role Mining Evaluation
 
 We build a tool `benchmarkminer` to evaluate role mining on any external benchmark smart contracts with groundtruth.
-By default, `benchmarkminer` will evaluate on the [provided OpenZeppelin benchmark smart contracts](./ISSTA2022/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods) with the manually verified [ground truth](`./ISSTA2022/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods-label.xlsx`).
+By default, `benchmarkminer` will evaluate on the [provided OpenZeppelin benchmark smart contracts](./ISSTA2022Result/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods) with the manually verified [ground truth](`./ISSTA2022Result/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods-label.xlsx`).
 ```
 usage: benchmarkminer [-h] [--benchmark BENCHMARK] [--groundtruth GROUNDTRUTH]
                       [--output OUTPUT] [--simratio SIMRATIO] [--limit LIMIT]
