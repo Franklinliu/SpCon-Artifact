@@ -73,19 +73,19 @@ We assume full access to these two website.
 
 ### Quick Start
 
-To get started quickly, one may use the public docker image prepared for this artifact evalution.
-The two basic operation is to pull the docker image (from dockerhub) and then run a docker container to execute an example task.
-Below shows the commands for this. 
-The below task will take less than two minutes if everything is going on well.
+To get started quickly, one may simply use the public docker image prepared for this artifact evalution.
+Just pull the docker image from dockerhub (`liuyedocker/spcon-artifact`) and start a docker container to execute an example task.
+Run the following commands and it takes less than two minutes to finish.
+
 ```bash 
 # install docker image 
 docker pull liuyedocker/spcon-artifact:latest 
 # run spcon to detect the permisson bug of MorphToken(0x2Ef27BF41236bD859a95209e17a43Fbd26851f92) which is a CVE smart contract. 
 docker run --rm liuyedocker/spcon-artifact:latest spcon --eth_address 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
 ``` 
-We will get the expected results in the terminal.
-The terminal output will demostrate the information such as compiler versions, function name list, total users, uers-functions analysis and 
-The first part of output shows the statistics of past transactions in the history such as how many functions appeared, and what the basic roles (user groups) are.   
+The expected results are as follows.
+The terminal outputs show information such as compiler versions, function name list, total users, and user-function analysis. 
+The first part of the output shows the statistics of past transactions in the history such as how many functions appeared, and what the basic roles (user groups) are.
 ```
 14  functions ['decimals', 'name', 'balanceOf', 'totalSupply', 'mintTokens', 'transferFrom', 'owned', 'transfer', 'burn', 'symbol', 'blacklistAccount', 'allowance', 'approve', 'transferOwnership']
 No.user: 2831; No.func: 14
