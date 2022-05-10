@@ -45,18 +45,17 @@ spcon-artifact
     └── spconbenchmarkminer.py  
 ```
 
-| Files/Dirs                      |  Descriptions                                                                      |
-|-------------------------------|-----------------------------------------------------------------------------------|
-| [Spcon.pdf](./Spcon.pdf)                     | Paper PDF.
-| REAME.md                      | This readme file.                                                            |
-| [localBuild.sh](./localBuild.sh)                 | Script used for local installation. See [Local Build](#local-build).                     |
-| [Dockerfile](./Dockerfile)                    | Docker image make file, used for dockerization. See [Dockerization](#dockerization).   |             
-| [CVE.list](./CVE.list)                      | The address of access-control CVE smart contracts.  |
-| [CVEAccessControlResults](./ISSTA2022Result/CVEAccessControlResults/)       | 17 access-control CVE smart contracts and the detection result.      |
-| [RoleMiningBenchmarkandResults](./ISSTA2022Result/RoleMiningBenchmarkandResults/) | Benchmark and raw experiment results.                                     |
-| [SmartBugsWildResults](./ISSTA2022Result/SmartBugsWildResults/)          | Detection results on the SmartBugs benchmark.                             |
-| [spcon](./spcon/)                         | Tool used for smart contract role mining and permission bug detection.        |
-|                               |                                                                                   |
+| Files/Dirs                                                                        |  Descriptions                                                   |
+|-----------------------------------------------------------------------------------|-----------------------------------------------------------------|
+| [Spcon.pdf](./Spcon.pdf)                                                          | Paper PDF.                                                      |
+| REAME.md                                                                          | This readme file.                                               |
+| [localBuild.sh](./localBuild.sh)                                                  | Script used for local installation. See [Local Build](#local-build).                     |
+| [Dockerfile](./Dockerfile)                                                        | Docker image make file, used for dockerization. See [Dockerization](#dockerization).   |             
+| [CVE.list](./CVE.list)                                                            | The address of access-control CVE smart contracts.              |
+| [CVEAccessControlResults](./ISSTA2022Result/CVEAccessControlResults/)             | 17 access-control CVE smart contracts and the detection result. |
+| [RoleMiningBenchmarkandResults](./ISSTA2022Result/RoleMiningBenchmarkandResults/) | Benchmark and raw experiment results.                           |
+| [SmartBugsWildResults](./ISSTA2022Result/SmartBugsWildResults/)                   | Detection results on the SmartBugs benchmark.                   |
+| [spcon](./spcon/)                                                                 | SpCon tool implementation.                                      |
 
 ---
 
