@@ -237,7 +237,7 @@ docker run --rm -v $HOME/localtmp:/dockertmp liuyedocker/spcon-artifact benchmar
 ```
 Once done, you can check the exported result file at the path `$HOME/localtmp/result.xlsx`.
 Note that due to the randomness feature of GA, the result may vary a little at different runs.
-The referred expected content of `$HOME/localtmp/result.xlsx` may be close to ![here](images/Screenshot%202022-05-03%20104202.png).
+The referred expected content of `$HOME/localtmp/result.xlsx` may be close to: ![here](images/Screenshot%202022-05-03%20104202.png)
 The first column (Alpha, Beta) represents $\alpha$ and $\beta$ respectively introduced in the paper.
 The fourth to eight columns show the number of mined roles, the structure of mined roles, and the label of the mined roles, the ground truth (deployed roles) as well as the ratio (`len(MinedRoles)/len(DeployedRoles)`).
 The rest columns show the result accuracy at different threshold that is discussed in the paper.
