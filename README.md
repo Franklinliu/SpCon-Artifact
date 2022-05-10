@@ -1,7 +1,10 @@
 # SpCon: Finding Smart Contract Permission Bugs with Role Mining
 
 * This page can be best viewed at: <https://github.com/Franklinliu/SpCon-Artifact>.
-* This artifact has been archived at the following permanent location: [DOI link]().
+* This artifact has been archived at the following permanent location: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6534218.svg)](https://doi.org/10.5281/zenodo.6534218)
+
+
+
 * We wish to apply for the availability, functionality, and reusability badges.
 
 ### Contents
