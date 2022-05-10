@@ -6,9 +6,9 @@
 
 ### Contents
 
-This readme first demonstrates how to quickly use SpCon to detect smart contract permission bugs with an example.
+This readme first demonstrates how to quickly use *SpCon* to detect smart contract permission bugs with an example.
 Then, we provide details on the result reproduction procedures for the two experiments from the paper.
-Finally, we give an example to show how to reuse SpCon and its API documentation for potential reusability and integration in the future.
+Finally, we give an example to show how to reuse *SpCon* and its API documentation for potential reusability and integration in the future.
 
 * [Get Started](#get-started)
     * [Prerequisites](#prerequisites) 
@@ -51,7 +51,7 @@ spcon-artifact
 | REAME.md                                                                          | This readme file.                                               |
 | [localBuild.sh](./localBuild.sh)                                                  | Script used for local installation. See [Local Build](#local-build).                     |
 | [Dockerfile](./Dockerfile)                                                        | Docker image make file, used for dockerization. See [Dockerization](#dockerization).   |             
-| [CVE.list](./CVE.list)                                                            | The address of access-control CVE smart contracts.              |
+| [CVE.list](./CVE.list)                                                            | The addresses of access-control CVE smart contracts.              |
 | [CVEAccessControlResults](./ISSTA2022Result/CVEAccessControlResults/)             | 17 access-control CVE smart contracts and the detection result. |
 | [RoleMiningBenchmarkandResults](./ISSTA2022Result/RoleMiningBenchmarkandResults/) | Benchmark and raw experiment results.                           |
 | [SmartBugsWildResults](./ISSTA2022Result/SmartBugsWildResults/)                   | Detection results on the SmartBugs benchmark.                   |
@@ -65,8 +65,8 @@ spcon-artifact
 
 * We assume Docker is installed.
 If not, please refer to the official website https://docs.docker.com/get-docker/ on how to install Docker. 
-The artifact was tested on Docker version 20.10.7. 
-* SpCon needs to access the Internet to retrieve source code and transaction histories of smart contracts from the
+The artifact was tested on Docker version 20.10.7 and 20.10.14. 
+* *SpCon* needs to access the Internet to retrieve source code and transaction histories of smart contracts from the
 [Etherscan](https://etherscan.io/) and [BitQuery](https://bitquery.io/) website. 
 We assume full access to these two website.
 
@@ -110,7 +110,7 @@ No.user: 2831; No.func: 14
 ```
 
 This part shows the role mining results by the GA role mining algorithm.
-For this case, there are six mined roles: it shows which role may call which functions. 
+For this case, there are six mined roles: it shows which role may call which set of functions. 
 
 ```
 Gen. 0 (0.00%): Max/Min/Avg Fitness(Raw)             [1.94(2.05)/1.45(1.39)/1.62(1.62)]
@@ -127,7 +127,7 @@ Role#4:{'allowance'}
 Role#5:{'approve', 'mintTokens'}
 ```
 
-Finally, with a set of likely security policies among the role structures, SpCon found a set of attack sequences to break the security policies. The result shows permission attack sequences ``['owned']`` and ``['owned', 'blacklistAccount']``, which may be used to exploit the permission bug of the smart contract.
+Finally, with a set of likely security policies among the role structures, *SpCon* found a set of attack sequences to break the security policies. The result shows permission attack sequences ``['owned']`` and ``['owned', 'blacklistAccount']``, which may be used to exploit the permission bug of the smart contract.
 
 ```
 Security Policy:
@@ -163,9 +163,9 @@ INFO:spcon.symExec:Testing time: 43.04372596740723 seconds
 In this section, we discuss technical details on how to build *SpCon* from scratch. We provide two alternatives.
 
 ### Dockerization 
-The first one is to compile local docker image of SpCon using the provided Dockerfile.
-The local spcon-artifact will be made about 10minutes at the first time.
-Due to the layer mechanism of Docker, it would spend about two minutes if you later recompile the docker image for any update to the spcon implementation.
+The first one is to compile local docker image of *SpCon* using the provided Dockerfile.
+The local docker image will be made about 10minutes at the first time.
+Due to the layer caching mechanism of Docker, it would spend about two minutes if you later recompile the docker image for any update to the *SpCon* tool implementation.
 ```bash
 # execute the below instructions and
 docker build . -t spcon-artifact
@@ -180,12 +180,12 @@ Prerequisites:
 * Ubuntu (tested on Ubuntu 20.04)
   
 Local build is supported for this artifact project.
-We provide a script `localBuild.sh` to help you install all the dependencies and install SpCon in your system `$PATH` directory.
-Please run the below instructions to install SpCon and then run SpCon for permission bug detection. 
+We provide a one-click script  `localBuild.sh` to help you install all the dependencies and install *SpCon* in your system `$PATH` directory.
+Please follow the below instructions to install *SpCon* and then run it for permission bugs detection. 
    ```bash 
    # install all the dependencies of the artifact
-   bash ./localbuild.sh
    # this would depend on your opertation environment and may not spent more than 10 minutes
+   bash ./localbuild.sh
    # please verify if the following instruction can work as well for finding permissiong bugs of smart contract.
    spcon --eth_address 0x2Ef27BF41236bD859a95209e17a43Fbd26851f92
    ```
@@ -195,12 +195,12 @@ Please run the below instructions to install SpCon and then run SpCon for permis
 
 ## Reproduction of Experiment Results 
 
-Here are instructions on how to reproduce the results on the role mining and the permission bug detection experiments.
+Here are instructions on how to reproduce the experiment results on the role mining and the permission bugs detection.
 
 ### RQ1. Role Mining Evaluation
 
 We build a tool `benchmarkminer` to evaluate role mining on any external benchmark smart contracts with ground truth.
-By default, `benchmarkminer` will evaluate on the [provided OpenZeppelin benchmark smart contracts](./ISSTA2022Result/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods) with the manually verified [ground truth](`./ISSTA2022Result/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods-label.xlsx`).
+By default, `benchmarkminer` will evaluate *SpCon* on the [OpenZeppelin benchmark smart contracts](./ISSTA2022Result/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods) with the manually verified [ground truth](`./ISSTA2022Result/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods-label.xlsx`) that are mentioned in the paper.
 ```
 usage: benchmarkminer [-h] [--benchmark BENCHMARK] [--groundtruth GROUNDTRUTH]
                       [--output OUTPUT] [--simratio SIMRATIO] [--limit LIMIT]
@@ -223,21 +223,23 @@ optional arguments:
   --limit LIMIT         how many benchmark contracts are inspected for the
                         role mining. (default 50)
 ```
-The following instruction would evaluate the result of role mining on two OpenZeppelin benchmark smart contracts. 
+The following instruction would evaluate on the role mining of two smart contracts from the OpenZeppelin benchmark . 
 This would take about three minutes.
 
 ```bash 
 # from pulled docker image
 docker run --rm liuyedocker/spcon-artifact benchmarkminer --limit 2
+```
+Moreover, the reader can export result to the local machine using docker volume mount instruction `-v $HOME/localtmp:/dockertmp` as the following.
+```bash
 # either export result
 docker run --rm -v $HOME/localtmp:/dockertmp liuyedocker/spcon-artifact benchmarkminer --limit 2 --output /dockertmp/result.xlsx
 ```
-Moreover, the reader can export result to the local machine using docker volume mount instruction `-v $HOME/localtmp:/dockertmp` as the following.
 Once done, you can check the exported result file at the path `$HOME/localtmp/result.xlsx`.
-Note that Due to the randomness feature of GA, the result may vary a little at different time.
+Note that due to the randomness feature of GA, the result may vary a little at different runs.
 The referred expected content of `$HOME/localtmp/result.xlsx` may be close to ![here](images/Screenshot%202022-05-03%20104202.png).
-The first column (Alpha, Beta) represents `simratio, 1-simratio` respectively.
-The fourth to eight columns shows the number of mined roles, the structure of mined roles, and the label of the mined roles, the ground truth (deployed roles) as well as the ratio (`len(MinedRoles)/len(DeployedRoles)`).
+The first column (Alpha, Beta) represents $\alpha$ and $\beta$ respectively introduced in the paper.
+The fourth to eight columns show the number of mined roles, the structure of mined roles, and the label of the mined roles, the ground truth (deployed roles) as well as the ratio (`len(MinedRoles)/len(DeployedRoles)`).
 The rest columns show the result accuracy at different threshold that is discussed in the paper.
 
 
@@ -250,13 +252,13 @@ docker run --rm -v $HOME/localtmp:/dockertmp liuyedocker/spcon-artifact benchmar
 docker run --rm -v $HOME/localtmp:/dockertmp liuyedocker/spcon-artifact benchmarkminer --limit 50 --simratio 0.6 --output /dockertmp/result-0.6.xlsx
 ```
 All results will be available at `$HOME/localtmp/result-0.4.xlsx`, `$HOME/localtmp/result-0.5.xlsx`,`$HOME/localtmp/result-0.6.xlsx`.
-The reader can verify these result with reference to the [Experiment Result](./ISSTA2022Result/RoleMiningBenchmarkandResults/result-OpenZeppelin-SPCON.threshold_1_0.5_0.25_0.1642577052.234292.xlsx).
+The reader can verify these results with reference to the [Experiment Result](./ISSTA2022Result/RoleMiningBenchmarkandResults/result-OpenZeppelin-SPCON.threshold_1_0.5_0.25_0.1642577052.234292.xlsx).
 
 
 ### RQ2. Permission Bug Detection
-SpCon detected permission bugs of smart contract from two benchmarks: [CVE smart contracts](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=smart+contract) and [SmartBugsWild](https://github.com/smartbugs/smartbugs-wild).
+*SpCon* detected permission bugs of smart contract from two benchmarks: [CVE smart contracts](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=smart+contract) and [SmartBugsWild](https://github.com/smartbugs/smartbugs-wild).
 
-SpCon detected the bugs of nine contracts out of 17 access control CVE smart contracts.
+*SpCon* detected the bugs of nine contracts out of 17 access control CVE smart contracts.
 For time saving, the reader can evaluate it using the following bash script.
 This will take about one hour to perform this task.
 ```bash 
@@ -278,8 +280,8 @@ CRITICAL:spcon.symExec:Permission Bug: find an attack sequence ['owned', 'blackl
 
 ## Reusability
 
-Besides the replication of evaluation in the paper, SpCon can be used for role mining or permission bug detection on other real-world smart contracts.
-Below is the usage instructions of SpCon.
+Besides the replication of evaluation in the paper, *SpCon* can be used for role mining or permission bug detection on other real-world smart contracts.
+Below is the usage instructions of *SpCon*.
 
 ```
 usage: spcon [-h] --eth_address ETH_ADDRESS [--simratio SIMRATIO] [--mode MODE] [--workspace WORKSPACE] [--date DATE]
@@ -316,20 +318,20 @@ Role#4:{'paused'}
 Role#5:{'setRetirementManager', 'setMarketplaceManager', 'setSpawningManager', 'setGeneManager', 'unpause', 'setTokenURIAffixes', 'setGeneScientist', 'setMarketplace', 'pause', 'setSpawner'}
 ```
 
-SpCon can be used to detect permission bugs on any smart contract deployed on-chain. 
+*SpCon* can be used to detect permission bugs on any smart contract deployed on-chain. 
 The command to use is the following:
 
 ```bash
 docker run --rm liuyedocker/spcon-artifact spcon --eth_address 0xF5b0A3eFB8e8E4c201e2A935F110eAaF3FFEcb8d --generation 500 --mode 2
 ```
-Note that a smart contract may have strong connection with others deployed on Ethereum. For a complicated smart contract application, it is not easy to perform successful testing because the testing environment cannot fully simulate the actual blockchain environment.
+Note that a smart contract may have strong connection with others deployed on Ethereum. For a complicated smart contract application, it is not easy to perform successful testing because the actual blockchain environment cannot be fully simulated by the testing environment.
 
 ### API Documentation
-We made an API documentation for SpCon available at [API.md](./API.md).
-The reader may feel free to reuse, modify, and redistribute the tool following the license agreement. 
+We made an API documentation for *SpCon* available at [API.md](./API.md).
+The reader may feel free to reuse, modify, and redistribute the tool following the [GPLv3 License](./LICENSE). 
 
 ### More
-If you would like to use SpCon in your research, please cite our ISSTA2022 paper.
+If you would like to use *SpCon* in your research, please cite our ISSTA2022 paper.
 
 ```
 @inproceedings{Liu2022FPB,
