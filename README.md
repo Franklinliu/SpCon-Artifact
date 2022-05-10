@@ -1,7 +1,7 @@
 # SpCon: Finding Smart Contract Permission Bugs with Role Mining
 
 * This page can be best viewed at: <https://github.com/Franklinliu/SpCon-Artifact>.
-* This artifact has been achived at the following permanent location: [DOI link]().
+* This artifact has been archived at the following permanent location: [DOI link]().
 * We wish to apply for the availability, functionality, and reusability badges.
 
 ### Contents
@@ -72,7 +72,7 @@ We assume full access to these two website.
 
 ### Quick Start
 
-To get started quickly, one may simply use the public docker image prepared for this artifact evalution.
+To get started quickly, one may simply use the public docker image prepared for this artifact evaluation.
 Just pull the docker image from dockerhub (`liuyedocker/spcon-artifact`) and start a docker container to execute an example task.
 Run the following commands and it takes less than two minutes to finish.
 
@@ -199,7 +199,7 @@ Here are instructions on how to reproduce the results on the role mining and the
 
 ### RQ1. Role Mining Evaluation
 
-We build a tool `benchmarkminer` to evaluate role mining on any external benchmark smart contracts with groundtruth.
+We build a tool `benchmarkminer` to evaluate role mining on any external benchmark smart contracts with ground truth.
 By default, `benchmarkminer` will evaluate on the [provided OpenZeppelin benchmark smart contracts](./ISSTA2022Result/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods) with the manually verified [ground truth](`./ISSTA2022Result/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods-label.xlsx`).
 ```
 usage: benchmarkminer [-h] [--benchmark BENCHMARK] [--groundtruth GROUNDTRUTH]
@@ -232,13 +232,13 @@ docker run --rm liuyedocker/spcon-artifact benchmarkminer --limit 2
 # either export result
 docker run --rm -v $HOME/localtmp:/dockertmp liuyedocker/spcon-artifact benchmarkminer --limit 2 --output /dockertmp/result.xlsx
 ```
-Moreover, the reader can export result to the local machine using docker volumn mount instruction `-v $HOME/localtmp:/dockertmp` as the following.
+Moreover, the reader can export result to the local machine using docker volume mount instruction `-v $HOME/localtmp:/dockertmp` as the following.
 Once done, you can check the exported result file at the path `$HOME/localtmp/result.xlsx`.
 Note that Due to the randomness feature of GA, the result may vary a little at different time.
-The refered expected content of `$HOME/localtmp/result.xlsx` may be close to ![here](images/Screenshot%202022-05-03%20104202.png).
+The referred expected content of `$HOME/localtmp/result.xlsx` may be close to ![here](images/Screenshot%202022-05-03%20104202.png).
 The first column (Alpha, Beta) represents `simratio, 1-simratio` respectively.
 The fourth to eight columns shows the number of mined roles, the structure of mined roles, and the label of the mined roles, the ground truth (deployed roles) as well as the ratio (`len(MinedRoles)/len(DeployedRoles)`).
-The rest columns show the result accuracy at different threshold that is dicussed in the paper.
+The rest columns show the result accuracy at different threshold that is discussed in the paper.
 
 
 For complete experiment reproduction, the reader can generate all raw results appearing in the papers using the following instructions.
@@ -249,7 +249,7 @@ docker run --rm -v $HOME/localtmp:/dockertmp liuyedocker/spcon-artifact benchmar
 docker run --rm -v $HOME/localtmp:/dockertmp liuyedocker/spcon-artifact benchmarkminer --limit 50 --simratio 0.5 --output /dockertmp/result-0.5.xlsx
 docker run --rm -v $HOME/localtmp:/dockertmp liuyedocker/spcon-artifact benchmarkminer --limit 50 --simratio 0.6 --output /dockertmp/result-0.6.xlsx
 ```
-All results will be availabel at `$HOME/localtmp/result-0.4.xlsx`, `$HOME/localtmp/result-0.5.xlsx`,`$HOME/localtmp/result-0.6.xlsx`.
+All results will be available at `$HOME/localtmp/result-0.4.xlsx`, `$HOME/localtmp/result-0.5.xlsx`,`$HOME/localtmp/result-0.6.xlsx`.
 The reader can verify these result with reference to the [Experiment Result](./ISSTA2022Result/RoleMiningBenchmarkandResults/result-OpenZeppelin-SPCON.threshold_1_0.5_0.25_0.1642577052.234292.xlsx).
 
 
@@ -322,7 +322,7 @@ The command to use is the following:
 ```bash
 docker run --rm liuyedocker/spcon-artifact spcon --eth_address 0xF5b0A3eFB8e8E4c201e2A935F110eAaF3FFEcb8d --generation 500 --mode 2
 ```
-Note that a smart contract may have strong connection with others deployed on Ethereum. For a complicated smart contract application, it is not easy to perform successful testing because the testing environment cannot fully simulate the atual blockchain environment.
+Note that a smart contract may have strong connection with others deployed on Ethereum. For a complicated smart contract application, it is not easy to perform successful testing because the testing environment cannot fully simulate the actual blockchain environment.
 
 ### API Documentation
 We made an API documentation for SpCon available at [API.md](./API.md).
