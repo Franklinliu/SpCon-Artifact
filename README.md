@@ -200,7 +200,7 @@ Here are instructions on how to reproduce the experiment results on the role min
 ### RQ1. Role Mining Evaluation
 
 We build a tool `benchmarkminer` to evaluate role mining on any external benchmark smart contracts with ground truth.
-By default, `benchmarkminer` will evaluate *SpCon* on the [OpenZeppelin benchmark smart contracts](./ISSTA2022Result/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods) with the manually verified [ground truth](`./ISSTA2022Result/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods-label.xlsx`) that are mentioned in the paper.
+By default, `benchmarkminer` will evaluate *SpCon* on the [OpenZeppelin benchmark smart contracts](./ISSTA2022Result/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods) with the manually verified [ground truth](./ISSTA2022Result/RoleMiningBenchmarkandResults/OpenZeppelin1000calls10methods-label.xlsx) that are mentioned in the paper.
 ```
 usage: benchmarkminer [-h] [--benchmark BENCHMARK] [--groundtruth GROUNDTRUTH]
                       [--output OUTPUT] [--simratio SIMRATIO] [--limit LIMIT]
