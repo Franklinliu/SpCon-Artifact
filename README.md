@@ -329,7 +329,7 @@ Role#5:{'setRetirementManager', 'setMarketplaceManager', 'setSpawningManager', '
 The command to use is the following:
 
 ```bash
-docker run --rm liuyedocker/spcon-artifact spcon --eth_address 0xF5b0A3eFB8e8E4c201e2A935F110eAaF3FFEcb8d --generation 500 --mode 2
+docker run --rm liuyedocker/spcon-artifact spcon --eth_address 0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB --generation 500 --mode 2
 ```
 Note that a smart contract may have strong connection with others deployed on Ethereum. For a complicated smart contract application, it is not easy to perform successful testing because the actual blockchain environment cannot be fully simulated by the testing environment.
 
