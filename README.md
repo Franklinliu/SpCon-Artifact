@@ -12,18 +12,21 @@ This readme first demonstrates how to quickly use *SpCon* to detect smart contra
 Then, we provide details on the result reproduction procedures for the two experiments from the paper.
 Finally, we give an example to show how to reuse *SpCon* and its API documentation for potential reusability and integration in the future.
 
-* [Get Started](#get-started)
-    * [Prerequisites](#prerequisites) 
-    * [Quick Start](#quick-start)
-* [Build From Scratch](#build-from-scratch)
-    * [Dockerization](#dockerization)
-    * [Local Build](#local-build)
-* [Reproduction of Experiment Results](#reproduction-of-experiment-results)
-    * [RQ1. Role Mining Evaluation](#rq1-role-mining-evaluation)
-    * [RQ2. Permission Bug Detection](#rq2-permission-bug-detection)
-* [Reusability](#reusability)
-    * [API Documentation](#api-documentation)
-    * [More](#more)
+- [SpCon: Finding Smart Contract Permission Bugs with Role Mining](#spcon-finding-smart-contract-permission-bugs-with-role-mining)
+    - [Contents](#contents)
+    - [Directory Structures](#directory-structures)
+  - [Get Started](#get-started)
+    - [Prerequisites](#prerequisites)
+    - [Quick Start](#quick-start)
+  - [Build From Scratch](#build-from-scratch)
+    - [Dockerization](#dockerization)
+    - [Local Build](#local-build)
+  - [Reproduction of Experiment Results](#reproduction-of-experiment-results)
+    - [RQ1. Role Mining Evaluation](#rq1-role-mining-evaluation)
+    - [RQ2. Permission Bug Detection](#rq2-permission-bug-detection)
+  - [Reusability](#reusability)
+    - [API Documentation](#api-documentation)
+    - [More](#more)
 
 
 ### Directory Structures
@@ -264,6 +267,7 @@ The reader can verify these results with reference to the [Experiment Result](./
 For time saving, the reader can evaluate it using the following bash script.
 This will take about one hour to perform this task.
 ```bash 
+wget https://raw.githubusercontent.com/Franklinliu/SpCon-Artifact/master/CVE.list
 # this would take about an hour to execute all cases. 
 while read -r line; do docker run --rm liuyedocker/spcon-artifact spcon --eth_address $line >> execution.log 2>&1; done < CVE.list  
 ```

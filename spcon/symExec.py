@@ -14,49 +14,16 @@ import os
 import json
 
 import logging
+import spcon.config.globalconfig as config 
+
 from timeout_decorator import timeout_decorator
 ################ Script #######################
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-def getPage(url):
-    # return getPage0(url)
-    # return getPage1(url)
-    return getPage2(url)
 
-def getPage0(url):
-    print(url)
-    resp = requests.get(url)
-    body = resp.content
-    # print(body.decode("utf-8"))
-    return body
-
-
-def getPage1(url):
-    print(url)
-    resp = requests.get(url, proxies={"http": "socks5://127.0.0.1:20170", "https": "socks5://127.0.0.1:20170",
-    "socks5": "socks5://127.0.0.1:20170"})
-    body = resp.content
-    # print(body.decode("utf-8"))
-    return body
-
-def getPage2(url):
-    print(url)
-    scraper = cloudscraper.create_scraper() # returns a CloudScraper instance
-    # # Or: scraper = cloudscraper.CloudScraper()  # CloudScraper inherits from requests.Session
-    # scraper.proxies = {"http": "socks5://127.0.0.1:20170", "https": "socks5://127.0.0.1:20170",
-    # "socks5": "socks5://127.0.0.1:20170"}
-    body = scraper.get(url).content
-    return body 
-
-
-def getAPIData(url):
-    # req = Request(url, headers={'User-Agent': 'XYZ/3.0'})
-    # body = urlopen(req, timeout=60).read()
-    body = getPage(url)
-    return json.loads(body.decode("utf8"))["result"]
-
+from .crawler import getAPIData
 
 def singleton(class_):
     instances = {}
@@ -469,13 +436,24 @@ class SymExecEVM():
         attacker_account = self.m.create_account(balance=1000000000000, address= int("0xC0ffee753b42bda1bcfa682f29685e2fd6729016", 16))
         self.accounts["0xC0ffee753b42bda1bcfa682f29685e2fd6729016"] = attacker_account
 
-        
-        contract_account = m.solidity_create_contract(source_code = address, \
-        owner = owner_account, name = contractName, contract_name = contractName, libraries = None, \
-             balance= 0, address= None, args = None, gas = None, \
-                 compile_args = dict(export_dir = export_dir, \
-                     etherscan_export_dir = etherscan_export_dir, compile_remove_metadata=False, \
-                etherscan_api_key = etherscan_api_key))
+
+        if config.contractFile is not None:
+            contract_account = m.solidity_create_contract(source_code = config.contractFile, \
+            owner = owner_account, name = contractName, contract_name = contractName, libraries = None, \
+                balance= 0, address= None, args = None, gas = None, \
+                    compile_args = dict(export_dir = export_dir, \
+                       compile_remove_metadata=False))
+            assert contract_account is not None 
+        else:
+            contract_account = m.solidity_create_contract(source_code = address, \
+            owner = owner_account, name = contractName, contract_name = contractName, libraries = None, \
+                balance= 0, address= None, args = None, gas = None, \
+                    compile_args = dict(export_dir = export_dir, \
+                        etherscan_export_dir = etherscan_export_dir, compile_remove_metadata=False, \
+                    etherscan_api_key = etherscan_api_key))
+
+        assert contract_account is not None, "Cannot create symbolic contract account"
+            
 
         logger.debug(f"symbolic contract_account: {hex(contract_account.address)}")
 

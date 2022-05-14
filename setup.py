@@ -15,6 +15,7 @@ setup(
         "manticore>=0.3.7",
         "slither-analyzer==0.8.0",
         "concepts == 0.9.2",
+        "cloudscraper == 1.2.60",
         "numpy",
         "pandas",
         "scipy",

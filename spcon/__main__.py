@@ -31,7 +31,7 @@ def execute_command(args):
     boolflag, observed_methods, func_mappings, separation_policies, integrity_policies \
         = recoverLikelyRoleSecurityPolicy(address = args.eth_address, contractName = contractName, contractAbi = contractAbi,generation=args.generation, simratio=args.simratio, workdir=args.workspace, reads=reads, reads2=reads2, writes=writes)
     if args.mode == Mode_Testing:
-        assert  boolflag==True, "security policies inference error"
+        assert  boolflag==True, "Cannot infer security policies maybe because the number of historical transaction is small"
         try:
             SymExecEVM().fuzzing(contract=contractName, EthereumAddress=args.eth_address, separation_policies = separation_policies, integrity_policies=integrity_policies,\
                  all_accessed_functions=observed_methods, typesListofFuncs=func_mappings, reads=reads, reads2=reads2, writes=writes)

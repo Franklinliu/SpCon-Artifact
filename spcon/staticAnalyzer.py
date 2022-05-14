@@ -1,7 +1,9 @@
 
 
+from inspect import trace
 from pathlib import PosixPath
 import posixpath
+import traceback
 from urllib.error import URLError
 from slither.core.declarations.solidity_variables import SolidityFunction
 from slither.slither import Slither  
@@ -14,8 +16,13 @@ from slither.analyses.data_dependency.data_dependency import compute_dependency
 from slither.analyses.data_dependency.data_dependency import pprint_dependency
 from slither.analyses.data_dependency.data_dependency import is_dependent
 from crytic_compile import CryticCompile
+from crytic_compile.platform.exceptions import InvalidCompilation
 import os 
 import itertools
+import re 
+import spcon.config.globalconfig as config 
+from .crawler import getSourceCode
+
 KEY_NON_SSA = "DATA_DEPENDENCY"
 
 def getRWofContract(address):
@@ -27,7 +34,7 @@ class Analyzer:
     def analyze(self, address):
         assert address is not None
         export_dir = "crytic-export"
-        etherscan_export_dir="etherscan-contracts2"
+        etherscan_export_dir="etherscan-contracts"
         etherscan_api_key = "URF6R5PGNZ7CT6TTBU7M8NH5V8WRISHIZZ"
         network = "mainet"
         contract = None
@@ -38,27 +45,50 @@ class Analyzer:
         try:
             cc = CryticCompile(target=f"{network}:{address}", export_dir = export_dir, etherscan_export_dir = etherscan_export_dir, compile_remove_metadata=False, \
                 etherscan_api_key = etherscan_api_key)
+            working_dir: PosixPath = cc.working_dir 
+            contract_dir = os.path.join(working_dir.absolute(),export_dir, etherscan_export_dir)
+            # print(working_dir.absolute())
+            contractName = None 
+            for item in os.listdir(contract_dir):
+                if item.startswith(address):
+                    contractName = item.split("-")[1]
+                    if contractName.find(".sol")!=-1:
+                        contractName = contractName.split(".sol")[0]
+                        break 
         except ConnectionResetError as e:
             print("Network Error: Cannot access to etherscan website. Please try to check if you can access https://etherscan.io/")
             exit(0)
         except URLError as e:
             print("Network Error: Cannot access to etherscan website. Please try to check if you can access https://etherscan.io/")
             exit(0)
-        except:
-            pass 
-        slither = Slither(cc)
-        working_dir: PosixPath = cc.working_dir 
-        contract_dir = os.path.join(working_dir.absolute(),export_dir, etherscan_export_dir)
-        # print(working_dir.absolute())
-        contractName = None 
-        for item in os.listdir(contract_dir):
-            if item.startswith(address):
-                contractName = item.split("-")[1]
-                if contractName.find(".sol")!=-1:
-                    contractName = contractName.split(".sol")[0]
-                    break 
+        except InvalidCompilation as e:
+            # print(e)
+            regexStr = r".*\(\"(.*)\"\).*"
+            regex = re.compile(regexStr)
+            m = regex.match(str(e))
+            if m:
+                # print(m.groups())
+                # target = m.groups()[0]
+                contractName, target = getSourceCode(address=address, api_key=etherscan_api_key)
+                cc = CryticCompile(target=target, compile_remove_metadata=False)
+                assert cc is not None
+                config.contractFile = target
+            else:
+                exit(0)
         assert contractName is not None 
-        compilation_unit = cc.compilation_units[contractName]
+        slither = Slither(cc)
+      
+        config.contractName = contractName 
+        config.address = address
+        # print(type(cc.compilation_units))
+        if isinstance(cc.compilation_units, dict):
+            # print(cc.compilation_units.keys())
+            if contractName not in cc.compilation_units:
+                compilation_unit = cc.compilation_units[target]
+            else:
+                compilation_unit = cc.compilation_units[contractName]
+        else:
+            exit(0)
         contractAbi = compilation_unit.abi(contractName)
         compute_dependency(compilation_unit=slither)
         contract = slither.get_contract_from_name(contractName)[0]
