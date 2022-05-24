@@ -3,7 +3,7 @@ Thanks for the reviewers' comments and the found issues about the artifact.
 ### Reviewer@A
 The reviewer@A mentioned two issues in the evaluation process. 
 * RQ2. Permission Bug Detection: "I couldn't detect the bugs using the command provided by the authors"
-Response: Thanks. The issue seems that the reviewer has not downloaded the ``CVE.list``. We have provided more complete instructions. Please see [here].(#rq2-permission-bug-detection) 
+Response: Thanks. The issue seems that the reviewer has not downloaded the ``CVE.list``. We have provided more complete instructions. Please see [here](#rq2-permission-bug-detection).
 * Isssue2: Reusability. "I have tested the tool against couple of available contracts in Etherscan, however i have got the following error: (tried with mode 1, 2 and without mode)"
 Response: Thanks. This is a compilation issue of etherscan smart contracts. We have fixed the issue and updated the docker image on the DokcerHub. Please feel free to try again and see [here](#reusability).
 
