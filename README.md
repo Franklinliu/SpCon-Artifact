@@ -1,12 +1,3 @@
-# Response to issue mentioned by the ISSTA AE reviewers
-Thanks for the reviewers' comments and the found issues about the artifact.
-### Reviewer@A
-The reviewer@A mentioned two issues in the evaluation process. 
-* RQ2. Permission Bug Detection: "I couldn't detect the bugs using the command provided by the authors"
-Response: Thanks. The issue seems that the reviewer has not downloaded the ``CVE.list``. We have provided more complete instructions. Please see [here](#rq2-permission-bug-detection).
-* Isssue2: Reusability. "I have tested the tool against couple of available contracts in Etherscan, however i have got the following error: (tried with mode 1, 2 and without mode)"
-Response: Thanks. This is a compilation issue of etherscan smart contracts. We have fixed the issue and updated the docker image on the DokcerHub. Please feel free to try again and see [here](#reusability).
-
 # SpCon: Finding Smart Contract Permission Bugs with Role Mining
 
 * This page can be best viewed at: <https://github.com/Franklinliu/SpCon-Artifact>.
@@ -251,7 +242,7 @@ docker run --rm -v $HOME/localtmp:/dockertmp liuyedocker/spcon-artifact benchmar
 ```
 Once done, you can check the exported result file at the path `$HOME/localtmp/result.xlsx`.
 Note that due to the randomness feature of GA, the result may vary a little at different runs.
-The referred expected content of `$HOME/localtmp/result.xlsx` may be close to: ![here](images/Screenshot%202022-05-03%20104202.png)
+The referred expected content of `$HOME/localtmp/result.xlsx` may be close to: ![here](./images/Screenshot2022-05-03104202.png)
 The first column (Alpha, Beta) represents $\alpha$ and $\beta$ respectively introduced in the paper.
 The fourth to eight columns show the number of mined roles, the structure of mined roles, and the label of the mined roles, the ground truth (deployed roles) as well as the ratio (`len(MinedRoles)/len(DeployedRoles)`).
 The rest columns show the result accuracy at different threshold that is discussed in the paper.
