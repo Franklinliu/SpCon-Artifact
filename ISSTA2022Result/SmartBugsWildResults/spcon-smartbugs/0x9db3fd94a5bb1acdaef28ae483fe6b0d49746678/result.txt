@@ -1,0 +1,2 @@
+address, name, compiler_version, arguments, transactionNo, transactions_file, sourcecode_file, abi_file, last txn date, is_killed
+0x9db3fd94a5bb1acdaef28ae483fe6b0d49746678,URANUS,v0.4.24+commit.e67f0147,,2405,smartbugsAccessControl/0x9db3fd94a5bb1acdaef28ae483fe6b0d49746678/all_txs.json,smartbugsAccessControl/0x9db3fd94a5bb1acdaef28ae483fe6b0d49746678/URANUS.sol,smartbugsAccessControl/0x9db3fd94a5bb1acdaef28ae483fe6b0d49746678/URANUS.abi,558 days 13 hrs ago,False
